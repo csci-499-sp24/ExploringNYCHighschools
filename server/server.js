@@ -30,8 +30,14 @@ syncDB();
 
 app.use(cors());
 
-app.get("/api/home", (req, res) => {
-    res.json({message: "Hello World!"});
+app.get("/api/home", async (req, res) => {
+  try {
+    const schools = await School.findAll();
+    res.json({ schools });
+  } catch (err) {
+    console.error("Error in fetching schools data", err);
+    res.status(500).json({ error: "Internal server error" });
+  }
 });
 
 const port = process.env.PORT || 8080;

@@ -2,18 +2,7 @@ const express = require("express");
 const cors = require('cors');
 const db = require("./models/school");
 const app = express();
-const School = require("./models/school");
-
-// get hs directory data from api and saves in database
-const fetchData = async () => {
-    let hs_data_api = 'https://data.cityofnewyork.us/resource/8b6c-7uty.json';
-    let school_data = await fetch(hs_data_api);
-    let school_data_json = await school_data.json();
-    for (let x = 0;x<school_data_json.length;x++) {
-        // create a School and it saves in the database
-       await School.create({school_name: school_data_json[x].school_name, address: school_data_json[x].location});
-    }
-};
+const fetchData = require("./data")
 
 const syncDB = async () => {
     try {

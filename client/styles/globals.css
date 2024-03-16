@@ -2,9 +2,9 @@
 @tailwind components;
 @tailwind utilities; */
 
-Styling for School Profile 
+/* Styling for School Profile  */
 section{
-    padding-top: 30px;
+    padding-top: 30px; 
     padding-bottom: 30px;
 }
 

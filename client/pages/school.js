@@ -136,4 +136,5 @@ function SchoolPage() {
         </section>
     )
 }
+
 export default SchoolPage

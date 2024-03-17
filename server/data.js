@@ -102,6 +102,5 @@ const fetchData = async () => {
         }
         found_school=false;
     }
-    console.log(arr.length);
 };
 module.exports = fetchData;

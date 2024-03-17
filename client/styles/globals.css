@@ -1,4 +1,47 @@
-@tailwind base;
+/* @tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities; */
 
+/* Styling for School Profile  */
+section{
+    padding-top: 30px; 
+    padding-bottom: 30px;
+}
+
+section h1{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+    padding-bottom: 30px;
+    color: purple;
+}
+
+.card-title h6{
+    text-align: center;
+}
+.card-body h5 {
+   color: purple;
+   text-transform: capitalize;
+   font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.card-body h6{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 18px;
+    text-align: center;
+}
+.card-text{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 16px;
+}
+
+.desc{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 18px;
+    text-align: center;
+}
+
+#hero .card{
+   text-align: center;
+   width: 20rem;
+   height: 10rem;
+} 

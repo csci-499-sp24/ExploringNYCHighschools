@@ -5,7 +5,7 @@ const { Sequelize } = require("sequelize");
 // When pushing to github, use DB_URL_INTERNAL but for local use external url(get from Render website)
 const db = new Sequelize(process.env.DB_URL_INTERNAL, {
     dialect: "postgres",
-    // logging: false,
+    logging: false,
     dialectOptions: {
         ssl: {
             require: true,

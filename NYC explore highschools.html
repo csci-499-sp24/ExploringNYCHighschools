@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NYC Explore High Schools</title>
+  <style>
+    body {
+      font-family: product sans;  /* Monaco font as primary, monospace as fallback */
+      padding: 20px;
+      margin: 0;  
+    }
+    .top-bar {  
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 50px;
+      background-color: #cccccc;
+      z-index: 0;
+    }
+    .left-bar {  /* New style for left bar */
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 200px;  
+      height: 100vh;  
+      background-color: #ebebeb;  /* Two shades lighter than top bar */
+      z-index: 0;
+    }
+    h1 {
+      position: absolute;
+      top: 5px; /* Adjusted to avoid overlap */
+      left: 10px; /* Adjusted to fit next to left-bar */
+      margin: 0;
+      z-index: 1;
+    }
+    span.blue {  
+      color: cornflowerblue;
+    }
+    h1 span:not(.blue) { 
+      color: darkcyan;
+    }
+    
+    .search-bar {
+      position: absolute;
+      top: 3px;  
+      right: 20px;  
+      width: 200px;  
+      height: 30px;
+      background-color: #fff;  
+      border: 1px solid #ccc;  
+      border-radius: 5px;  
+      padding: 5px;  
+      display: flex;  
+    }
+    .search-bar input[type="text"] {
+      flex: 1;  
+      border: none;  
+    }
+    .search-bar i {  /* Search icon */
+      margin-left: 5px;  /* Spacing from text */
+      color: #ccc;  
+    }
+    
+    .schools-container {
+      position: absolute;
+      top: 60px; 
+      left: 220px; 
+      right: 20px; 
+      bottom: 20px; 
+      overflow: auto; 
+    }
+    .school-card {
+      background-color: #f0f0f0; 
+      border-radius: 10px; 
+      padding: 20px; 
+      margin-bottom: 20px; 
+    }
+    .school-name, .school-location {
+      margin: 5px 0; 
+    }
+    .school-card:not(:first-child) {
+      margin-top: 20px; 
+    }
+  </style>
+</head>
+<body>
+  <div class="left-bar"></div>
+  <div class="top-bar"></div>
+  <h1><span class="blue">Explore</span> <span>NYC High Schools</span></h1>
+  <div class="search-bar">
+    <input type="text" placeholder="Search High Schools">
+    <i class="fa fa-search"></i>
+  </div>
+
+  <div class="schools-container">
+    <div class="school-card">
+      <div class="school-name">School Name 1</div>
+      <div class="school-location">Location 1</div>
+    </div>
+    <div class="school-card">
+      <div class="school-name">School Name 2</div>
+      <div class="school-location">Location 2</div>
+    </div>
+    <div class="school-card">
+      <div class="school-name">School Name 3</div>
+      <div class="school-location">Location 3</div>
+    </div>
+    <div class="school-card">
+      <div class="school-name">School Name 4</div>
+      <div class="school-location">Location 4</div>
+    </div>
+  </div>
+</body>
+</html>

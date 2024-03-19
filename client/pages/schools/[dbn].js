@@ -27,7 +27,7 @@ function SchoolProfile() {
             <div className="container">
                 <div className="row">
                     <h1 className="display-1">{school.school_name}</h1>
-                    <p className="desc">School Description</p>
+                    <p className="desc">{school.description}</p>
                 </div>
             </div>
                 <div className="row">
@@ -35,10 +35,10 @@ function SchoolProfile() {
                         <div className="p-2 border flex-fill bd-highlight">
                             <div className="card-fill">
                                 <div className="card-body">
-                                    <h6 className="card-title">Address: </h6>
-                                    <h6 className="card-title">Website: </h6>
-                                    <h6 className="card-title">Phone number: </h6>
-                                    <h6 className="card-title">Email: </h6>
+                                    <h6 className="card-title">Address: {school.address}</h6>
+                                    <h6 className="card-title">Website: {school.website}</h6>
+                                    <h6 className="card-title">Phone number: {school.phone_number}</h6>
+                                    <h6 className="card-title">Email: {school.email}</h6>
                                 </div>
                             </div>
                         </div>
@@ -50,7 +50,7 @@ function SchoolProfile() {
                             <div className="card">
                                 <div className="card-body">
                                     <h5 className="card-title">Languages</h5>
-                                    <p className="card-text">List of languages offered at this school.</p>
+                                    <p className="card-text">{school.languages}</p>
                                 </div>
                             </div>
                         </div>
@@ -58,7 +58,7 @@ function SchoolProfile() {
                             <div className="card">
                                 <div className="card-body">
                                     <h5 className="card-title">AP Courses</h5>
-                                    <p className="card-text">List of AP courses offered at this school.</p>
+                                    <p className="card-text">{school.ap_classes}</p>
                                 </div>
                             </div>
                         </div>
@@ -66,7 +66,7 @@ function SchoolProfile() {
                             <div className="card">
                                 <div className="card-body">
                                     <h5 className="card-title">Graduation Rate</h5>
-                                    <p className="card-text">Insert graduation rate of school.</p>
+                                    <p className="card-text">{school.grad_rate}</p>
                                 </div>
                             </div>
                         </div>
@@ -78,7 +78,7 @@ function SchoolProfile() {
                             <div className="card">
                                 <div className="card-body">
                                     <h5 className="card-title">Subway</h5>
-                                <p className="card-text">Trains that students can take that arrive to school location.</p>
+                                <p className="card-text">{school.subways_to_school}</p>
                                 </div>
                             </div>
                         </div>
@@ -86,7 +86,7 @@ function SchoolProfile() {
                             <div className="card">
                                 <div className="card-body">
                                     <h5 className="card-title">Buses</h5>
-                                <p className="card-text">Buses that students can take that arrive to school location.</p>
+                                <p className="card-text">{school.bus_to_school}</p>
                                 </div>
                             </div>
                         </div>
@@ -94,7 +94,7 @@ function SchoolProfile() {
                             <div className="card">
                                 <div className="card-body">
                                     <h5 className="card-title">Grade Span</h5>
-                                <p className="card-text">What grades are taught at this school.</p>
+                                <p className="card-text">{school.grade_span}</p>
                                 </div>
                             </div>
                         </div>
@@ -106,7 +106,7 @@ function SchoolProfile() {
                             <div className="card">
                                 <div className="card-body">
                                     <h5 className="card-title">Total Students</h5>
-                                <p className="card-text">Total number of students attending this school.</p>
+                                <p className="card-text">{school.total_students}</p>
                                 </div>
                             </div>
                         </div>
@@ -114,7 +114,7 @@ function SchoolProfile() {
                             <div className="card">
                                 <div className="card-body">
                                     <h5 className="card-title">Freshman Schedule</h5>
-                                <p className="card-text">Insert arrival and dismissal time for freshman.</p>
+                                <p className="card-text">{school.freshmen_schedule}</p>
                                 </div>
                             </div>
                         </div>
@@ -122,7 +122,7 @@ function SchoolProfile() {
                             <div className="card">
                                 <div className="card-body">
                                     <h5 className="card-title">PSAL Boys</h5>
-                                <p className="card-text">List of sports offered for boys at this school.</p>
+                                <p className="card-text">{school.psal_boys}</p>
                                 </div>
                             </div>
                         </div>
@@ -134,7 +134,7 @@ function SchoolProfile() {
                             <div className="card">
                                 <div className="card-body">
                                     <h5 className="card-title">PSAL Girls</h5>
-                                <p className="card-text">List of sports offered for girls at this school.</p>
+                                <p className="card-text">{school.psal_girls}</p>
                                 </div>
                             </div>
                         </div>
@@ -142,7 +142,7 @@ function SchoolProfile() {
                             <div className="card">
                                 <div className="card-body">
                                     <h5 className="card-title">Attendance Rate</h5>
-                                <p className="card-text">Insert attendance rate.</p>
+                                <p className="card-text">{school.attendance_rate}</p>
                                 </div>
                             </div>
                         </div>
@@ -150,7 +150,7 @@ function SchoolProfile() {
                             <div className="card">
                                 <div className="card-body">
                                     <h5 className="card-title">School Safety</h5>
-                                <p className="card-text">Rating of school safety.</p>
+                                <p className="card-text">{school.student_safety}</p>
                                 </div>
                             </div>
                         </div>
@@ -158,12 +158,6 @@ function SchoolProfile() {
                 </div>
         </section>
     )
-    // return (
-    //     <div>
-    //         <h1>{school.school_name}</h1>
-    //         <h2>{message}</h2>
-    //     </div>
-    // );
 }
 
 export default SchoolProfile;

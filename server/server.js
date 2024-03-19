@@ -1,4 +1,4 @@
-// require('dotenv').config() // to use .env file
+require('dotenv').config() // to use .env file
 const express = require("express");
 const cors = require('cors');
 // const db = require("./models/school");

@@ -1,8 +1,11 @@
+require('dotenv').config() // to use .env file
 const express = require("express");
 const cors = require('cors');
 const db = require("./models/school");
+// const db = require("./db") // Sequelize instance from db.js
 const app = express();
 const fetchData = require("./data")
+const School = require("./models/school");
 
 const syncDB = async () => {
     try {

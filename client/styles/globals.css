@@ -8,7 +8,7 @@ section{
     padding-bottom: 30px;
 }
 
-section h1{
+h1{
     font-family: Georgia, 'Times New Roman', Times, serif;
     text-align: center;
     padding-bottom: 30px;
@@ -42,6 +42,12 @@ section h1{
 
 #hero .card{
    text-align: center;
-   width: 20rem;
-   height: 10rem;
+   width: 25rem;
+   height: 25rem;
 } 
+
+.school-button{
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}

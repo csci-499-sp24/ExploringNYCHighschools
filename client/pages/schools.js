@@ -25,7 +25,8 @@ function Schools() {
                                     <Card text1={`Address: ${school.school_name}`} text2={`Website: ${school.website}`} text3={`Phone Number: ${school.phone_number}`} text4={`Email: ${school.email}`}></Card>
                                 
                                 <div className="school-button">
-                                    <SchoolButton link={`http://localhost:3000/schools/${school.dbn}`}></SchoolButton>
+                                    {/* <SchoolButton link={`http://localhost:3000/schools/${school.dbn}`}></SchoolButton> */}
+                                    <SchoolButton link={`/schools/${school.dbn}`}></SchoolButton>
                                 </div>
                             </div>
                         </div>

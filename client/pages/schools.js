@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import SchoolButton from "./components/SchoolButton";
-import Card from "./components/Card";
+import SchoolButton from "../components/SchoolButton";
+import Card from "../components/Card";
 
 function Schools() {
     const [schools, setSchools] = useState([]);

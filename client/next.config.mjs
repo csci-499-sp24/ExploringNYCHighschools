@@ -1,6 +1,7 @@
-/** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
+  serverRuntimeConfig: {
+    PORT: 3000, // or any other available port
+  },
 };
 
 export default nextConfig;

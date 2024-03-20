@@ -1,4 +1,5 @@
 require('dotenv').config() // to use .env file
+
 const express = require("express");
 const cors = require('cors');
 // const db = require("./models/school");
@@ -25,6 +26,25 @@ app.use(cors());
 app.get("/api/home", (req, res) => {
     res.json({message: "Hello World!"});
 });
+
+app.get("/api/schools/:dbn", async (req, res) => {
+    const {dbn} = req.params;
+    try {
+        const school = await School.findOne({
+            where: {
+                dbn: dbn // Use the dbn parameter to search for the school
+            }
+        });
+        if (!school) {
+            return res.status(404).json({ error: 'School not found!' });
+        }
+        res.status(200).json({school});
+    } catch (error) {
+            console.error('Error fetching school:', error);
+            return res.status(500).json({ error: 'Internal Server Error' });
+          }
+    }
+)
 
 const port = process.env.PORT || 8080;
 app.listen(port, () => {

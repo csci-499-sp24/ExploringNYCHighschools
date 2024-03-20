@@ -9,7 +9,7 @@ function SchoolProfile() {
 
     useEffect(() => {
         if (dbn) {
-            fetch(`http://localhost:3000/api/schools/${dbn}`)
+            fetch(`http://localhost:8080/api/schools/${dbn}`)
             .then((response) => response.json())
             .then((data) => {
                 if (data.school) {

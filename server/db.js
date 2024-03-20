@@ -1,4 +1,4 @@
-require('dotenv').config() // to use .env file
+// require('dotenv').config() // to use .env file
 const { Sequelize } = require("sequelize");
 const pg = require('pg');
 

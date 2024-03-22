@@ -28,7 +28,7 @@ function SchoolProfile() {
     return (
         <section id="hero">
             {/* <SchoolButton link={`http://localhost:3000/schools`}></SchoolButton> */}
-            <SchoolButton link={`/schools`}></SchoolButton>
+            <SchoolButton link={`/schools`} text={"Return to Explore High Schools"}></SchoolButton>
             <div className="container">
                 <div className="row">
                     <h1 className="display-1">{school.school_name}</h1>

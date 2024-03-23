@@ -41,7 +41,7 @@ function SchoolProfile() {
                 <div className="row">
                     <div className="d-flex flex-row bd-highlight mb-3 justify-content-center">
                         <div className="p-2 border flex-fill bd-highlight">
-                            <Card text1={`Address: ${school.school_name}`} text2={`Website: ${school.website}`} text3={`Phone Number: ${school.phone_number}`} text4={`Email: ${school.email}`}></Card>
+                            <Card text1={`Address: ${school.address}`} text2={`Website: ${school.website}`} text3={`Phone Number: ${school.phone_number}`} text4={`Email: ${school.email}`}></Card>
                         </div>
                     </div>
                 </div>

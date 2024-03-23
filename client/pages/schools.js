@@ -15,6 +15,7 @@ function Schools() {
         });
     }, [schools]);
     return (
+        <div className="background-color">
         <section id="hero">
             <h1 className="display-1">Explore High Schools</h1>
                 <div>
@@ -34,6 +35,7 @@ function Schools() {
                     ))}
                 </div>
         </section>
+        </div>
     )
 }
 

@@ -51,3 +51,8 @@ h1{
     padding-top: 10px;
     padding-bottom: 10px;
 }
+
+.background-color {
+    background-image: linear-gradient(to right, rgba(0, 0, 255, 0), rgb(45, 145, 217));    
+}
+  

@@ -26,6 +26,7 @@ function SchoolProfile() {
     }, [dbn]);
 
     return (
+        <div className="background-color">
         <section id="hero">
             {/* <SchoolButton link={`http://localhost:3000/schools`}></SchoolButton> */}
             <SchoolButton link={`/schools`} text={"Return to Explore High Schools"}></SchoolButton>
@@ -95,6 +96,7 @@ function SchoolProfile() {
                     </div>     
                 </div>
         </section>
+        </div>
     )
 }
 

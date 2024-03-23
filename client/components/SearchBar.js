@@ -25,9 +25,6 @@ const SearchBar = ({ onSearch }) => {
 
   return (
     <div className="my-12 text-center">
-      <h1 className="text-3xl font-bold mb-4 text-purple-500">
-        Exploring High Schools
-      </h1>
       <div className="flex items-center justify-center">
         <input
           type="text"

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import SchoolButton from "../components/SchoolButton";
 import Card from "../components/Card";
+import ScrollUpButton from "../components/ScrollUpButton";
 
 function Schools() {
     const [schools, setSchools] = useState([]);
@@ -16,6 +17,7 @@ function Schools() {
     }, [schools]);
     return (
         <div className="background-color">
+        <ScrollUpButton/>
         <section id="hero">
             <h1 className="display-1">Explore High Schools</h1>
                 <div>

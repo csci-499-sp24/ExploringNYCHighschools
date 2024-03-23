@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Card from "../../components/Card";
 import CardSquare from "../../components/CardSquare";
 import SchoolButton from "../../components/SchoolButton";
+import ScrollUpButton from "../../components/ScrollUpButton";
 
 function SchoolProfile() {
     const router = useRouter();
@@ -26,9 +27,11 @@ function SchoolProfile() {
     }, [dbn]);
 
     return (
+        <div className="background-color">
+         <ScrollUpButton/>
         <section id="hero">
             {/* <SchoolButton link={`http://localhost:3000/schools`}></SchoolButton> */}
-            <SchoolButton link={`/schools`}></SchoolButton>
+            <SchoolButton link={`/schools`} text={"Return to Explore High Schools"}></SchoolButton>
             <div className="container">
                 <div className="row">
                     <h1 className="display-1">{school.school_name}</h1>
@@ -38,7 +41,7 @@ function SchoolProfile() {
                 <div className="row">
                     <div className="d-flex flex-row bd-highlight mb-3 justify-content-center">
                         <div className="p-2 border flex-fill bd-highlight">
-                            <Card text1={`Address: ${school.school_name}`} text2={`Website: ${school.website}`} text3={`Phone Number: ${school.phone_number}`} text4={`Email: ${school.email}`}></Card>
+                            <Card text1={`Address: ${school.address}`} text2={`Website: ${school.website}`} text3={`Phone Number: ${school.phone_number}`} text4={`Email: ${school.email}`}></Card>
                         </div>
                     </div>
                 </div>
@@ -95,6 +98,7 @@ function SchoolProfile() {
                     </div>     
                 </div>
         </section>
+        </div>
     )
 }
 

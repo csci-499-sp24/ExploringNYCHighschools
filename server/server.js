@@ -48,11 +48,15 @@ app.get("/api/schools/:dbn", async (req, res) => {
 
 app.get("/api/schools", async (req, res) => {
     try {
-      const schools = await School.findAll();
-      res.json({ schools });
+        // Retrieve the search term from the query parameters
+        const searchTerm = req.query.term;
+
+        const schools = await School.findAll();
+        res.json({ schools, searchTerm});
+       
     } catch (err) {
-      console.error("Error in fetching schools data", err);
-      res.status(500).json({ error: "Internal server error" });
+        console.error("Error in fetching schools data", err);
+        res.status(500).json({ error: "Internal server error" });
     }
   });
 

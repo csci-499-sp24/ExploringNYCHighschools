@@ -19,12 +19,14 @@ function Schools() {
 
     const [results, setResults] = useState([]);
     const [error, setError] = useState(null);
+    const [foundQuery, setFoundQuery] = useState(false);
   
     const handleSearch = async (query, searchType) => {
       try {
         if (!query) {
           // If query is empty, reset results and return
           setResults([]);
+          setFoundQuery(false);
           return;
         }
   
@@ -71,10 +73,12 @@ function Schools() {
   
         // Set the schools array as the state
         setResults(filteredSchools);
+        setFoundQuery(true);
         setError(null);
       } catch (error) {
         setError("An error occurred while fetching search results");
         setResults([]);
+        setFoundQuery(false);
       }
     };
     return (
@@ -82,27 +86,39 @@ function Schools() {
         <ScrollUpButton/>
         <section id="hero">
             <h1 className="display-1">Explore High Schools</h1>
-            <div>
             <SearchBar onSearch={handleSearch} />
                 {error && <p>{error}</p>}
-                {(results.length > 0 ? results : schools).map((school, index) => (
-                        <div key={index}>
-                            <div className="d-flex flex-row bd-highlight mb-3 justify-content-center">
+                <div>
+                {foundQuery ? (
+                    results.length > 0 ? (results.map((school, index) => (
+                            <div key={index} className="d-flex flex-row bd-highlight mb-3 justify-content-center">
                                 <div className="p-2 border flex-fill bd-highlight">
                                     <Card text1={`School Name: ${school.school_name}`} text2={`Address: ${school.address}`} text3={`Website: ${school.website}`} text4={`Phone Number: ${school.phone_number}`} text5={`Email: ${school.email}`}></Card>
                                 
                                 <div className="school-button">
-                                    {/* <SchoolButton link={`http://localhost:3000/schools/${school.dbn}`}></SchoolButton> */}
                                     <SchoolButton link={`/schools/${school.dbn}`}></SchoolButton>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    ))}
+                ))
+                ) : ( <p className="search">No matches found!</p> )
+                ) : (schools.map((school, index) => (
+                    <div key={index} className="d-flex flex-row bd-highlight mb-3 justify-content-center">
+                                <div className="p-2 border flex-fill bd-highlight">
+                                    <Card text1={`School Name: ${school.school_name}`} text2={`Address: ${school.address}`} text3={`Website: ${school.website}`} text4={`Phone Number: ${school.phone_number}`} text5={`Email: ${school.email}`}></Card>
+                                
+                                <div className="school-button">
+                                    <SchoolButton link={`/schools/${school.dbn}`}></SchoolButton>
+                                </div>
+                            </div>
+                        </div>
+                ))
+                )}
                 </div>
+                
         </section>
         </div>
-    )
+    )            
 }
 
 export default Schools;

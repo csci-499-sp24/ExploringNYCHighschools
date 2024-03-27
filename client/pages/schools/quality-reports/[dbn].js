@@ -38,8 +38,8 @@ function SchoolQualityReport() {
                         <p className="desc">What is a School Quality Report?</p>
                             <p className="desc">
                                 The Department of Education gathers data to provide families with a more
-                                informed look into their children's school qualty and help families make a more
-                                informed choice for their child's future school. The following data below
+                                informed look into their children&apos;s school qualty and help families make a more
+                                informed choice for their child&apos;s future school. The following data below
                                 is drawn from mutiple sources: formal school visits, student feedback, teacher
                                 feedback, feedback from parents who have taken the NYC School survey, and data from
                                 student achievements such as exams.

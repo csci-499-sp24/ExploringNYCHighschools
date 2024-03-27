@@ -45,6 +45,7 @@ const fetchData = async () => {
                 student_safety: school_data_json[x].pct_stu_safe,
                 neighborhood: school_data_json[x].neighborhood,
                 // School quality reports data:
+                school_quality_report: "found",
                 rigorous_instruction_rating: cleaned_quality_data[index_quality_reports].rigorous_instruction_percent,
                 collaborative_teachers_rating: cleaned_quality_data[index_quality_reports].collaborative_teachers_percent,
                 supportive_env_rating: cleaned_quality_data[index_quality_reports].collaborative_teachers_percent,
@@ -69,7 +70,8 @@ const fetchData = async () => {
                 principal_yr_experience: cleaned_quality_data[index_quality_reports].years_of_principal_experience,
                 teachers_3yr_experience: cleaned_quality_data[index_quality_reports].percent_of_teachers_with,
                 chronically_absent_stu: cleaned_quality_data[index_quality_reports].percent_of_students,
-                teacher_attendance_rate: cleaned_quality_data[index_quality_reports].teacher_attendance_rate
+                teacher_attendance_rate: cleaned_quality_data[index_quality_reports].teacher_attendance_rate,
+                family_community_ties: cleaned_quality_data[index_quality_reports].strong_family_community_ties_1,
                 });
                 index_quality_reports+=1;
                 found_school = true;
@@ -77,6 +79,7 @@ const fetchData = async () => {
         }
         if (found_school == false) {
             await School.create({ 
+                school_quality_report: "none",
                 // HS diretory data
                 dbn: school_data_json[x].dbn,
                 school_name: school_data_json[x].school_name,

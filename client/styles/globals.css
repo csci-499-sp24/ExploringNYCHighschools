@@ -46,10 +46,29 @@ h1{
    height: 25rem;
 } 
 
+#quality-reports .card{
+    text-align: center;
+    width: 25rem;
+    height: 10rem;
+ } 
+
+.message-not-found{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 18px;
+    align-items: center;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 .school-button{
     text-align: center;
     padding-top: 10px;
     padding-bottom: 10px;
+    gap: 10px;
+}
+.school-button button{
+    margin-left: 10px;
 }
 
 .background-color {

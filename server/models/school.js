@@ -3,6 +3,10 @@ const Sequelize = require('sequelize') // Import Sequelize
 const db = require('../db'); // Import Sequelize database instance
 
 const School = db.define("school", {
+    school_quality_report: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
     // Data from HS directory
     neighborhood: {
         type: Sequelize.STRING
@@ -162,6 +166,9 @@ const School = db.define("school", {
     teacher_attendance_rate: {
         type: Sequelize.STRING
     },
+    family_community_ties: {
+        type: Sequelize.STRING,
+    }
 
 });
 School.removeAttribute('id'); // get rid of automate field of id when models are created

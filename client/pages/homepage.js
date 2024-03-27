@@ -1,11 +1,16 @@
 import React from 'react';
+import { FaBars } from "react-icons/fa"
 
 function NavBar() {
  const dropdownItems = [
-   { text: "Home", url: "#" },
-   { text: "Enrollment", url: "#" },
-   { text: "Find a school", url: "#" },
-   { text: "About", url: "#" }
+  //  { text: "Home", url: "#" },
+  //  { text: "Enrollment", url: "#" },
+  //  { text: "Find a school", url: "#" },
+  //  { text: "About", url: "#" }
+   { text: "Home", url: "/" },
+   { text: "Search", url: "/schools" },
+   { text: "Login", url: "#" },  /* if user is logged in, change to logout */
+   { text: "Register", url: "#" }  /* if user is logged in, change to View Profile */
  ];
 
  return (
@@ -54,7 +59,7 @@ function Dropdown({ items }) {
        padding: "10px",
        fontSize: "16px",
        cursor: "pointer"
-     }}>Menu</button>
+     }}><FaBars/></button>
      {isOpen && (
        <div style={{
          display: "block",
@@ -86,7 +91,8 @@ function App() {
   return (
     <div
       style={{
-        background: "linear-gradient(100deg, #C3B1E1, #CCCCFF)",
+        // background: "linear-gradient(100deg, #C3B1E1, #CCCCFF)",
+        background: "linear-gradient(to bottom, #C3B1E1, #CCCCFF, transparent)",
         minHeight: "100vh",
         color: "white",
         position: "absolute",

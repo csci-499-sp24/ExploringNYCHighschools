@@ -35,8 +35,8 @@ function SchoolQualityReport() {
                 <div className="container">
                     <div className="row">
                         <h1 className="display-1">{school.school_name}</h1>
-                        <p className="desc">What is a School Quality Report?<p>
-                            </p>
+                        <p className="desc">What is a School Quality Report?</p>
+                            <p className="desc">
                                 The Department of Education gathers data to provide families with a more
                                 informed look into their children's school qualty and help families make a more
                                 informed choice for their child's future school. The following data below

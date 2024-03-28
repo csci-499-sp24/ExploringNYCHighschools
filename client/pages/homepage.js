@@ -1,100 +1,130 @@
 import React from 'react';
-import { FaBars } from "react-icons/fa"
+import { FaBars } from "react-icons/fa";
 
 function NavBar() {
- const dropdownItems = [
-  //  { text: "Home", url: "#" },
-  //  { text: "Enrollment", url: "#" },
-  //  { text: "Find a school", url: "#" },
-  //  { text: "About", url: "#" }
-   { text: "Home", url: "/" },
-   { text: "Search", url: "/schools" },
-   { text: "Login", url: "#" },  /* if user is logged in, change to logout */
-   { text: "Register", url: "#" }  /* if user is logged in, change to View Profile */
- ];
+  const navLinks = [
+    { text: "Home", url: "/" },
+    { text: "Search", url: "/schools" }
+  ];
 
- return (
-   <nav style={{
-     background: "gray",
-     width: "100%",
-     height: "60px",
-     display: "flex",
-     alignItems: "center",
-     justifyContent: "space-between",
-     padding: "0 20px",
-     position: "fixed",
-     top: "0",
-     left: "0",
-     zIndex: "1"
-   }}>
-     <Dropdown items={dropdownItems} />
-     <div style={{ display: "flex", alignItems: "center" }}>
-       <input type="text" placeholder="Search..." style={{ padding: "10px", marginRight: "10px" }} />
-       <button style={{
-         padding: "10px",
-         backgroundColor: "#800080",
-         color: "white",
-         border: "none",
-         borderRadius: "4px",
-         cursor: "pointer"
-       }}>Sign Up</button>
-     </div>
-   </nav>
- );
+  return (
+    <nav style={{
+      background: "#333",
+      width: "100%",
+      height: "60px",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "space-between",
+      padding: "0 20px",
+      position: "fixed",
+      top: "0",
+      left: "0",
+      zIndex: "1"
+    }}>
+      <div style={{ display: "flex", alignItems: "center" }}>
+        <Dropdown items={navLinks} />
+        <input
+          type="text"
+          placeholder="Search..."
+          style={{
+            padding: "8px 12px",
+            borderRadius: "4px",
+            border: "none",
+            marginLeft: "20px"
+          }}
+        />
+      </div>
+      <div style={{ display: "flex", alignItems: "center" }}>
+        <button
+          style={{
+            padding: "8px 16px",
+            backgroundColor: "#800080",
+            color: "white",
+            border: "none",
+            borderRadius: "4px",
+            cursor: "pointer",
+            marginLeft: "10px"
+          }}
+        >
+          Login
+        </button>
+        <button
+          style={{
+            padding: "8px 16px",
+            backgroundColor: "#800080",
+            color: "white",
+            border: "none",
+            borderRadius: "4px",
+            cursor: "pointer",
+            marginLeft: "10px"
+          }}
+        >
+          Register
+        </button>
+      </div>
+    </nav>
+  );
 }
 
 function Dropdown({ items }) {
- const [isOpen, setIsOpen] = React.useState(false);
+  const [isOpen, setIsOpen] = React.useState(false);
 
- return (
-   <div
-     style={{ position: "relative", display: "inline-block" }}
-     onMouseEnter={() => setIsOpen(true)}
-     onMouseLeave={() => setIsOpen(false)}
-   >
-     <button style={{
-       backgroundColor: "transparent",
-       border: "none",
-       color: "white",
-       padding: "10px",
-       fontSize: "16px",
-       cursor: "pointer"
-     }}><FaBars/></button>
-     {isOpen && (
-       <div style={{
-         display: "block",
-         position: "absolute",
-         backgroundColor: "white",
-         minWidth: "160px",
-         boxShadow: "0px 8px 16px 0px rgba(0,0,0,0.2)",
-         zIndex: "1"
-       }}>
-         {items.map(item => (
-           <a
-             key={item.text}
-             href={item.url}
-             style={{
-               color: "black",
-               padding: "12px 16px",
-               textDecoration: "none",
-               display: "block"
-             }}
-           >{item.text}</a>
-         ))}
-       </div>
-     )}
-   </div>
- );
+  return (
+    <div
+      style={{ position: "relative", display: "inline-block" }}
+      onMouseEnter={() => setIsOpen(true)}
+      onMouseLeave={() => setIsOpen(false)}
+    >
+      <button
+        style={{
+          backgroundColor: "transparent",
+          border: "none",
+          color: "white",
+          padding: "8px 12px",
+          fontSize: "16px",
+          cursor: "pointer"
+        }}
+      >
+        <FaBars />
+      </button>
+      {isOpen && (
+        <div
+          style={{
+            display: "block",
+            position: "absolute",
+            backgroundColor: "white",
+            minWidth: "160px",
+            boxShadow: "0px 8px 16px 0px rgba(0,0,0,0.2)",
+            zIndex: "1"
+          }}
+        >
+          {items.map(item => (
+            <a
+              key={item.text}
+              href={item.url}
+              style={{
+                color: "black",
+                padding: "12px 16px",
+                textDecoration: "none",
+                display: "block"
+              }}
+            >
+              {item.text}
+            </a>
+          ))}
+        </div>
+      )}
+    </div>
+  );
 }
 
 function App() {
   return (
     <div
       style={{
-        // background: "linear-gradient(100deg, #C3B1E1, #CCCCFF)",
-        background: "linear-gradient(to bottom, #C3B1E1, #CCCCFF, transparent)",
+        background: "#F5F5F5",
         minHeight: "100vh",
-        color: "white",
+        color: "#333",
         position: "absolute",
         top: 0,
         left: 0,
@@ -126,23 +156,43 @@ function App() {
         }}
       >
         <div style={{ flex: "1", paddingRight: "20px" }}>
-          <h2>Mission Statement</h2>
+          <h2>Our Mission</h2>
           <p>
-            Our mission is to provide comprehensive information and resources
+            We want to provide comprehensive information and resources
             to help students and families navigate the diverse landscape of NYC
             high schools. We strive to empower students and parents in making
             informed decisions about their education and future.
           </p>
+          <p>
+            Parents deserve to have faith in the education system that their 
+            children will spent their childhood and teenage years in. Their
+            futures in college, and later in the workplace, will be shaped by the 
+            experiences, challenges, and successes that they met throughout 
+            their time in high school.
+          </p>
+          <p>
+            In essence, our commitment extends far beyond mere information 
+            dissemination; it's about fostering trust and confidence in the educational journey 
+            of each student. By providing a robust framework of support and guidance, we aim 
+            to equip parents and students alike with the tools they need to navigate the 
+            complexities of the educational landscape. As pillars of the community, we 
+            recognize the profound impact that a nurturing and enriching high school experience 
+            can have on shaping not just academic success, but also personal growth 
+            and fulfillment. Together, let us embark on this journey of empowerment, 
+            ensuring that every student's path through high school is illuminated 
+            with opportunity, possibility, and the unwavering belief in a brighter future.
+          </p>
         </div>
         <div style={{ flex: "1", paddingLeft: "20px" }}>
           <img
-            src={process.env.PUBLIC_URL + "/mother-and-daughter.jpg"}
-            alt="mother and daughter using laptop"
-            style={{ maxWidth: "100%", height: "auto" }}
+            src="/mother-and-daughter.jpg" // Use relative path to the image
+            alt="mother and daughter together"
+            style={{ maxWidth: "80%", height: "auto" }}
           />
         </div>
       </div>
     </div>
   );
 }
+
 export default App;

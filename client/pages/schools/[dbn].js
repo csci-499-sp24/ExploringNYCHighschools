@@ -28,9 +28,8 @@ function SchoolProfile() {
 
     return (
         <div className="background-color">
-         <ScrollUpButton/>
+         {/* <ScrollUpButton/> */}
         <section id="hero">
-            {/* <SchoolButton link={`http://localhost:3000/schools`}></SchoolButton> */}
             <SchoolButton link={`/schools`} text={"Return to Explore High Schools"}></SchoolButton>
             <div className="container">
                 <div className="row">

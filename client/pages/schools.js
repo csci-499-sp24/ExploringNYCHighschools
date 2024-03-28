@@ -83,7 +83,6 @@ function Schools() {
     };
     return (
         <div className="background-color">
-        <ScrollUpButton/>
         <section id="hero">
             <h1 className="display-1">Explore High Schools</h1>
             <SearchBar onSearch={handleSearch} />

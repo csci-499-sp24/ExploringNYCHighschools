@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import SchoolButton from "../components/SchoolButton";
 import Card from "../components/Card";
-import ScrollUpButton from "../components/ScrollUpButton";
 import SearchBar from "../components/SearchBar";
 
 function Schools() {
@@ -83,7 +82,6 @@ function Schools() {
     };
     return (
         <div className="background-color">
-        <ScrollUpButton/>
         <section id="hero">
             <h1 className="display-1">Explore High Schools</h1>
             <SearchBar onSearch={handleSearch} />
@@ -94,9 +92,9 @@ function Schools() {
                             <div key={index} className="d-flex flex-row bd-highlight mb-3 justify-content-center">
                                 <div className="p-2 border flex-fill bd-highlight">
                                     <Card text1={`School Name: ${school.school_name}`} text2={`Address: ${school.address}`} text3={`Website: ${school.website}`} text4={`Phone Number: ${school.phone_number}`} text5={`Email: ${school.email}`}></Card>
-                                
                                 <div className="school-button">
                                     <SchoolButton link={`/schools/${school.dbn}`}></SchoolButton>
+                                    <SchoolButton link={`/schools/quality-reports/${school.dbn}`} text={"View School Quality Report"}></SchoolButton>
                                 </div>
                             </div>
                         </div>
@@ -109,6 +107,7 @@ function Schools() {
                                 
                                 <div className="school-button">
                                     <SchoolButton link={`/schools/${school.dbn}`}></SchoolButton>
+                                    <SchoolButton link={`/schools/quality-reports/${school.dbn}`} text={"Go to School Quality Report"}></SchoolButton>
                                 </div>
                             </div>
                         </div>

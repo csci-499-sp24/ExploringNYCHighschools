@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import SchoolButton from "../components/SchoolButton";
 import Card from "../components/Card";
-import ScrollUpButton from "../components/ScrollUpButton";
 import SearchBar from "../components/SearchBar";
 
 function Schools() {

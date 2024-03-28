@@ -3,17 +3,17 @@ import { useEffect, useState } from "react";
 import Card from "../../../components/Card";
 import CardSquare from "../../../components/CardSquare";
 import SchoolButton from "../../../components/SchoolButton";
-import ScrollUpButton from "../../../components/ScrollUpButton";
 
 function SchoolQualityReport() {
     const router = useRouter();
     const { dbn } = router.query;
     const [school, setSchool] = useState([]);
     const[message, setMessage] = useState("Loading");
+    
 
     useEffect(() => {
         if (dbn) {
-            fetch(`http://localhost:8080/api/schools/${dbn}`)
+            fetch(`http://localhost:8080/api/schools/quality-reports/${dbn}`)
             .then((response) => response.json())
             .then((data) => {
                 if (data.school) {
@@ -26,10 +26,9 @@ function SchoolQualityReport() {
         }
     }, [dbn]);
 
-    if (school.school_quality_report==="found") {
+    if (message!="School data not found!") {
         return (
             <div className="background-color">
-            <ScrollUpButton/>
             <section id="quality-reports">
                 <SchoolButton link={"/schools"} text={"Return to Explore High Schools"}></SchoolButton>
                 <div className="container">
@@ -46,13 +45,6 @@ function SchoolQualityReport() {
                             </p>
                     </div>
                 </div>
-                    <div className="row">
-                        <div className="d-flex flex-row bd-highlight mb-3 justify-content-center">
-                            <div className="p-2 border flex-fill bd-highlight">
-                                <Card text1={`Address: ${school.address}`} text2={`Website: ${school.website}`} text3={`Phone Number: ${school.phone_number}`} text4={`Email: ${school.email}`}></Card>
-                            </div>
-                        </div>
-                    </div>
                     <div className="row">
                         <div className="d-flex flex-row bd-highlight mb-3 justify-content-center">
                             <div className="p-2 bd-highlight">
@@ -178,7 +170,7 @@ function SchoolQualityReport() {
             return(
                 <div className="message-not-found">
                     <SchoolButton link={"/schools"} text={"Return to Explore High Schools"}></SchoolButton>
-                    <p>{school.school_name} currently does not have a school quality report available.</p>
+                    <p>The school does not currently have a school quality report.</p>
                 </div>
             )
         }

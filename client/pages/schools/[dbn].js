@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import Card from "../../components/Card";
 import CardSquare from "../../components/CardSquare";
 import SchoolButton from "../../components/SchoolButton";
-import ScrollUpButton from "../../components/ScrollUpButton";
 
 function SchoolProfile() {
     const router = useRouter();
@@ -28,9 +27,7 @@ function SchoolProfile() {
 
     return (
         <div className="background-color">
-         <ScrollUpButton/>
         <section id="hero">
-            {/* <SchoolButton link={`http://localhost:3000/schools`}></SchoolButton> */}
             <SchoolButton link={`/schools`} text={"Return to Explore High Schools"}></SchoolButton>
             <div className="container">
                 <div className="row">

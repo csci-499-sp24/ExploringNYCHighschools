@@ -187,14 +187,14 @@ function App() {
           </p>
           <p>
             In essence, our commitment extends far beyond mere information 
-            dissemination; it's about fostering trust and confidence in the educational journey 
+            dissemination; it&apos;s about fostering trust and confidence in the educational journey 
             of each student. By providing a robust framework of support and guidance, we aim 
             to equip parents and students alike with the tools they need to navigate the 
             complexities of the educational landscape. As pillars of the community, we 
             recognize the profound impact that a nurturing and enriching high school experience 
             can have on shaping not just academic success, but also personal growth 
             and fulfillment. Together, let us embark on this journey of empowerment, 
-            ensuring that every student's path through high school is illuminated 
+            ensuring that every student&apos;s path through high school is illuminated 
             with opportunity, possibility, and the unwavering belief in a brighter future.
           </p>
         </div>

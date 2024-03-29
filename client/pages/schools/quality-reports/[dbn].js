@@ -13,7 +13,7 @@ function SchoolQualityReport() {
 
     useEffect(() => {
         if (dbn) {
-            fetch(`http://localhost:8080/api/schools/quality-reports/${dbn}`)
+            fetch(process.env.NEXT_PUBLIC_SERVER_URL + `/api/schools/quality-reports/${dbn}`)
             .then((response) => response.json())
             .then((data) => {
                 if (data.school) {

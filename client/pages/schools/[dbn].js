@@ -12,7 +12,7 @@ function SchoolProfile() {
 
     useEffect(() => {
         if (dbn) {
-            fetch(`http://localhost:8080/api/schools/${dbn}`)
+            fetch(process.env.NEXT_PUBLIC_SERVER_URL + `/api/schools/${dbn}`)
             .then((response) => response.json())
             .then((data) => {
                 if (data.school) {

@@ -186,7 +186,7 @@ function App() {
           </p>
           <p>
             Parents deserve to have faith in the education system that their 
-            children will spent their childhood and teenage years in. Their
+            children will spend their childhood and teenage years in. Their
             futures in college, and later in the workplace, will be shaped by the 
             experiences, challenges, and successes that they met throughout 
             their time in high school.

@@ -1,6 +1,6 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
-import { auth } from "./firebase/firebase";
+import { auth } from "../firebase/firebase";
 import { useRouter } from "next/router"; // Import useRouter from next/router
 
 const SignIn = () => {

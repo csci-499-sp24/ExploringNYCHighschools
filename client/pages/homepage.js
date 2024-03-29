@@ -14,8 +14,13 @@ function NavBar() {
   };
 
   const handleLoginClick = () => {
-    router.push("/login"); // Navigate to the login page
+    router.push("/signin"); // Navigate to the login page
   };
+
+  const handleRegisterClick = () => {
+    router.push("/signup"); // Navigate to the signup page
+  };
+
 
   return (
     <nav style={{
@@ -69,6 +74,7 @@ function NavBar() {
             cursor: "pointer",
             marginLeft: "10px"
           }}
+          onClick={handleRegisterClick}
         >
           Register
         </button>

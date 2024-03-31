@@ -1,18 +1,9 @@
-import Layout from './Layout';
-
 const Homepage = () => {
   return (
-    <Layout>
-      <div
+    <div className="background-color"
         style={{
           minHeight: "100vh",
           color: "#333",
-          position: "absolute",
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          overflow: "auto",
         }}
       >
         <div
@@ -76,7 +67,6 @@ const Homepage = () => {
           </div>
         </div>
       </div>
-    </Layout>
   );
 };
 

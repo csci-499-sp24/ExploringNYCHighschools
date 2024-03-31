@@ -2,7 +2,6 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Card from "../../components/Card";
 import CardSquare from "../../components/CardSquare";
-import SchoolButton from "../../components/SchoolButton";
 
 function SchoolProfile() {
     const router = useRouter();
@@ -28,7 +27,6 @@ function SchoolProfile() {
     return (
         <div className="background-color">
         <section id="hero">
-            <SchoolButton link={`/schools`} text={"Return to Explore High Schools"}></SchoolButton>
             <div className="container">
                 <div className="row">
                     <h1 className="display-1">{school.school_name}</h1>

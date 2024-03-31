@@ -2,7 +2,6 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Card from "../../../components/Card";
 import CardSquare from "../../../components/CardSquare";
-import SchoolButton from "../../../components/SchoolButton";
 import ScrollUpButton from "../../../components/ScrollUpButton";
 
 function SchoolQualityReport() {
@@ -31,7 +30,6 @@ function SchoolQualityReport() {
             <div className="background-color">
             <ScrollUpButton/>
             <section id="quality-reports">
-                <SchoolButton link={"/schools"} text={"Return to Explore High Schools"}></SchoolButton>
                 <div className="container">
                     <div className="row">
                         <h1 className="display-1">{school.school_name}</h1>
@@ -177,7 +175,7 @@ function SchoolQualityReport() {
         else {
             return(
                 <div className="message-not-found">
-                    <SchoolButton link={"/schools"} text={"Return to Explore High Schools"}></SchoolButton>
+                    {/* <SchoolButton link={"/schools"} text={"Return to Explore High Schools"}></SchoolButton> */}
                     <p>{school.school_name} currently does not have a school quality report available.</p>
                 </div>
             )

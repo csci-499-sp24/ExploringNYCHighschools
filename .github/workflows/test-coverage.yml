@@ -17,9 +17,7 @@ jobs:
           node-version: "14"
       - name: Install dependencies for test
         run: |
-          cd ./server
           npm install cross-fetch
-          cd ..
           npm install 
       - name: Test
         run: npm test -- --coverage

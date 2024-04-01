@@ -1,20 +1,19 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
 import { auth } from "../firebase/firebase";
-import { useRouter } from "next/router"; // Import useRouter from next/router
+import { useRouter } from "next/router";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const router = useRouter(); // Use useRouter() hook
+  const router = useRouter();
 
   const signIn = async (e) => {
-    e.preventDefault(); // Prevent the default form submission behavior
+    e.preventDefault();
   
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       console.log(userCredential);
-      // Replace the current route without triggering a full page reload
       router.replace("/homepage");
     } catch (error) {
       console.log(error);
@@ -26,24 +25,84 @@ const SignIn = () => {
   };
 
   return (
-    <div className="sign-in-container">
-      <form onSubmit={signIn}>
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: '70vh'
+      }}
+    >
+      <form
+        onSubmit={signIn}
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          width: '300px',
+          padding: '20px',
+          border: '1px solid #ccc',
+          borderRadius: '5px',
+          backgroundColor: '#f9f9f9'
+        }}
+      >
         <h1>Log In to your Account</h1>
         <input
           type="email"
           placeholder="Enter your email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          style={{
+            margin: '10px 0',
+            padding: '10px',
+            width: '100%',
+            boxSizing: 'border-box'
+          }}
         ></input>
         <input
           type="password"
           placeholder="Enter your password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          style={{
+            margin: '10px 0',
+            padding: '10px',
+            width: '100%',
+            boxSizing: 'border-box'
+          }}
         ></input>
-        <button type="submit">Log In</button>
+        <button
+          type="submit"
+          style={{
+            margin: '10px 0',
+            padding: '10px 20px',
+            backgroundColor: '#007bff',
+            color: 'white',
+            border: 'none',
+            borderRadius: '5px',
+            cursor: 'pointer'
+          }}
+        >
+          Log In
+        </button>
+        <button
+        onClick={redirectToSignUp}
+        style={{
+          margin: '10px 0',
+          padding: '10px 20px',
+          backgroundColor: '#007bff',
+          color: 'white',
+          border: 'none',
+          borderRadius: '5px',
+          cursor: 'pointer'
+        }}
+      >
+        Sign Up
+      </button>
       </form>
-      <button onClick={redirectToSignUp}>Sign Up</button>
+      
     </div>
   );
 };

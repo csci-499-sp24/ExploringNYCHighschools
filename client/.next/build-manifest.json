@@ -22,6 +22,11 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
+    "/authorizedHomePage": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/authorizedHomePage.js"
+    ],
     "/signin": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",

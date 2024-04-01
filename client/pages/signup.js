@@ -18,7 +18,7 @@ const SignUp = () => {
         password
       );
       console.log(userCredential);
-      router.replace("/homepage");
+      router.replace("/authorizedHomePage");
     } catch (error) {
       console.log(error);
     }

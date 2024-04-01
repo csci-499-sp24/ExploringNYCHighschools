@@ -1,11 +1,26 @@
 import React from 'react';
 import Link from 'next/link';
+import { auth } from "../firebase/firebase";
+import { useRouter } from 'next/router';
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 function NavBar() {
   const navbarItems = [
     { text: "Home", url: "/homepage" },
     { text: "Search For Schools", url: "/schools" },
   ];
+
+  const [user, loading] = useAuthState(auth);
+  const router = useRouter();
+
+  const handleLogout = async () => {
+    try {
+      await auth.signOut();
+      router.replace('/homepage');
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <nav style={{ background: "#CBC3E3", width: "100%", height: "60px", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 20px", position: "fixed", top: "0", left: "0", zIndex: "1" }}>
@@ -19,17 +34,24 @@ function NavBar() {
         </a>
       </div>
       <div style={{ display: "flex", alignItems: "center" }}>
-        <Link href="/signin" passHref>
-          <button style={{ padding: "10px", backgroundColor: "#800080", color: "white", border: "none", borderRadius: "4px", cursor: "pointer", marginRight: "10px" }}>
-            Login
+        {user ? (
+          <button onClick={handleLogout} style={{ padding: "10px", backgroundColor: "#800080", color: "white", border: "none", borderRadius: "4px", cursor: "pointer" }}>
+            Log Out
           </button>
-        </Link>
-        {/* Use the Link component to create a link to the /signup page */}
-        <Link href="/signup" passHref>
-          <button style={{ padding: "10px", backgroundColor: "#800080", color: "white", border: "none", borderRadius: "4px", cursor: "pointer" }}>
-            Sign Up
-          </button>
-        </Link>
+        ) : (
+          <>
+            <Link href="/signin" passHref>
+              <button style={{ padding: "10px", backgroundColor: "#800080", color: "white", border: "none", borderRadius: "4px", cursor: "pointer", marginRight: "10px" }}>
+                Login
+              </button>
+            </Link>
+            <Link href="/signup" passHref>
+              <button style={{ padding: "10px", backgroundColor: "#800080", color: "white", border: "none", borderRadius: "4px", cursor: "pointer" }}>
+                Sign Up
+              </button>
+            </Link>
+          </>
+        )}
       </div>
     </nav>
   );

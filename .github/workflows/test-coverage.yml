@@ -18,7 +18,7 @@ jobs:
       - name: Install dependencies for test
         run: |
           npm install         
-          npm install node-fetch   
+          npm install cross-fetch  
       - name: Test
         run: npm test -- --coverage
       - name: Upload report

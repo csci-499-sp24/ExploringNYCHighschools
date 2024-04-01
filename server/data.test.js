@@ -3,7 +3,6 @@ const fetchData = require("./data.js");
 const db = require("./db.js");
 const School = require("./models/school");
 const QualityReports = require('./models/quality_reports');
-const fetch = require('cross-fetch');
 
 mockData_directory = [
     {

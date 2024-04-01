@@ -27,6 +27,11 @@
       "static/chunks/main.js",
       "static/chunks/pages/authorizedHomePage.js"
     ],
+    "/homepage": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/homepage.js"
+    ],
     "/signin": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",

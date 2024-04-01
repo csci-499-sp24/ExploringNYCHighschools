@@ -30,13 +30,13 @@ function Schools() {
   
         let endpoint = "";
         if (searchType === "neighborhood") {
-          endpoint = `http://localhost:8080/api/schools?neighborhood=${query}`;
+          endpoint = process.env.NEXT_PUBLIC_SERVER_URL + `/api/schools?neighborhood=${query}`;
         } else if (searchType === "school") {
-          endpoint = `http://localhost:8080/api/schools?q=${query}`;
+          endpoint = process.env.NEXT_PUBLIC_SERVER_URL + `/api/schools?q=${query}`;
         } else if (searchType === "languages") {
-          endpoint = `http://localhost:8080/api/schools?languages=${query}`;
+          endpoint = process.env.NEXT_PUBLIC_SERVER_URL + `/api/schools?languages=${query}`;
         } else if (searchType === "ap_classes") {
-          endpoint = `http://localhost:8080/api/schools?ap_classes=${query}`;
+          endpoint = process.env.NEXT_PUBLIC_SERVER_URL + `/api/schools?ap_classes=${query}`;
         }
   
         const res = await fetch(endpoint);

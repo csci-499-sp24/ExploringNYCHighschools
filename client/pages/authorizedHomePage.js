@@ -10,7 +10,7 @@ const LoggedinHomepage = () => {
     <div>
       <NavBar />
       {user ? (
-        <div className="background-color" style={{ minHeight: "100vh", color: "black", backgroundColor: "white" }}>
+        <div className="background-color" style={{ minHeight: "100vh", color: "#333" }}>
           <div style={{ display: "flex", justifyContent: "center", alignItems: "center", marginTop: "60px", padding: "20px" }}>
             <h1 style={{ margin: "0" }}>
               <span>Explore NYC High Schools</span>

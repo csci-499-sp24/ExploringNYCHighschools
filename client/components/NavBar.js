@@ -23,13 +23,13 @@ function NavBar() {
   };
 
   return (
-    <nav style={{ background: "lightgrey", width: "100%", height: "60px", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 20px", position: "fixed", top: "0", left: "0", zIndex: "1" }}>
+    <nav style={{ background: "#CBC3E3", width: "100%", height: "60px", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 20px", position: "fixed", top: "0", left: "0", zIndex: "1" }}>
       <div style={{ display: "flex", alignItems: "center" }}>
-        <a key={navbarItems[0].text} href={navbarItems[0].url} style={{ color: "black", padding: "10px", textDecoration: "none", marginRight: "10px" }}>
+        <a key={navbarItems[0].text} href={navbarItems[0].url} style={{ color: "white", padding: "10px", textDecoration: "none", marginRight: "10px" }}>
           {navbarItems[0].text}
         </a>
         <div style={{ height: "20px", width: "3px", backgroundColor: "lightgray", marginLeft: "10px", marginRight: "10px", }} />
-        <a key={navbarItems[1].text} href={navbarItems[1].url} style={{ color: "black", padding: "10px", textDecoration: "none", }}>
+        <a key={navbarItems[1].text} href={navbarItems[1].url} style={{ color: "white", padding: "10px", textDecoration: "none", }}>
           {navbarItems[1].text}
         </a>
       </div>
@@ -41,12 +41,12 @@ function NavBar() {
         ) : (
           <>
             <Link href="/signin" passHref>
-              <button style={{ padding: "10px", backgroundColor: "#007bff", color: "white", border: "none", borderRadius: "4px", cursor: "pointer", marginRight: "10px" }}>
+              <button style={{ padding: "10px", backgroundColor: "#800080", color: "white", border: "none", borderRadius: "4px", cursor: "pointer", marginRight: "10px" }}>
                 Login
               </button>
             </Link>
             <Link href="/signup" passHref>
-              <button style={{ padding: "10px", backgroundColor: "#007bff", color: "white", border: "none", borderRadius: "4px", cursor: "pointer" }}>
+              <button style={{ padding: "10px", backgroundColor: "#800080", color: "white", border: "none", borderRadius: "4px", cursor: "pointer" }}>
                 Sign Up
               </button>
             </Link>

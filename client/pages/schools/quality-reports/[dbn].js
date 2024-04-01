@@ -4,6 +4,7 @@ import Card from "../../../components/Card";
 import CardSquare from "../../../components/CardSquare";
 import SchoolButton from "../../../components/SchoolButton";
 
+
 function SchoolQualityReport() {
     const router = useRouter();
     const { dbn } = router.query;
@@ -30,7 +31,6 @@ function SchoolQualityReport() {
         return (
             <div className="background-color">
             <section id="quality-reports">
-                <SchoolButton link={"/schools"} text={"Return to Explore High Schools"}></SchoolButton>
                 <div className="container">
                     <div className="row">
                         <h1 className="display-1">{school.school_name}</h1>
@@ -169,7 +169,6 @@ function SchoolQualityReport() {
         else {
             return(
                 <div className="message-not-found">
-                    <SchoolButton link={"/schools"} text={"Return to Explore High Schools"}></SchoolButton>
                     <p>The school does not currently have a school quality report.</p>
                 </div>
             )

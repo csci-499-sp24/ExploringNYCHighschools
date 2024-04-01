@@ -32,15 +32,15 @@
       "static/chunks/main.js",
       "static/chunks/pages/homepage.js"
     ],
+    "/schools": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/schools.js"
+    ],
     "/signin": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/signin.js"
-    ],
-    "/signup": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/signup.js"
     ]
   },
   "ampFirstPages": []

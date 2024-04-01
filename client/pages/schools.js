@@ -23,7 +23,6 @@ function Schools() {
     const handleSearch = async (query, searchType) => {
       try {
         if (!query) {
-          // If query is empty, reset results and return
           setResults([]);
           setFoundQuery(false);
           return;
@@ -46,10 +45,8 @@ function Schools() {
         }
         const data = await res.json();
   
-        // Assuming "schools" is the array of schools in the response
         const schools = data.schools;
   
-        // Filter schools based on the query and search type
         const filteredSchools = schools.filter((school) => {
           if (searchType === "neighborhood") {
             return school.neighborhood
@@ -70,7 +67,6 @@ function Schools() {
           }
         });
   
-        // Set the schools array as the state
         setResults(filteredSchools);
         setFoundQuery(true);
         setError(null);

@@ -5,9 +5,10 @@ const cors = require("cors");
 // const db = require("./models/school");
 const db = require("./db"); // Sequelize instance from db.js
 const app = express();
-const { Op } = require("sequelize");
 const fetchData = require("./data");
 const School = require("./models/school");
+const QualityReports = require("./models/quality_reports");
+const { Op } = require("sequelize");
 
 const syncDB = async () => {
   try {
@@ -44,7 +45,23 @@ app.get("/api/schools/:dbn", async (req, res) => {
     return res.status(500).json({ error: "Internal Server Error" });
   }
 });
-
+app.get("/api/schools/quality-reports/:dbn", async (req, res) => {
+  const { dbn } = req.params;
+  try {
+    const school = await QualityReports.findOne({
+      where: {
+        dbn: dbn, // Use the dbn parameter to search for the school
+      },
+    });
+    if (!school) {
+      return res.status(404).json({ error: "School not found!" });
+    }
+    res.status(200).json({ school });
+  } catch (error) {
+    console.error("Error fetching school:", error);
+    return res.status(500).json({ error: "Internal Server Error" });
+  }
+});
 app.get("/api/schools", async (req, res) => {
   try {
     const { term, neighborhood, languages } = req.query;

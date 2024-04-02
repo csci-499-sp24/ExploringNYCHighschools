@@ -1,58 +1,58 @@
-/* @tailwind base; @tailwind components; @tailwind utilities; */
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
 
-/* Styling for School Profile */
-section {
-    padding-top: 30px;
+/* Styling for School Profile  */
+section{
+    padding-top: 30px; 
     padding-bottom: 30px;
-  }
-  
-  h1 {
+}
+
+h1{
     font-family: Georgia, 'Times New Roman', Times, serif;
     text-align: center;
     padding-bottom: 30px;
-    color: black;
-  }
-  
-  .card-title h6 {
+    color: purple;
+}
+
+.card-title h6{
     text-align: center;
-  }
-  
-  .card-body h5 {
-    color: black;
-    text-transform: capitalize;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-  }
-  
-  .card-body h6 {
+}
+.card-body h5 {
+   color: purple;
+   text-transform: capitalize;
+   font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.card-body h6{
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 18px;
     text-align: center;
-  }
-  
-  .card-text {
+}
+.card-text{
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 16px;
-  }
-  
-  .desc {
+}
+
+.desc{
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 18px;
     text-align: center;
-  }
-  
-  #hero .card {
-    text-align: center;
-    width: 25rem;
-    height: 25rem;
-  }
-  
-  #quality-reports .card {
+}
+
+#hero .card{
+   text-align: center;
+   width: 25rem;
+   height: 25rem;
+} 
+
+#quality-reports .card{
     text-align: center;
     width: 25rem;
     height: 10rem;
-  }
-  
-  .message-not-found {
+ } 
+
+.message-not-found{
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 18px;
     align-items: center;
@@ -60,42 +60,41 @@ section {
     display: flex;
     flex-direction: column;
     justify-content: center;
-  }
-  
-  .school-button {
+}
+.school-button{
     text-align: center;
     padding-top: 10px;
     padding-bottom: 10px;
     gap: 10px;
-  }
-  
-  .school-button button {
+}
+.school-button button{
     margin-left: 10px;
-  }
+}
+
+.background-color {
+    /* background-image: linear-gradient(to right, rgba(0, 0, 255, 0), rgb(45, 145, 217));  blue gradient*/
+    background-image: linear-gradient(to bottom, #C3B1E1, #CCCCFF, transparent);   /* purple gradient */
+}
   
-  .background-color {
-    background-color: white; /* Changed to white */
-  }
-  
-  .scroll-button {
+.scroll-button {
     position: fixed;
-    bottom: 10px;
-    right: 10px;
+    bottom:10px;
+    right:10px;
     padding: 15px;
     border-radius: 50%;
-  }
-  
-  .scroll-button:hover {
+}
+
+.scroll-button:hover {
     background-color: rgb(211, 211, 211);
-  }
-  
-  .btn.btn-primary {
+}
+
+.btn.btn-primary {
     font-family: Georgia, 'Times New Roman', Times, serif;
-  }
-  
-  .search {
+}
+
+.search {
     font-family: Georgia, 'Times New Roman', Times, serif;
     text-align: center;
     padding-top: 30px;
     font-size: 20px;
-  }
+}

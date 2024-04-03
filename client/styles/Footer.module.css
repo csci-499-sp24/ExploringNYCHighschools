@@ -1,6 +1,5 @@
 .footer{
     background-color: #CBC3E3;
-    background: linear-gradient(to top, #C3B1E1, #CCCCFF, transparent);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -10,7 +9,18 @@
 
 .aboutFaqContact{
     display: flex;
-    padding-top: 80px;
+    padding-top: 60px;
+    color: white;
+}
+
+.spacerForIcons{
+    padding-left: 30px;
+}
+
+.iconsDiv{
+    display: flex;
+    flex-direction: row;
+    font-size: 1.5em;
 }
 
 #about{
@@ -24,3 +34,8 @@
 #contactUs{
     padding-left: 20px;
 }
+
+#feedback{
+    padding-left: 20px;
+}
+

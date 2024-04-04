@@ -64,6 +64,16 @@ app.get("/api/schools/quality-reports/:dbn", async (req, res) => {
           }
     }
 )
+app.get("/api/quality-reports", async (req, res) => {
+    try {
+        const reports = await QualityReports.findAll();
+        res.json({ reports });
+       
+    } catch (err) {
+        console.error("Error in fetching school reports", err);
+        res.status(500).json({ error: "Internal server error" });
+    }
+  });
 app.get("/api/schools", async (req, res) => {
     try {
         // Retrieve the search term from the query parameters

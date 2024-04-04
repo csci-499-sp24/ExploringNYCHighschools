@@ -7,10 +7,10 @@ function Collapsible({question, school1_answer, school2_answer, school1, school2
     function handleArrowClicked () {
         setArrowClicked(!arrowClicked);
     }
-    if (school1_answer===null || school1_answer==="undefined") {
+    if (school1_answer===null || school1_answer===undefined) {
         school1_answer = "Unavailable";
     }
-    if (school2_answer===null || school2_answer==="undefined") {
+    if (school2_answer===null || school2_answer===undefined) {
         school2_answer = "Unavailable";
     }
 
@@ -26,6 +26,7 @@ function Collapsible({question, school1_answer, school2_answer, school1, school2
                         <span style={{ fontWeight: "bold" }}>{`${school1}`}</span>:  
                         {` ${school1_answer}`}
                     </div>
+                    <br/>
                     <div>
                         <span style={{ fontWeight: "bold" }}>{`${school2}`}</span>:  
                         {` ${school2_answer}`}

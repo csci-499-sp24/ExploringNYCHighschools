@@ -58,6 +58,9 @@ const Footer = () => {
                     </Link>
                 </div>
             </div>
+            <div>
+                <p id={styles.madeBy}>Made by Ctrl-P</p>
+            </div>
         </div>
     )
   };

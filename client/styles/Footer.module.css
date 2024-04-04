@@ -9,7 +9,7 @@
 
 .aboutFaqContact{
     display: flex;
-    padding-top: 55px;
+    padding-top: 50px;
     color: white;
     padding-left: 40px;
 }
@@ -39,4 +39,10 @@
     color: black;
 }
 
+#madeBy{
+    color: white;
+    font-size: 12px;
+    justify-content: flex-start;
+    width: 100em;
+}
 

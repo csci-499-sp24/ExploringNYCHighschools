@@ -9,11 +9,13 @@
 
 .aboutFaqContact{
     display: flex;
-    padding-top: 60px;
+    padding-top: 55px;
     color: white;
+    padding-left: 40px;
 }
 
 .spacerForIcons{
+    padding-top: 10px;
     padding-left: 30px;
 }
 
@@ -23,19 +25,18 @@
     font-size: 1.5em;
 }
 
-#about{
-    padding-left: 20px;
+.button{
+    outline: none;
+    background: transparent;
+    border: 1px solid transparent;
+    color: white;
 }
 
-#faq{
-    padding-left: 20px;
+
+.button:hover{
+    outline: none;
+    background: transparent;
+    color: black;
 }
 
-#contactUs{
-    padding-left: 20px;
-}
-
-#feedback{
-    padding-left: 20px;
-}
 

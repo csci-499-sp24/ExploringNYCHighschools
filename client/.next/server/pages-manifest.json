@@ -4,6 +4,5 @@
   "/_document": "pages/_document.js",
   "/authorizedHomePage": "pages/authorizedHomePage.js",
   "/signin": "pages/signin.js",
-  "/signup": "pages/signup.js",
   "/homepage": "pages/homepage.js"
 }

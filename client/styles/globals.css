@@ -148,14 +148,7 @@ h1{
    
 }
 
-.select-box{
+.compare-search{
     font-family: Georgia, 'Times New Roman', Times, serif;
-    display: flex;
-    max-width: fit-content;
-    align-items: center;
-    justify-content: space-between;
     margin: 1rem auto;
-    flex-direction: row;
-    padding: 5px;
-    border-radius: 10px;
 }

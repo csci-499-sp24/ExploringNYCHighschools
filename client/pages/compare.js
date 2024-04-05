@@ -1,10 +1,15 @@
 import { useEffect, useState } from "react";
 import Collapsible from "@/components/Collapsible";
+import SearchSchoolBar from "@/components/SearchSchoolBar";
 
-function CompareSchools () {
+function Compare () {
     // fetch school profile data:
     const [schools, setSchools] = useState([]);
     const [message, setMessage] = useState("Loading");
+
+     // fetch school quality reports data:
+     const [reports, setReports] = useState([]);
+     const [messageReport, setMessageReport] = useState("Loading");
 
     useEffect(() => {
         fetch(process.env.NEXT_PUBLIC_SERVER_URL + "/api/schools")
@@ -13,12 +18,6 @@ function CompareSchools () {
             setSchools(data.schools);
             setMessage(data.message);
         });
-    }, []);
-
-    // fetch school quality reports data:
-    const [reports, setReports] = useState([]);
-    const [messageReport, setMessageReport] = useState("Loading");
-    useEffect(() => {
         fetch(process.env.NEXT_PUBLIC_SERVER_URL + "/api/quality-reports")
         .then((response) => response.json())
         .then((data) => {
@@ -35,78 +34,85 @@ function CompareSchools () {
     const [buttonState, setButtonState] = useState(false);
     const [school1Report, setSchool1Report] = useState(null);
     const [school2Report, setSchool2Report] = useState(null);
+    const [dbn1, setDbn1] = useState("");
+    const [dbn2, setDbn2] = useState("");
 
-
-    // set state for selected schools:
-    const handleSelectedSchool1 = (e) => {
-        setSchool1(e.target.value);
-        if (e.target.value === school2) {
-            setErrorMessage("Please select 2 different schools to compare");
-        }
-        else {
-            setErrorMessage("");
-        }
-        setButtonState(false);
-    }
-    const handleSelectedSchool2 = (e) => {
-        setSchool2(e.target.value);
-        if (e.target.value === school1) {
-            setErrorMessage("Please select 2 different schools to compare");
-        }
-        else {
-            setErrorMessage("");
-        }
-        setButtonState(false);
-    }
-    const handleCompare= () => {
-        if (errorMessage==="") {
-            for (let x = 0;x<schools.length;x++) {
-                if(school1===schools[x].school_name) {
-                    setSchool1ProfileData(schools[x]);
+    useEffect(() => {
+        // selected schools and set profiles, now set reports using dbn since quality-reports data has some school_names differences(shortened names)
+        if (dbn1!=="" && dbn2!=="") {
+            for (let x = 0;x<reports.length;x++) {
+                if(dbn1===reports[x].dbn) {
+                    setSchool1Report(reports[x]);
                 }
             }
             for (let x = 0;x<reports.length;x++) {
-                if(school1===reports[x].school_name) {
-                    setSchool1Report(reports[x]);
+                if(dbn2===reports[x].dbn) {
+                    setSchool2Report(reports[x]);
+                }
+            }
+            setButtonState(true);
+        }
+    }, [reports, dbn1, dbn2]);
+
+    // set state for selected schools:
+    const handleSelectedSchool1 = (selectedSchool) => {
+        setSchool1(selectedSchool);
+        if (selectedSchool === school2) {
+            setErrorMessage("Please select 2 different schools to compare");
+        }
+        else {
+            setErrorMessage("");
+        }
+        //reset data for new selections
+        setButtonState(false);
+        setSchool1ProfileData(null);
+        setSchool1Report(null);
+        setDbn1("");
+    }
+    const handleSelectedSchool2 = (selectedSchool) => {
+        setSchool2(selectedSchool);
+        if (selectedSchool === school1) {
+            setErrorMessage("Please select 2 different schools to compare");
+        }
+        else {
+            setErrorMessage("");
+        }
+        //reset data for new selections
+        setButtonState(false);
+        setSchool2ProfileData(null);
+        setSchool2Report(null);
+        setDbn2("");
+    }
+    const handleCompare= () => {
+        if (errorMessage==="" && school1!=="" && school2!=="") {
+            for (let x = 0;x<schools.length;x++) {
+                if(school1===schools[x].school_name) {
+                    setSchool1ProfileData(schools[x]);
+                    setDbn1(schools[x].dbn);
                 }
             }
             for (let x = 0;x<schools.length;x++) {
                 if(school2===schools[x].school_name) {
                     setSchool2ProfileData(schools[x]);
+                    setDbn2(schools[x].dbn);
                 }
             }
-            for (let x = 0;x<reports.length;x++) {
-                if(school2===reports[x].school_name) {
-                    setSchool2Report(reports[x]);
-                }
-            }
+            setButtonState(true);
         }
+        
         else {
             setSchool1ProfileData(null);
             setSchool2ProfileData(null);
             setSchool1Report(null);
             setSchool2Report(null);
+            setButtonState(false);
         }
-        setButtonState(true);
     }
-
     return (
         <div className="background-color">
             <h1 className="display-1">Comparing High Schools</h1>
-            <div>
-                <select className="select-box" value={school1.school_name} onChange={handleSelectedSchool1}>
-                <option value="">Select School 1</option>
-                {schools.map((school, index) => (
-                    <option key={index} value={school.school_name}>{school.school_name}</option>
-                ))}
-                </select>
-                <select className="select-box" value={school2.school_name} onChange={handleSelectedSchool2}>
-                <option value="">Select School 2</option>
-                {schools.map((school, index) => (
-                    <option key={index} value={school.school_name}>{school.school_name}</option>
-                ))}
-                </select>
-            </div>
+            <SearchSchoolBar onSearch={handleSelectedSchool1} schools={schools}/>
+            <SearchSchoolBar onSearch={handleSelectedSchool2} schools={schools}/>
                 <button className="btn btn-primary compare" onClick={handleCompare}>Compare</button>
                 {errorMessage && buttonState ? (
                     <div className="message-select-schools">
@@ -140,11 +146,6 @@ function CompareSchools () {
                                 question: "How many students go to this school?",
                                 school1_answer: school1ProfileData.total_students,
                                 school2_answer: school2ProfileData.total_students
-                            },
-                            {
-                                question: "What is the freshmen schedule?",
-                                school1_answer: school1ProfileData.freshmen_schedule,
-                                school2_answer: school2ProfileData.freshmen_schedule
                             },
                             {
                                 question: "What is the graduation rate?",
@@ -325,10 +326,9 @@ function CompareSchools () {
                             <Collapsible key={index} question={item.question} school1_answer={item.school1_answer} school2_answer={item.school2_answer} school1={school1} school2={school2}/>
                         ))}
                     </div>
-                )
-            }
+                )}
         </div>
     )
 }
 
-export default CompareSchools;
+export default Compare;

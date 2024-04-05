@@ -37,6 +37,18 @@ function Compare () {
     const [dbn1, setDbn1] = useState("");
     const [dbn2, setDbn2] = useState("");
 
+    // states used for collasping and expanding all
+    const [collapseAll, setCollapseAll] = useState(false);
+    const [expandAll, setExpandAll] = useState(false);
+    const handleCollapseAll = () => {
+        setCollapseAll(true);
+        setExpandAll(false);
+    }
+    const handleExpandAll = () => {
+        setExpandAll(true);
+        setCollapseAll(false);
+    }
+
     useEffect(() => {
         // selected schools and set profiles, now set reports using dbn since quality-reports data has some school_names differences(shortened names)
         if (dbn1!=="" && dbn2!=="") {
@@ -83,7 +95,7 @@ function Compare () {
         setSchool2Report(null);
         setDbn2("");
     }
-    const handleCompare= () => {
+    const handleCompare = () => {
         if (errorMessage==="" && school1!=="" && school2!=="") {
             for (let x = 0;x<schools.length;x++) {
                 if(school1===schools[x].school_name) {
@@ -111,15 +123,26 @@ function Compare () {
     return (
         <div className="background-color">
             <h1 className="display-1">Comparing High Schools</h1>
-            <SearchSchoolBar onSearch={handleSelectedSchool1} schools={schools}/>
-            <SearchSchoolBar onSearch={handleSelectedSchool2} schools={schools}/>
+            <div className="search-compare">
+                <div className="search-bars">
+                    <SearchSchoolBar onSearch={handleSelectedSchool1} schools={schools}/>
+                    <SearchSchoolBar onSearch={handleSelectedSchool2} schools={schools}/>
+                </div>
                 <button className="btn btn-primary compare" onClick={handleCompare}>Compare</button>
+                </div>
                 {errorMessage && buttonState ? (
                     <div className="message-select-schools">
                     <p >{errorMessage}</p> </div> )
                     : ""}
                 {school1ProfileData && school2ProfileData && buttonState &&
                 (
+                <div>
+                    <br/>
+                <div className="collapse-expand">
+                    <button className="btn btn-primary collapse-expand-button" onClick={handleExpandAll}>Expand All</button>
+                    <button className="btn btn-primary collapse-expand-button" onClick={handleCollapseAll}>Collaspe All</button>
+                </div>
+            
                     <div className="collaspe">
                         {[
                             {
@@ -183,8 +206,9 @@ function Compare () {
                                 school2_answer: school2ProfileData.bus_to_school
                             }
                         ].map((item,index)=> (
-                            <Collapsible key={index} question={item.question} school1_answer={item.school1_answer} school2_answer={item.school2_answer} school1={school1} school2={school2}/>
+                            <Collapsible key={index} question={item.question} school1_answer={item.school1_answer} school2_answer={item.school2_answer} school1={school1} school2={school2} expand={expandAll} collapse={collapseAll}/>
                         ))}
+                    </div>
                     </div>
                 )
             }
@@ -323,7 +347,7 @@ function Compare () {
                                 school2_answer: school2Report.family_community_ties
                             }
                         ].map((item,index)=> (
-                            <Collapsible key={index} question={item.question} school1_answer={item.school1_answer} school2_answer={item.school2_answer} school1={school1} school2={school2}/>
+                            <Collapsible key={index} question={item.question} school1_answer={item.school1_answer} school2_answer={item.school2_answer} school1={school1} school2={school2} expand={expandAll} collapse={collapseAll}/>
                         ))}
                     </div>
                 )}

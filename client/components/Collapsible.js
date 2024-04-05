@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { SlArrowDown } from "react-icons/sl";
 import { SlArrowUp } from "react-icons/sl";
 
-function Collapsible({question, school1_answer, school2_answer, school1, school2}) {
+function Collapsible({question, school1_answer, school2_answer, school1, school2, expand, collapse}) {
     const [arrowClicked, setArrowClicked] = useState(false);
     function handleArrowClicked () {
         setArrowClicked(!arrowClicked);
@@ -13,7 +13,14 @@ function Collapsible({question, school1_answer, school2_answer, school1, school2
     if (school2_answer===null || school2_answer===undefined) {
         school2_answer = "Unavailable";
     }
-
+    useEffect(() => {
+        if(expand) {
+            setArrowClicked(true);
+        }
+        else if(collapse){
+            setArrowClicked(false);
+        }
+    }, [expand,collapse]);
     return (
         <div className="collaspe-item">
             <div className="collaspe-title" onClick={handleArrowClicked}>

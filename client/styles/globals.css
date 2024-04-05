@@ -72,22 +72,29 @@ h1{
     text-align: center;
     padding-top: 10px;
     padding-bottom: 10px;
-    gap: 10px;
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
-.school-button button{
+.school-button button {
     margin-left: 10px;
 }
-.compare{
-    font-family: Georgia, 'Times New Roman', Times, serif; 
-    display: flex;
-    max-width: fit-content;
-    align-items: center;
-    margin: 1rem auto;
-    flex-direction: column;
+.collapse-expand button {
+    margin-left:10px;
+}
+
+.collapse-expand{
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.collapse-expand-button{
     padding: 10px;
     border-radius: 20px;
-    justify-content: center;
+}
+
+.compare{
+    font-family: Georgia, 'Times New Roman', Times, serif; 
+    padding: 10px;
+    border-radius: 20px;
+    margin-left: 10px;
 }
 
 .background-color {
@@ -152,3 +159,15 @@ h1{
     font-family: Georgia, 'Times New Roman', Times, serif;
     margin: 1rem auto;
 }
+
+.search-compare {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+.search-bars{
+    margin-left: 90px;
+    flex-direction: column;
+    display: flex;
+}
+

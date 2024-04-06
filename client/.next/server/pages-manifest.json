@@ -2,7 +2,7 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/homepage": "pages/homepage.js",
-  "/signup": "pages/signup.js",
-  "/authorizedHomePage": "pages/authorizedHomePage.js"
+  "/account-information": "pages/account-information.js",
+  "/authorizedHomePage": "pages/authorizedHomePage.js",
+  "/signin": "pages/signin.js"
 }

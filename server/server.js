@@ -1,13 +1,12 @@
-require('dotenv').config() // to use .env file
-
+require('dotenv').config();
 const express = require("express");
 const cors = require('cors');
-// const db = require("./models/school");
-const db = require("./db") // Sequelize instance from db.js
 const app = express();
-const fetchData = require("./data")
+const fetchData = require("./data");
 const School = require("./models/school");
 const QualityReports = require('./models/quality_reports');
+const userRouter = require('./user')
+
 
 const syncDB = async () => {
     try {
@@ -23,6 +22,7 @@ const syncDB = async () => {
 syncDB();
 
 app.use(cors());
+app.use(userRouter);
 
 app.get("/api/home", (req, res) => {
     res.json({message: "Hello World!"});
@@ -41,11 +41,11 @@ app.get("/api/schools/:dbn", async (req, res) => {
         }
         res.status(200).json({school});
     } catch (error) {
-            console.error('Error fetching school:', error);
-            return res.status(500).json({ error: 'Internal Server Error' });
-          }
+        console.error('Error fetching school:', error);
+        return res.status(500).json({ error: 'Internal Server Error' });
     }
-)
+});
+
 app.get("/api/schools/quality-reports/:dbn", async (req, res) => {
     const {dbn} = req.params;
     try {
@@ -59,11 +59,11 @@ app.get("/api/schools/quality-reports/:dbn", async (req, res) => {
         }
         res.status(200).json({school});
     } catch (error) {
-            console.error('Error fetching school:', error);
-            return res.status(500).json({ error: 'Internal Server Error' });
-          }
+        console.error('Error fetching school:', error);
+        return res.status(500).json({ error: 'Internal Server Error' });
     }
-)
+});
+
 app.get("/api/schools", async (req, res) => {
     try {
         // Retrieve the search term from the query parameters
@@ -76,7 +76,8 @@ app.get("/api/schools", async (req, res) => {
         console.error("Error in fetching schools data", err);
         res.status(500).json({ error: "Internal server error" });
     }
-  });
+});
+
 
 const port = process.env.PORT || 8080;
 app.listen(port, () => {

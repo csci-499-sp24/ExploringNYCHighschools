@@ -1,0 +1,48 @@
+.footer{
+    background-color: #CBC3E3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 170px;
+    border-top: solid lightgrey 1px;
+}
+
+.aboutFaqContact{
+    display: flex;
+    padding-top: 50px;
+    color: white;
+    padding-left: 40px;
+}
+
+.spacerForIcons{
+    padding-top: 10px;
+    padding-left: 30px;
+}
+
+.iconsDiv{
+    display: flex;
+    flex-direction: row;
+    font-size: 1.5em;
+}
+
+.button{
+    outline: none;
+    background: transparent;
+    border: 1px solid transparent;
+    color: white;
+}
+
+
+.button:hover{
+    outline: none;
+    background: transparent;
+    color: black;
+}
+
+#madeBy{
+    color: white;
+    font-size: 12px;
+    justify-content: flex-start;
+    width: 100em;
+}
+

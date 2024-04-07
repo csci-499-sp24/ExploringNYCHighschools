@@ -61,13 +61,39 @@ h1{
     flex-direction: column;
     justify-content: center;
 }
+.message-select-schools{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 18px;
+    align-items: center;
+    display: flex;
+    justify-content: center; 
+}
 .school-button{
     text-align: center;
     padding-top: 10px;
     padding-bottom: 10px;
-    gap: 10px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
-.school-button button{
+.school-button button {
+    margin-left: 10px;
+}
+.collapse-expand button {
+    margin-left:10px;
+}
+
+.collapse-expand{
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.collapse-expand-button{
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.compare{
+    font-family: Georgia, 'Times New Roman', Times, serif; 
+    padding: 10px;
+    border-radius: 20px;
     margin-left: 10px;
 }
 
@@ -84,12 +110,12 @@ h1{
     border-radius: 50%;
 }
 
-.scroll-button:hover {
+.scroll-button:hover{
     background-color: rgb(211, 211, 211);
 }
-
-.btn.btn-primary {
-    font-family: Georgia, 'Times New Roman', Times, serif;
+.collaspe-title:hover{
+    background-color: rgb(233, 229, 229);
+    border-radius: 10px;
 }
 
 .search {
@@ -98,3 +124,50 @@ h1{
     padding-top: 30px;
     font-size: 20px;
 }
+
+.collaspe-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    background-color: white;
+    width: 900px;
+    padding: 5px;
+    font-size: 16px;
+}
+.collaspe-body{
+    width: 900px;
+    font-size: 15px;
+}
+
+.collaspe-item{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    display: flex;
+    max-width: fit-content;
+    border: 1px solid;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem auto;
+    flex-direction: column;
+    padding: 10px;
+    background-color: white;
+    border-radius: 10px;
+   
+}
+
+.compare-search{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin: 1rem auto;
+}
+
+.search-compare {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+.search-bars{
+    margin-left: 90px;
+    flex-direction: column;
+    display: flex;
+}
+

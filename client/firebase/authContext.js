@@ -42,11 +42,10 @@ const UserAuthContext = ({ children }) => {
       );
       const user = userCredential.user;
 
-      // Create the user document in Firestore
       await setDoc(doc(firestore, "users", user.uid), {
         fullName,
         email,
-        // Add any other user data you want to store in Firestore
+        // Add other user data here
       });
 
       setCurrentUser(user);

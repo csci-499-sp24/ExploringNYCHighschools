@@ -23,10 +23,7 @@ const syncDB = async () => {
 }
 syncDB();
 
-app.use(cors({
-    origin: 'http://localhost:3000', // Replace with the URL of your React app
-    credentials: true, // Allow sending credentials (cookies, headers, etc.)
-  }));
+app.use(cors());
 app.use(userRoutes);
 
 app.get("/api/home", (req, res) => {

@@ -115,7 +115,7 @@ function NavBar() {
               <button style={{ padding: "10px", backgroundColor: "#800080", color: "white", border: "none", borderRadius: "4px", cursor: "pointer" }}>
                 Sign Up
               </button>
-            </Link>
+            </Link> 
           </>
         )}
       </div>

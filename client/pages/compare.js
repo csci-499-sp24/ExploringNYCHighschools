@@ -69,33 +69,28 @@ function Compare () {
     // set state for selected schools:
     const handleSelectedSchool1 = (selectedSchool) => {
         setSchool1(selectedSchool);
-        if (selectedSchool === school2) {
-            setErrorMessage("Please select 2 different schools to compare");
-        }
-        else {
-            setErrorMessage("");
-        }
+
         //reset data for new selections
         setButtonState(false);
         setSchool1ProfileData(null);
         setSchool1Report(null);
         setDbn1("");
+        setErrorMessage("");
     }
     const handleSelectedSchool2 = (selectedSchool) => {
         setSchool2(selectedSchool);
-        if (selectedSchool === school1) {
-            setErrorMessage("Please select 2 different schools to compare");
-        }
-        else {
-            setErrorMessage("");
-        }
+
         //reset data for new selections
         setButtonState(false);
         setSchool2ProfileData(null);
         setSchool2Report(null);
         setDbn2("");
+        setErrorMessage("");
     }
     const handleCompare = () => {
+        if(school1===school2) {
+            setErrorMessage("Please select 2 different schools to compare");
+        }
         if (errorMessage==="" && school1!=="" && school2!=="") {
             for (let x = 0;x<schools.length;x++) {
                 if(school1===schools[x].school_name) {
@@ -130,11 +125,11 @@ function Compare () {
                 </div>
                 <button className="btn btn-primary compare" onClick={handleCompare}>Compare</button>
                 </div>
-                {errorMessage && buttonState ? (
-                    <div className="message-select-schools">
-                    <p >{errorMessage}</p> </div> )
-                    : ""}
-                {school1ProfileData && school2ProfileData && buttonState &&
+                {errorMessage && (
+                     <div className="message-select-schools">
+                     <p >{errorMessage}</p> </div> )
+                }
+                {school1ProfileData && school2ProfileData && buttonState && errorMessage==="" && 
                 (
                 <div>
                     <br/>
@@ -212,7 +207,7 @@ function Compare () {
                     </div>
                 )
             }
-            {school1Report && school2Report && buttonState &&
+            {school1Report && school2Report && buttonState && errorMessage==="" && 
                 (
                     <div className="collaspe">
                         {[

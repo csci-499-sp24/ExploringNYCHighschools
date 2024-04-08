@@ -5,8 +5,10 @@ const app = express();
 const fetchData = require("./data");
 const School = require("./models/school");
 const QualityReports = require('./models/quality_reports');
-const userRouter = require('./user')
+const userRoutes = require('./models/user')
+const db = require('./db')
 
+  
 
 const syncDB = async () => {
     try {
@@ -21,8 +23,11 @@ const syncDB = async () => {
 }
 syncDB();
 
-app.use(cors());
-app.use(userRouter);
+app.use(cors({
+    origin: 'http://localhost:3000', // Replace with the URL of your React app
+    credentials: true, // Allow sending credentials (cookies, headers, etc.)
+  }));
+app.use(userRoutes);
 
 app.get("/api/home", (req, res) => {
     res.json({message: "Hello World!"});
@@ -78,6 +83,7 @@ app.get("/api/schools", async (req, res) => {
     }
 });
 
+app.use('/api/users', userRoutes);
 
 const port = process.env.PORT || 8080;
 app.listen(port, () => {

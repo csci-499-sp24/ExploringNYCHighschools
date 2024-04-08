@@ -1,7 +1,7 @@
 import React from 'react';
 import NavBar from '../components/NavBar';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { auth } from '../firebase/firebase';
+import { auth } from '../firebase/firebaseConfig';
 
 const LoggedinHomepage = () => {
   const [user] = useAuthState(auth);

@@ -1,6 +1,6 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
-import { auth } from "../firebase/firebase";
+import { auth } from "../firebase/firebaseConfig";
 import { useRouter } from "next/router";
 
 const SignIn = () => {
@@ -12,7 +12,7 @@ const SignIn = () => {
   const signIn = async (e) => {
     e.preventDefault();
     setError(null);
-
+    console.log(email, password)
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       console.log(userCredential);

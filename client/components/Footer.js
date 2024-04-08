@@ -17,7 +17,7 @@ const Footer = () => {
                         FAQ
                     </button>
                 </Link>
-                <Link href="/homepage" passHref>
+                <Link href="/contact" passHref>
                     <button className={styles.button}>
                         Contact Us
                     </button>

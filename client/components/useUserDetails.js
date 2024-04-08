@@ -18,7 +18,7 @@ const useUserDetails = () => {
 
         console.log('Bearer token:', `Bearer ${token}`);
 
-        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/users/${userId}`, {
+        const response = await axios.get(process.env.NEXT_PUBLIC_SERVER_URL + `/api/users/${userId}`, {
           headers: {
             'Authorization': `Bearer ${token}`,
           },

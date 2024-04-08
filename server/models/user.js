@@ -9,7 +9,7 @@ const verifyUserToken = async (token) => {
     const uid = decodedToken.uid;
     return uid;
   } catch (error) {
-    console.error('Error verifying user token:', error);
+    console.error('Error verifying the user token:', error);
     throw error;
   }
 };

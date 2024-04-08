@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { auth } from '../firebase/firebaseConfig'; // Ensure this import is correctly pointing to your Firebase setup
+import { auth } from '../firebase/firebaseConfig'; 
 
 const useUserDetails = () => {
   const [userDetails, setUserDetails] = useState(null);

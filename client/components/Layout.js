@@ -3,17 +3,16 @@ import ScrollUpButton from "./ScrollUpButton";
 import Background from "@/components/Background";
 import NavBar from "@/components/NavBar";
 
-const Layout = ({ children }) => {
-  return (
-    <div>
-      {/* <Background> */}
-      <div style={{ marginTop: "60px" }} />
-      <NavBar />
-      {children}
-      <ScrollUpButton />
-      {/* </Background> */}
-    </div>
-  );
-};
-
+const Layout = ({props}) => {
+    return(
+        <div>
+            {/* <Background> */}
+            <div style={{marginTop: "60px"}}/>
+            <NavBar/>
+            <ScrollUpButton/>
+            {props}
+            {/* </Background> */}
+        </div>
+    )
+}
 export default Layout;

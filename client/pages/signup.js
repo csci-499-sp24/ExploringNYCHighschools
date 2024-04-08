@@ -1,132 +1,53 @@
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
-import { useAuth } from "../firebase/authContext";
+import { auth } from "../firebase/firebase";
 import { useRouter } from "next/router";
 
-const Registration = () => {
-  const { signup, error } = useAuth();
-  const [errors, setError] = useState("");
-  const [user, setUser] = useState({
-    fullName: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
-  });
+const SignUp = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(null);
   const router = useRouter();
 
-  const userhandler = (event) => {
-    const { name, value } = event.target;
-    console.log(name + ":::::::::::" + value);
-    setUser((prevState) => ({ ...prevState, [name]: value }));
-  };
-
-  const RegistrationHandler = async (e) => {
+  const signUp = async (e) => {
     e.preventDefault();
     setError(null);
 
-    const { fullName, email, password, confirmPassword } = user;
-
-    if (password !== confirmPassword) {
-      setError("Password does not match");
+    // Password strength criteria
+    const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/;
+    if (!passwordRegex.test(password)) {
+      setError(
+        "Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one number, and one special character (!@#$%^&*)"
+      );
       return;
     }
 
     try {
-      await signup(email, password, fullName);
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      console.log(userCredential);
       router.replace("/authorizedHomePage");
     } catch (error) {
-      setError(error.message);
+      if (error.code === "auth/email-already-in-use") {
+        setError("The email address is already in use. Please use a different email.");
+      } else {
+        setError("An error occurred. Please try again.");
+        console.log(error);
+      }
     }
   };
+
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        height: "70vh",
-      }}
-    >
-      <form
-        onSubmit={RegistrationHandler} 
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          width: "300px",
-          padding: "20px",
-          border: "1px solid #ccc",
-          borderRadius: "5px",
-          backgroundColor: "#f9f9f9",
-        }}
-      >
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '70vh' }} >
+      <form onSubmit={signUp} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', width: '300px', padding: '20px', border: '1px solid #ccc', borderRadius: '5px', backgroundColor: '#f9f9f9' }} >
         <h1>Create Account</h1>
-        {errors && <p style={{ color: "red" }}>{errors}</p>}
-        <input
-          type="text"
-          placeholder="Enter your full name"
-          name="fullName"
-          value={user.fullName}
-          onChange={userhandler}
-          style={{
-            margin: "10px 0",
-            padding: "10px",
-            width: "100%",
-            boxSizing: "border-box",
-          }}
-        ></input>
-        <input
-          type="email"
-          placeholder="Enter your email"
-          name="email" 
-          value={user.email} 
-          onChange={userhandler} 
-          style={{
-            margin: "10px 0",
-            padding: "10px",
-            width: "100%",
-            boxSizing: "border-box",
-          }}
-        ></input>
-        <input
-          type="password"
-          placeholder="Enter your password"
-          name="password" 
-          value={user.password} 
-          onChange={userhandler} 
-          style={{
-            margin: "10px 0",
-            padding: "10px",
-            width: "100%",
-            boxSizing: "border-box",
-          }}
-        ></input>
-        <input
-          type="password"
-          placeholder="Confirm your password"
-          name="confirmPassword" 
-          value={user.confirmPassword}
-          onChange={userhandler} 
-          style={{
-            margin: "10px 0",
-            padding: "10px",
-            width: "100%",
-            boxSizing: "border-box",
-          }}
-        ></input>
-        <button
-          type="submit"
-          style={{
-            margin: "10px 0",
-            padding: "10px 20px",
-            backgroundColor: "#007bff",
-            color: "white",
-            border: "none",
-            borderRadius: "5px",
-            cursor: "pointer",
-          }}
-        >
+        {error && <p style={{ color: 'red' }}>{error}</p>}
+        <input type="email" placeholder="Enter your email" value={email} onChange={(e) => setEmail(e.target.value)} style={{ margin: '10px 0', padding: '10px', width: '100%', boxSizing: 'border-box' }} ></input>
+        <input type="password" placeholder="Enter your password" value={password} onChange={(e) => setPassword(e.target.value)} style={{ margin: '10px 0', padding: '10px', width: '100%', boxSizing: 'border-box' }} ></input>
+        <button type="submit" style={{ margin: '10px 0', padding: '10px 20px', backgroundColor: '#007bff', color: 'white', border: 'none', borderRadius: '5px', cursor: 'pointer' }} >
           Sign Up
         </button>
       </form>
@@ -134,4 +55,4 @@ const Registration = () => {
   );
 };
 
-export default Registration;
+export default SignUp;

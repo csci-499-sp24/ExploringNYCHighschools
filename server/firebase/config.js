@@ -12,4 +12,4 @@ const firestore = admin.firestore();
 module.exports = {
   auth,
   firestore,
-};
+}; 

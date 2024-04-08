@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { auth } from '../firebase/firebaseConfig'; // Ensure this import is correctly pointing to your Firebase setup
+import { auth } from '../firebase/firebaseConfig'; 
 
 const useUserDetails = () => {
   const [userDetails, setUserDetails] = useState(null);
@@ -12,13 +12,13 @@ const useUserDetails = () => {
         if (!auth.currentUser) {
           throw new Error('No user is currently signed in.');
         }
-
+        
         const token = await auth.currentUser.getIdToken();
         const userId = auth.currentUser.uid;
 
         console.log('Bearer token:', `Bearer ${token}`);
 
-        const response = await axios.get(`http://localhost:8080/api/users/${userId}`, {
+        const response = await axios.get(process.env.NEXT_PUBLIC_SERVER_URL + `/api/users/${userId}`, {
           headers: {
             'Authorization': `Bearer ${token}`,
           },

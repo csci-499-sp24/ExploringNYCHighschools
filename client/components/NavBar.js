@@ -8,6 +8,8 @@ function NavBar() {
   const navbarItems = [
     { text: "Home", url: "/homepage" },
     { text: "Search For Schools", url: "/schools" },
+    { text: "Comparing Schools", url: "/compare" },
+    { text: "Get Directions", url: "/NYCMap" },
   ];
 
   const [user, loading] = useAuthState(auth);
@@ -68,6 +70,14 @@ function NavBar() {
         <div style={{ height: "20px", width: "3px", backgroundColor: "lightgray", marginLeft: "10px", marginRight: "10px", }} />
         <a key={navbarItems[1].text} href={navbarItems[1].url} style={{ color: "white", padding: "10px", textDecoration: "none", }}>
           {navbarItems[1].text}
+        </a>
+        <div style={{ height: "20px", width: "3px", backgroundColor: "lightgray", marginLeft: "10px", marginRight: "10px", }} />
+        <a key={navbarItems[2].text} href={navbarItems[2].url} style={{ color: "white", padding: "10px", textDecoration: "none", }}>
+          {navbarItems[2].text}
+        </a>
+        <div style={{ height: "20px", width: "3px", backgroundColor: "lightgray", marginLeft: "10px", marginRight: "10px", }} />
+        <a key={navbarItems[3].text} href={navbarItems[3].url} style={{ color: "white", padding: "10px", textDecoration: "none", }}>
+          {navbarItems[3].text}
         </a>
       </div>
       <div style={{ display: "flex", alignItems: "center", position: "relative" }}>

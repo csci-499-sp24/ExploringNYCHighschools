@@ -61,11 +61,11 @@ app.get("/api/schools/quality-reports/:dbn", async (req, res) => {
         }
         res.status(200).json({school});
     } catch (error) {
-        console.error('Error fetching school:', error);
-        return res.status(500).json({ error: 'Internal Server Error' });
+            console.error('Error fetching school:', error);
+            return res.status(500).json({ error: 'Internal Server Error' });
+          }
     }
-});
-
+)
 app.get("/api/schools", async (req, res) => {
     try {
         // Retrieve the search term from the query parameters

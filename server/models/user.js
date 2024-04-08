@@ -1,11 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const { auth, firestore } = require('../firebase/config');
-// Initialize Firebase Admin SDK with service account credentials
 const admin = require('firebase-admin');
 
-
-// Function to verify user token
 const verifyUserToken = async (token) => {
   try {
     const decodedToken = await admin.auth().verifyIdToken(token);
@@ -17,7 +14,6 @@ const verifyUserToken = async (token) => {
   }
 };
 
-// Function to fetch user details from Firestore
 const getUserDetails = async (userId) => {
   try {
     const userDoc = await firestore.collection('users').doc(userId).get();
@@ -31,7 +27,6 @@ const getUserDetails = async (userId) => {
   }
 };
 
-// Define route to fetch user details
 router.get('/:userId', async (req, res) => {
   try {
     const { userId } = req.params;

@@ -1,6 +1,5 @@
 
 import React, { useState } from "react";
-import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useAuth } from "../firebase/authContext";
 import { useRouter } from "next/router";
 
@@ -50,7 +49,7 @@ const Registration = () => {
       }}
     >
       <form
-        onSubmit={RegistrationHandler} // Updated function name here
+        onSubmit={RegistrationHandler} 
         style={{
           display: "flex",
           flexDirection: "column",
@@ -81,9 +80,9 @@ const Registration = () => {
         <input
           type="email"
           placeholder="Enter your email"
-          name="email" // Added name attribute
-          value={user.email} // Updated value here
-          onChange={userhandler} // Updated event handler here
+          name="email" 
+          value={user.email} 
+          onChange={userhandler} 
           style={{
             margin: "10px 0",
             padding: "10px",
@@ -94,9 +93,9 @@ const Registration = () => {
         <input
           type="password"
           placeholder="Enter your password"
-          name="password" // Added name attribute
-          value={user.password} // Updated value here
-          onChange={userhandler} // Updated event handler here
+          name="password" 
+          value={user.password} 
+          onChange={userhandler} 
           style={{
             margin: "10px 0",
             padding: "10px",
@@ -107,9 +106,9 @@ const Registration = () => {
         <input
           type="password"
           placeholder="Confirm your password"
-          name="confirmPassword" // Added name attribute
-          value={user.confirmPassword} // Updated value here
-          onChange={userhandler} // Updated event handler here
+          name="confirmPassword" 
+          value={user.confirmPassword}
+          onChange={userhandler} 
           style={{
             margin: "10px 0",
             padding: "10px",

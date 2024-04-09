@@ -37,7 +37,7 @@ const Registration = () => {
       setError(error.message);
     }
   };
-  return (
+  return(
     <div
       style={{
         display: "flex",

@@ -87,7 +87,7 @@ const SignIn = () => {
           type="submit"
           style={{
             margin: '10px 0',
-            padding: '10px 20px',
+            padding: '10px 25px',
             backgroundColor: '#007bff',
             color: 'white',
             border: 'none',

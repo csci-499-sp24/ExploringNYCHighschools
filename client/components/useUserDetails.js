@@ -12,7 +12,6 @@ const useUserDetails = () => {
         if (!auth.currentUser) {
           throw new Error('No user is currently signed in.');
         }
-        
         const token = await auth.currentUser.getIdToken();
         const userId = auth.currentUser.uid;
 

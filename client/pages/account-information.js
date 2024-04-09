@@ -36,7 +36,7 @@ function AccountInformation() {
           </div>
           <div style={styles.textBox}>
             <div style={styles.infoItem}>
-              <span style={styles.label}>Email:</span>
+              <span style={styles.label}>Email:  </span>
               <span style={styles.value}>{userDetails.email ? userDetails.email : 'N/A'}</span>
             </div>
           </div>

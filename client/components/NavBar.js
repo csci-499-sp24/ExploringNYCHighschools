@@ -93,7 +93,7 @@ function NavBar() {
                     onMouseEnter={(e) => (e.target.style.backgroundColor = menuItemHoverStyle.backgroundColor)}
                     onMouseLeave={(e) => (e.target.style.backgroundColor = menuItemStyle.backgroundColor)}
                   >
-                    Account Information
+                    Account
                   </button>
                 </Link>
                 <button

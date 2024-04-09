@@ -8,6 +8,8 @@ const app = express();
 const fetchData = require("./data")
 const School = require("./models/school");
 const QualityReports = require('./models/quality_reports');
+const userRoutes = require('./models/user')
+
 
 const syncDB = async () => {
     try {
@@ -23,6 +25,7 @@ const syncDB = async () => {
 syncDB();
 
 app.use(cors());
+app.use(userRoutes);
 
 app.get("/api/home", (req, res) => {
     res.json({message: "Hello World!"});
@@ -87,7 +90,7 @@ app.get("/api/schools", async (req, res) => {
         res.status(500).json({ error: "Internal server error" });
     }
   });
-
+  app.use('/api/users', userRoutes);
 const port = process.env.PORT || 8080;
 app.listen(port, () => {
     console.log(`Server started on port ${port}`);

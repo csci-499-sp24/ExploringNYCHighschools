@@ -90,7 +90,9 @@ app.get("/api/schools", async (req, res) => {
         res.status(500).json({ error: "Internal server error" });
     }
   });
-  app.use('/api/users', userRoutes);
+
+app.use('/api/users', userRoutes); 
+
 const port = process.env.PORT || 8080;
 app.listen(port, () => {
     console.log(`Server started on port ${port}`);

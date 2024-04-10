@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { SlArrowDown } from "react-icons/sl";
 import { SlArrowUp } from "react-icons/sl";
 
-function Collapsible({question, school1_answer, school2_answer, school1, school2, expand, collapse}) {
+function Collapsible({question, school1_answer, school2_answer, expand, collapse}) {
     const [arrowClicked, setArrowClicked] = useState(false);
     function handleArrowClicked () {
         setArrowClicked(!arrowClicked);
@@ -29,16 +29,14 @@ function Collapsible({question, school1_answer, school2_answer, school1, school2
             </div>
             {arrowClicked && (
                 <div className="collaspe-body">
-                    <div>
-                        <span style={{ fontWeight: "bold" }}>{`${school1}`}</span>:  
+                    <div className="school-data">
                         {` ${school1_answer}`}
                     </div>
                     <br/>
-                    <div>
-                        <span style={{ fontWeight: "bold" }}>{`${school2}`}</span>:  
+                    <div className="school-data">
                         {` ${school2_answer}`}
                     </div>
-            </div>
+                </div>
             )}
         </div>
     )

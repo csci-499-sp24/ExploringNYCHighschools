@@ -137,7 +137,16 @@ function Compare () {
                     <button className="btn btn-primary collapse-expand-button" onClick={handleExpandAll}>Expand All</button>
                     <button className="btn btn-primary collapse-expand-button" onClick={handleCollapseAll}>Collaspe All</button>
                 </div>
-            
+                <div className="collaspe-item">
+                <div className="collaspe-body">
+                    <div className="school-data">
+                        <span style={{ fontWeight: "bold", fontSize: "17px"}}>{`${school1}`}</span>
+                    </div>
+                    <div className="school-data">
+                        <span style={{ fontWeight: "bold", fontSize: "17px" }}>{`${school2}`}</span>
+                    </div>
+                </div>
+                </div>
                     <div className="collaspe">
                         {[
                             {
@@ -201,7 +210,7 @@ function Compare () {
                                 school2_answer: school2ProfileData.bus_to_school
                             }
                         ].map((item,index)=> (
-                            <Collapsible key={index} question={item.question} school1_answer={item.school1_answer} school2_answer={item.school2_answer} school1={school1} school2={school2} expand={expandAll} collapse={collapseAll}/>
+                            <Collapsible key={index} question={item.question} school1_answer={item.school1_answer} school2_answer={item.school2_answer} expand={expandAll} collapse={collapseAll}/>
                         ))}
                     </div>
                     </div>
@@ -342,7 +351,7 @@ function Compare () {
                                 school2_answer: school2Report.family_community_ties
                             }
                         ].map((item,index)=> (
-                            <Collapsible key={index} question={item.question} school1_answer={item.school1_answer} school2_answer={item.school2_answer} school1={school1} school2={school2} expand={expandAll} collapse={collapseAll}/>
+                            <Collapsible key={index} question={item.question} school1_answer={item.school1_answer} school2_answer={item.school2_answer} expand={expandAll} collapse={collapseAll}/>
                         ))}
                     </div>
                 )}

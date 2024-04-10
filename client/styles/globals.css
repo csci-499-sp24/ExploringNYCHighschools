@@ -138,6 +138,13 @@ h1{
 .collaspe-body{
     width: 900px;
     font-size: 15px;
+    display: flex;
+    flex-direction: row;
+}
+
+.school-data {
+    flex: 1;
+    margin-right: 50px;
 }
 
 .collaspe-item{

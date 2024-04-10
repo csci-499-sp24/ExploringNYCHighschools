@@ -24,7 +24,7 @@ function Collapsible({question, school1_answer, school2_answer, expand, collapse
     return (
         <div className="collaspe-item">
             <div className="collaspe-title" onClick={handleArrowClicked}>
-                <div>{question}</div>
+                <div style={{ fontWeight: "bold"}}>{question}</div>
                 <div>{arrowClicked ? <SlArrowUp fill="black" />: <SlArrowDown fill="black"/>}</div>
             </div>
             {arrowClicked && (

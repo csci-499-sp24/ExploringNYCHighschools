@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Collapsible from "@/components/Collapsible";
+import TextBox from "@/components/TextBox";
 import SearchSchoolBar from "@/components/SearchSchoolBar";
 
 function Compare () {
@@ -133,10 +133,6 @@ function Compare () {
                 (
                 <div>
                     <br/>
-                <div className="collapse-expand">
-                    <button className="btn btn-primary collapse-expand-button" onClick={handleExpandAll}>Expand All</button>
-                    <button className="btn btn-primary collapse-expand-button" onClick={handleCollapseAll}>Collaspe All</button>
-                </div>
                 <div className="collaspe-item">
                 <div className="collaspe-body">
                     <div className="school-data">
@@ -210,7 +206,7 @@ function Compare () {
                                 school2_answer: school2ProfileData.bus_to_school
                             }
                         ].map((item,index)=> (
-                            <Collapsible key={index} question={item.question} school1_answer={item.school1_answer} school2_answer={item.school2_answer} expand={expandAll} collapse={collapseAll}/>
+                            <TextBox key={index} question={item.question} school1_answer={item.school1_answer} school2_answer={item.school2_answer}/>
                         ))}
                     </div>
                     </div>
@@ -351,7 +347,7 @@ function Compare () {
                                 school2_answer: school2Report.family_community_ties
                             }
                         ].map((item,index)=> (
-                            <Collapsible key={index} question={item.question} school1_answer={item.school1_answer} school2_answer={item.school2_answer} expand={expandAll} collapse={collapseAll}/>
+                            <TextBox key={index} question={item.question} school1_answer={item.school1_answer} school2_answer={item.school2_answer}/>
                         ))}
                     </div>
                 )}

@@ -1,5 +1,3 @@
-import React, { useState, useEffect } from "react";
-
 function TextBox({question, school1_answer, school2_answer}) {
     if (school1_answer===null || school1_answer===undefined) {
         school1_answer = "Unavailable";

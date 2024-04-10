@@ -44,9 +44,10 @@ const Registration = () => {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        height: "70vh",
+        // height: "70vh",
       }}
     >
+      <br/>
       <form
         onSubmit={RegistrationHandler} 
         style={{
@@ -130,6 +131,7 @@ const Registration = () => {
           Sign Up
         </button>
       </form>
+      <br/>
     </div>
   );
 };

@@ -113,10 +113,10 @@ h1{
 .scroll-button:hover{
     background-color: rgb(211, 211, 211);
 }
-/* .collaspe-title:hover{
+.collaspe-title:hover{
     background-color: rgb(233, 229, 229);
     border-radius: 10px;
-} */
+}
 
 .search {
     font-family: Georgia, 'Times New Roman', Times, serif;
@@ -129,7 +129,7 @@ h1{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    /* cursor: pointer; */
+    cursor: pointer;
     background-color: white;
     width: 900px;
     padding: 5px;
@@ -141,10 +141,69 @@ h1{
     display: flex;
     flex-direction: row;
 }
+.textbox-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* cursor: pointer; */
+    background-color: white;
+    width: 900px;
+    padding: 5px;
+    font-size: 16px;
+}
+.textbox-body{
+    width: 900px;
+    font-size: 15px;
+    display: flex;
+    flex-direction: row;
+}
+.textbox-item{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    display: flex;
+    max-width: fit-content;
+    border: 1px solid;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem auto;
+    flex-direction: column;
+    padding: 10px;
+    background-color: white;
+    border-radius: 10px;
+   
+}
+.textbox-ranking-item{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    display: flex;
+    border: 1px solid; 
+    margin: 1rem auto;
+    flex-direction: column;
+    padding: 10px;
+    background-color: white;
+    border-radius: 10px;
+    height: 6rem;
+   
+}
+.textbox-ranking-title {
+    display: flex;
+    background-color: white;
+    width: 600px;
+    padding: 5px;
+    font-size: 16px;
+}
+.textbox-ranking{
+    display: flex;
+    justify-content: center;
+}
 
 .school-data {
     flex: 1;
     margin-right: 50px;
+}
+.rank-data {
+    flex: 1;
+    display: flex; 
+    align-items: center;
+    flex-direction: column;
 }
 
 .collaspe-item{

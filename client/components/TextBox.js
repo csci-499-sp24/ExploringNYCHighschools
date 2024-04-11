@@ -6,11 +6,11 @@ function TextBox({question, school1_answer, school2_answer}) {
         school2_answer = "Unavailable";
     }
     return (
-        <div className="collaspe-item">
-            <div className="collaspe-title">
+        <div className="textbox-item">
+            <div className="textbox-title">
                 <div style={{ fontSize: "18px"}}>{question}</div>
             </div>
-            <div className="collaspe-body">
+            <div className="textbox-body">
                 <div className="school-data">
                     {` ${school1_answer}`}
                 </div>

@@ -9,6 +9,8 @@ const fetchData = require("./data")
 const School = require("./models/school");
 const QualityReports = require('./models/quality_reports');
 const userRoutes = require('./models/user')
+const { Op } = require("sequelize");
+
 
 
 const syncDB = async () => {

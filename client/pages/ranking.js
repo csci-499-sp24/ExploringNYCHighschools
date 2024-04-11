@@ -12,7 +12,7 @@ function Rankings() {
 
      const [selectedRanking, setSelectedRanking] = useState("");
      const [rankName, setRankName] = useState("");
-     const [tenSchools, setTenSchools] = useState([]);
+     const [fiftySchools, setFiftySchools] = useState([]);
 
     useEffect(() => {
         fetch(process.env.NEXT_PUBLIC_SERVER_URL + "/api/schools")
@@ -31,77 +31,78 @@ function Rankings() {
 
     useEffect(() => {
         if(selectedRanking==="Student Attendance") {
-            const ranked_schools = getTopTenSchools(schools,"attendance_rate");
+            const ranked_schools = getTopFiftySchools(schools,"attendance_rate");
             setRankName("attendance_rate");
-            setTenSchools(ranked_schools);
+            setFiftySchools(ranked_schools);
         }
         else if(selectedRanking==="Teacher Attendance") {
-            const ranked_schools = getTopTenSchools(reports,"teacher_attendance_rate");
+            const ranked_schools = getTopFiftySchools(reports,"teacher_attendance_rate");
             setRankName("teacher_attendance_rate");
-            setTenSchools(ranked_schools);
+            setFiftySchools(ranked_schools);
         }
         else if(selectedRanking==="Safety") {
-            const ranked_schools = getTopTenSchools(schools,"student_safety");
+            const ranked_schools = getTopFiftySchools(schools,"student_safety");
             setRankName("student_safety");
-            setTenSchools(ranked_schools);
+            setFiftySchools(ranked_schools);
         }
         else if(selectedRanking==="Graduation Rates") {
-            const ranked_schools = getTopTenSchools(schools,"grad_rate");
+            const ranked_schools = getTopFiftySchools(schools,"grad_rate");
             setRankName("grad_rate");
-            setTenSchools(ranked_schools);
+            setFiftySchools(ranked_schools);
         }
         else if(selectedRanking==="Rigorous Instruction") {
-            const ranked_schools = getTopTenSchools(reports,"rigorous_instruction_rating");
+            const ranked_schools = getTopFiftySchools(reports,"rigorous_instruction_rating");
             setRankName("rigorous_instruction_rating");
-            setTenSchools(ranked_schools);
+            setFiftySchools(ranked_schools);
         }
         else if(selectedRanking==="College Career Rate") {
-            const ranked_schools = getTopTenSchools(schools,"college_career_rate");
+            const ranked_schools = getTopFiftySchools(schools,"college_career_rate");
             setRankName("college_career_rate");
-            setTenSchools(ranked_schools);
+            setFiftySchools(ranked_schools);
         }
         else if(selectedRanking==="Teacher Collaboration") {
-            const ranked_schools = getTopTenSchools(reports,"collaborative_teachers_rating");
+            const ranked_schools = getTopFiftySchools(reports,"collaborative_teachers_rating");
             setRankName("collaborative_teachers_rating");
-            setTenSchools(ranked_schools);
+            setFiftySchools(ranked_schools);
         }
         else if(selectedRanking==="Supportive School Environment") {
-            const ranked_schools = getTopTenSchools(reports,"supportive_env_rating");
+            const ranked_schools = getTopFiftySchools(reports,"supportive_env_rating");
             setRankName("supportive_env_rating");
-            setTenSchools(ranked_schools);
+            setFiftySchools(ranked_schools);
         }
         else if(selectedRanking==="Effective School Leadership") {
-            const ranked_schools = getTopTenSchools(reports,"effective_school_leadership");
+            const ranked_schools = getTopFiftySchools(reports,"effective_school_leadership");
             setRankName("effective_school_leadership");
-            setTenSchools(ranked_schools);
+            setFiftySchools(ranked_schools);
         }
         else if(selectedRanking==="Trust Rating") {
-            const ranked_schools = getTopTenSchools(reports,"trust_rating");
+            const ranked_schools = getTopFiftySchools(reports,"trust_rating");
             setRankName("trust_rating");
-            setTenSchools(ranked_schools);
+            setFiftySchools(ranked_schools);
         }
         else if(selectedRanking==="Principal Years of Experience") {
-            const ranked_schools = getTopTenSchools(reports,"principal_yr_experience");
+            const ranked_schools = getTopFiftySchools(reports,"principal_yr_experience");
             setRankName("principal_yr_experience");
-            setTenSchools(ranked_schools);
+            setFiftySchools(ranked_schools);
         }
         else if(selectedRanking==="Teachers with at least 3 years experience") {
-            const ranked_schools = getTopTenSchools(reports,"teachers_3yr_experience");
+            const ranked_schools = getTopFiftySchools(reports,"teachers_3yr_experience");
             setRankName("teachers_3yr_experience");
-            setTenSchools(ranked_schools);
+            setFiftySchools(ranked_schools);
         }
     },[selectedRanking]);
-    // function to get 10 top schools:
-    function getTopTenSchools(schools, rank_option) {
+
+    // function to get 50 top schools:
+    function getTopFiftySchools(schools, rank_option) {
         return schools
         .slice().filter(school=>school[rank_option]!==null).sort((school1, school2)=> school2[rank_option] - school1[rank_option])
-        .slice(0,10);
+        .slice(0,50);
     }
-
+   
     // set state for selected schools:
     const handleSelectedRanking = (e) => {
         setSelectedRanking(e.target.value);
-        setTenSchools([]);
+        setFiftySchools([]);
     }
     const dropdown_options = ["Student Attendance","Teacher Attendance","Safety","Graduation Rates",
     "College Career Rate","Rigorous Instruction","Teacher Collaboration","Supportive School Environment",
@@ -119,9 +120,9 @@ function Rankings() {
             </div>
             <br/>
             <div>
-            {tenSchools && (
+            {fiftySchools && (
                 <div className="collaspe">
-                   {tenSchools.map((item, index) => (
+                   {fiftySchools.map((item, index) => (
                         <TextBox key={index} question={`${index+1}. ${item.school_name}`} school1_answer={item[rankName]} school2_answer=" "/>
                    ))}
                 </div>

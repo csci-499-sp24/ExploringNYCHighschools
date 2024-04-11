@@ -4,7 +4,7 @@ function TextBoxRanking({name, content}) {
     }
     return (
         <div className="textbox-ranking-item">
-            <div className="textbox-ranking-title">
+            <div className="textbox-ranking-title"> 
                 <div style={{ fontSize: "18px"}}>{name}</div>
             </div>
             <div className="textbox-ranking-body">

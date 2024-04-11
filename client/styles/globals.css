@@ -188,6 +188,6 @@ h1 {
 .dropdown-box {
   background-color: #f0f8ff; /* Light blue color */
   border: 1px solid #ccc; /* Border for the box */
-  border-radius: 5px; /* Optional: Adjust border radius for rounded corners */
-  padding: 10px; /* Optional: Adjust padding inside the box */
+  border-radius: 5px; /* Adjust border radius for rounded corners */
+  padding: 10px; /* Adjust padding inside the box */
 }

@@ -178,3 +178,20 @@ h1{
     display: flex;
 }
 
+.select-box{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    display: flex;
+    max-width: fit-content;
+    align-items: center;
+    justify-content: space-between;
+    margin: 1rem auto;
+    flex-direction: row;
+    padding: 5px;
+    border-radius: 10px;
+}
+.subtitle {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+    padding-bottom: 30px;
+    color: purple;
+}

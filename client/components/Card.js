@@ -1,5 +1,5 @@
 
-const Card = ({ text1, text2, text3, text4 }) => {
+const Card = ({data }) => {
     if (typeof(text1)==='object') {
         text1="Unavailable"
     }
@@ -15,13 +15,30 @@ const Card = ({ text1, text2, text3, text4 }) => {
     return (
         <div className="card-fill">
             <div className="card-body">
-                <h6 className="card-title">{text1}</h6>
-                <h6 className="card-title">{text2}</h6>
-                <h6 className="card-title">{text3}</h6>
-                <h6 className="card-title">{text4}</h6>
+              
+                <h6 className="card-title">
+                    <span className="card-title-span"> School Name: </span> {data?.school_name}
+                </h6>
+
+                <h6 className="card-title">
+                    <span className="card-title-span">Address: </span> {data?.address}
+                </h6>
+
+               
+                <h6 className="card-title">
+                    <span className="card-title-span">Website: </span> {data?.website}
+                </h6>
+
+               
+                <h6 className="card-title">
+                    <span className="card-title-span">Phone Number: </span> {data?.phone_number}
+                </h6>
+
+                <h6 className="card-title">
+                    <span className="card-title-span"> Email: </span> {data?.email}
+                </h6>
             </div>
         </div>
     )
   };
-
 export default Card;

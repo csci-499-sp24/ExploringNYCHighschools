@@ -24,8 +24,8 @@ const SearchBar = ({ onSearch }) => {
   };
 
   return (
-    <div className="my-12 text-center">
-      <div className="flex items-center justify-center">
+    <div className="my-12 text-center ">
+      <div className="flex items-center  search-school-container">
         <input
           type="text"
           className="w-full py-2 px-4 outline-none rounded-l-md border border-blue-500 mr-2"

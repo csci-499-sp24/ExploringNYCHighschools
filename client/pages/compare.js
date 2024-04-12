@@ -1,29 +1,30 @@
 import { useEffect, useState } from "react";
 import Collapsible from "@/components/Collapsible";
 import SearchSchoolBar from "@/components/SearchSchoolBar";
+import styles from '@/styles/compare.module.css'
 
-function Compare () {
+function Compare() {
     // fetch school profile data:
     const [schools, setSchools] = useState([]);
     const [message, setMessage] = useState("Loading");
 
-     // fetch school quality reports data:
-     const [reports, setReports] = useState([]);
-     const [messageReport, setMessageReport] = useState("Loading");
+    // fetch school quality reports data:
+    const [reports, setReports] = useState([]);
+    const [messageReport, setMessageReport] = useState("Loading");
 
     useEffect(() => {
         fetch(process.env.NEXT_PUBLIC_SERVER_URL + "/api/schools")
-        .then((response) => response.json())
-        .then((data) => {
-            setSchools(data.schools);
-            setMessage(data.message);
-        });
+            .then((response) => response.json())
+            .then((data) => {
+                setSchools(data.schools);
+                setMessage(data.message);
+            });
         fetch(process.env.NEXT_PUBLIC_SERVER_URL + "/api/quality-reports")
-        .then((response) => response.json())
-        .then((data) => {
-            setReports(data.reports);
-            setMessageReport(data.messageReport);
-        });
+            .then((response) => response.json())
+            .then((data) => {
+                setReports(data.reports);
+                setMessageReport(data.messageReport);
+            });
     }, []);
 
     const [school1, setSchool1] = useState("");
@@ -51,14 +52,14 @@ function Compare () {
 
     useEffect(() => {
         // selected schools and set profiles, now set reports using dbn since quality-reports data has some school_names differences(shortened names)
-        if (dbn1!=="" && dbn2!=="") {
-            for (let x = 0;x<reports.length;x++) {
-                if(dbn1===reports[x].dbn) {
+        if (dbn1 !== "" && dbn2 !== "") {
+            for (let x = 0; x < reports.length; x++) {
+                if (dbn1 === reports[x].dbn) {
                     setSchool1Report(reports[x]);
                 }
             }
-            for (let x = 0;x<reports.length;x++) {
-                if(dbn2===reports[x].dbn) {
+            for (let x = 0; x < reports.length; x++) {
+                if (dbn2 === reports[x].dbn) {
                     setSchool2Report(reports[x]);
                 }
             }
@@ -88,25 +89,25 @@ function Compare () {
         setErrorMessage("");
     }
     const handleCompare = () => {
-        if(school1===school2) {
+        if (school1 === school2) {
             setErrorMessage("Please select 2 different schools to compare");
         }
-        if (errorMessage==="" && school1!=="" && school2!=="") {
-            for (let x = 0;x<schools.length;x++) {
-                if(school1===schools[x].school_name) {
+        if (errorMessage === "" && school1 !== "" && school2 !== "") {
+            for (let x = 0; x < schools.length; x++) {
+                if (school1 === schools[x].school_name) {
                     setSchool1ProfileData(schools[x]);
                     setDbn1(schools[x].dbn);
                 }
             }
-            for (let x = 0;x<schools.length;x++) {
-                if(school2===schools[x].school_name) {
+            for (let x = 0; x < schools.length; x++) {
+                if (school2 === schools[x].school_name) {
                     setSchool2ProfileData(schools[x]);
                     setDbn2(schools[x].dbn);
                 }
             }
             setButtonState(true);
         }
-        
+
         else {
             setSchool1ProfileData(null);
             setSchool2ProfileData(null);
@@ -120,94 +121,95 @@ function Compare () {
             <h1 className="display-1">Comparing High Schools</h1>
             <div className="search-compare">
                 <div className="search-bars">
-                    <SearchSchoolBar onSearch={handleSelectedSchool1} schools={schools}/>
-                    <SearchSchoolBar onSearch={handleSelectedSchool2} schools={schools}/>
+                    <SearchSchoolBar onSearch={handleSelectedSchool1} schools={schools} />
+                    <SearchSchoolBar onSearch={handleSelectedSchool2} schools={schools} />
                 </div>
                 <button className="btn btn-primary compare" onClick={handleCompare}>Compare</button>
-                </div>
-                {errorMessage && (
-                     <div className="message-select-schools">
-                     <p >{errorMessage}</p> </div> )
-                }
-                {school1ProfileData && school2ProfileData && buttonState && errorMessage==="" && 
+            </div>
+
+            {errorMessage && (
+                <div className="message-select-schools">
+                    <p >{errorMessage}</p> </div>)
+            }
+            {school1ProfileData && school2ProfileData && buttonState && errorMessage === "" &&
                 (
-                <div>
-                    <br/>
-                <div className="collapse-expand">
-                    <button className="btn btn-primary collapse-expand-button" onClick={handleExpandAll}>Expand All</button>
-                    <button className="btn btn-primary collapse-expand-button" onClick={handleCollapseAll}>Collaspe All</button>
-                </div>
-            
-                    <div className="collaspe">
-                        {[
-                            {
-                                question: "What languages are offered to students?",
-                                school1_answer: school1ProfileData.languages,
-                                school2_answer: school2ProfileData.languages,
-                            },
-                            {
-                                question: "What AP courses are offered to students?",
-                                school1_answer: school1ProfileData.ap_classes,
-                                school2_answer: school2ProfileData.ap_classes
-                            },
-                            {
-                                question: "What PSAL sports are offered to male students?",
-                                school1_answer: school1ProfileData.psal_boys,
-                                school2_answer: school2ProfileData.psal_boys
-                            },
-                            {
-                                question: "What PSAL sports are offered to female students?",
-                                school1_answer: school1ProfileData.psal_girls,
-                                school2_answer: school2ProfileData.psal_girls
-                            },
-                            {
-                                question: "How many students go to this school?",
-                                school1_answer: school1ProfileData.total_students,
-                                school2_answer: school2ProfileData.total_students
-                            },
-                            {
-                                question: "What is the graduation rate?",
-                                school1_answer: school1ProfileData.grad_rate,
-                                school2_answer: school2ProfileData.grad_rate
-                            },
-                            {
-                                question: "What is the attendance rate?",
-                                school1_answer: school1ProfileData.attendance_rate,
-                                school2_answer: school2ProfileData.attendance_rate
-                            },
-                            {
-                                question: "What is the college career rate?",
-                                school1_answer: school1ProfileData.college_career_rate,
-                                school2_answer: school2ProfileData.college_career_rate
-                            },
-                            {
-                                question: "What is the student safety rating?",
-                                school1_answer: school1ProfileData.student_safety,
-                                school2_answer: school2ProfileData.student_safety
-                            },
-                            {
-                                question: "What neighborhood is the school in?",
-                                school1_answer: school1ProfileData.neighborhood,
-                                school2_answer: school2ProfileData.neighborhood
-                            },
-                            {
-                                question: "What subways can you take?",
-                                school1_answer: school1ProfileData.subways_to_school,
-                                school2_answer: school2ProfileData.subways_to_school
-                            },
-                            {
-                                question: "What buses can you take?",
-                                school1_answer: school1ProfileData.bus_to_school,
-                                school2_answer: school2ProfileData.bus_to_school
-                            }
-                        ].map((item,index)=> (
-                            <Collapsible key={index} question={item.question} school1_answer={item.school1_answer} school2_answer={item.school2_answer} school1={school1} school2={school2} expand={expandAll} collapse={collapseAll}/>
-                        ))}
-                    </div>
+                    <div>
+                        <br />
+                        <div className="collapse-expand">
+                            <button className="btn btn-primary collapse-expand-button" onClick={handleExpandAll}>Expand All</button>
+                            <button className="btn btn-primary collapse-expand-button" onClick={handleCollapseAll}>Collaspe All</button>
+                        </div>
+
+                        <div className="collaspe">
+                            {[
+                                {
+                                    question: "What languages are offered to students?",
+                                    school1_answer: school1ProfileData.languages,
+                                    school2_answer: school2ProfileData.languages,
+                                },
+                                {
+                                    question: "What AP courses are offered to students?",
+                                    school1_answer: school1ProfileData.ap_classes,
+                                    school2_answer: school2ProfileData.ap_classes
+                                },
+                                {
+                                    question: "What PSAL sports are offered to male students?",
+                                    school1_answer: school1ProfileData.psal_boys,
+                                    school2_answer: school2ProfileData.psal_boys
+                                },
+                                {
+                                    question: "What PSAL sports are offered to female students?",
+                                    school1_answer: school1ProfileData.psal_girls,
+                                    school2_answer: school2ProfileData.psal_girls
+                                },
+                                {
+                                    question: "How many students go to this school?",
+                                    school1_answer: school1ProfileData.total_students,
+                                    school2_answer: school2ProfileData.total_students
+                                },
+                                {
+                                    question: "What is the graduation rate?",
+                                    school1_answer: school1ProfileData.grad_rate,
+                                    school2_answer: school2ProfileData.grad_rate
+                                },
+                                {
+                                    question: "What is the attendance rate?",
+                                    school1_answer: school1ProfileData.attendance_rate,
+                                    school2_answer: school2ProfileData.attendance_rate
+                                },
+                                {
+                                    question: "What is the college career rate?",
+                                    school1_answer: school1ProfileData.college_career_rate,
+                                    school2_answer: school2ProfileData.college_career_rate
+                                },
+                                {
+                                    question: "What is the student safety rating?",
+                                    school1_answer: school1ProfileData.student_safety,
+                                    school2_answer: school2ProfileData.student_safety
+                                },
+                                {
+                                    question: "What neighborhood is the school in?",
+                                    school1_answer: school1ProfileData.neighborhood,
+                                    school2_answer: school2ProfileData.neighborhood
+                                },
+                                {
+                                    question: "What subways can you take?",
+                                    school1_answer: school1ProfileData.subways_to_school,
+                                    school2_answer: school2ProfileData.subways_to_school
+                                },
+                                {
+                                    question: "What buses can you take?",
+                                    school1_answer: school1ProfileData.bus_to_school,
+                                    school2_answer: school2ProfileData.bus_to_school
+                                }
+                            ].map((item, index) => (
+                                <Collapsible key={index} question={item.question} school1_answer={item.school1_answer} school2_answer={item.school2_answer} school1={school1} school2={school2} expand={expandAll} collapse={collapseAll} />
+                            ))}
+                        </div>
                     </div>
                 )
             }
-            {school1Report && school2Report && buttonState && errorMessage==="" && 
+            {school1Report && school2Report && buttonState && errorMessage === "" &&
                 (
                     <div className="collaspe">
                         {[
@@ -341,8 +343,8 @@ function Compare () {
                                 school1_answer: school1Report.family_community_ties,
                                 school2_answer: school2Report.family_community_ties
                             }
-                        ].map((item,index)=> (
-                            <Collapsible key={index} question={item.question} school1_answer={item.school1_answer} school2_answer={item.school2_answer} school1={school1} school2={school2} expand={expandAll} collapse={collapseAll}/>
+                        ].map((item, index) => (
+                            <Collapsible key={index} question={item.question} school1_answer={item.school1_answer} school2_answer={item.school2_answer} school1={school1} school2={school2} expand={expandAll} collapse={collapseAll} />
                         ))}
                     </div>
                 )}

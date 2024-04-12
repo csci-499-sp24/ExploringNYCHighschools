@@ -38,6 +38,7 @@ const SearchSchoolBar = ({ onSearch, schools}) => {
   return (
     <div>
         <div className="input-group mb-3 compare-search"style={{width: "900px"}}>
+            
             <input
                 type="text"
                 className="form-control rounded focus-visible:shadow-none"

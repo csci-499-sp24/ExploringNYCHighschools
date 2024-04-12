@@ -1,29 +1,30 @@
 import { useEffect, useState } from "react";
 import TextBox from "@/components/TextBox";
 import SearchSchoolBar from "@/components/SearchSchoolBar";
+import styles from '@/styles/compare.module.css'
 
-function Compare () {
+function Compare() {
     // fetch school profile data:
     const [schools, setSchools] = useState([]);
     const [message, setMessage] = useState("Loading");
 
-     // fetch school quality reports data:
-     const [reports, setReports] = useState([]);
-     const [messageReport, setMessageReport] = useState("Loading");
+    // fetch school quality reports data:
+    const [reports, setReports] = useState([]);
+    const [messageReport, setMessageReport] = useState("Loading");
 
     useEffect(() => {
         fetch(process.env.NEXT_PUBLIC_SERVER_URL + "/api/schools")
-        .then((response) => response.json())
-        .then((data) => {
-            setSchools(data.schools);
-            setMessage(data.message);
-        });
+            .then((response) => response.json())
+            .then((data) => {
+                setSchools(data.schools);
+                setMessage(data.message);
+            });
         fetch(process.env.NEXT_PUBLIC_SERVER_URL + "/api/quality-reports")
-        .then((response) => response.json())
-        .then((data) => {
-            setReports(data.reports);
-            setMessageReport(data.messageReport);
-        });
+            .then((response) => response.json())
+            .then((data) => {
+                setReports(data.reports);
+                setMessageReport(data.messageReport);
+            });
     }, []);
 
     const [school1, setSchool1] = useState("");
@@ -51,14 +52,14 @@ function Compare () {
 
     useEffect(() => {
         // selected schools and set profiles, now set reports using dbn since quality-reports data has some school_names differences(shortened names)
-        if (dbn1!=="" && dbn2!=="") {
-            for (let x = 0;x<reports.length;x++) {
-                if(dbn1===reports[x].dbn) {
+        if (dbn1 !== "" && dbn2 !== "") {
+            for (let x = 0; x < reports.length; x++) {
+                if (dbn1 === reports[x].dbn) {
                     setSchool1Report(reports[x]);
                 }
             }
-            for (let x = 0;x<reports.length;x++) {
-                if(dbn2===reports[x].dbn) {
+            for (let x = 0; x < reports.length; x++) {
+                if (dbn2 === reports[x].dbn) {
                     setSchool2Report(reports[x]);
                 }
             }
@@ -88,25 +89,25 @@ function Compare () {
         setErrorMessage("");
     }
     const handleCompare = () => {
-        if(school1===school2) {
+        if (school1 === school2) {
             setErrorMessage("Please select 2 different schools to compare");
         }
-        if (errorMessage==="" && school1!=="" && school2!=="") {
-            for (let x = 0;x<schools.length;x++) {
-                if(school1===schools[x].school_name) {
+        if (errorMessage === "" && school1 !== "" && school2 !== "") {
+            for (let x = 0; x < schools.length; x++) {
+                if (school1 === schools[x].school_name) {
                     setSchool1ProfileData(schools[x]);
                     setDbn1(schools[x].dbn);
                 }
             }
-            for (let x = 0;x<schools.length;x++) {
-                if(school2===schools[x].school_name) {
+            for (let x = 0; x < schools.length; x++) {
+                if (school2 === schools[x].school_name) {
                     setSchool2ProfileData(schools[x]);
                     setDbn2(schools[x].dbn);
                 }
             }
             setButtonState(true);
         }
-        
+
         else {
             setSchool1ProfileData(null);
             setSchool2ProfileData(null);
@@ -120,16 +121,17 @@ function Compare () {
             <h1 className="display-1">Comparing High Schools</h1>
             <div className="search-compare">
                 <div className="search-bars">
-                    <SearchSchoolBar onSearch={handleSelectedSchool1} schools={schools}/>
-                    <SearchSchoolBar onSearch={handleSelectedSchool2} schools={schools}/>
+                    <SearchSchoolBar onSearch={handleSelectedSchool1} schools={schools} />
+                    <SearchSchoolBar onSearch={handleSelectedSchool2} schools={schools} />
                 </div>
                 <button className="btn btn-primary compare" onClick={handleCompare}>Compare</button>
-                </div>
-                {errorMessage && (
-                     <div className="message-select-schools">
-                     <p >{errorMessage}</p> </div> )
-                }
-                {school1ProfileData && school2ProfileData && buttonState && errorMessage==="" && 
+            </div>
+
+            {errorMessage && (
+                <div className="message-select-schools">
+                    <p >{errorMessage}</p> </div>)
+            }
+            {school1ProfileData && school2ProfileData && buttonState && errorMessage === "" &&
                 (
                 <div>
                     <br/>
@@ -209,10 +211,11 @@ function Compare () {
                             <TextBox key={index} question={item.question} school1_answer={item.school1_answer} school2_answer={item.school2_answer}/>
                         ))}
                     </div>
+
                     </div>
                 )
             }
-            {school1Report && school2Report && buttonState && errorMessage==="" && 
+            {school1Report && school2Report && buttonState && errorMessage === "" &&
                 (
                     <div className="collaspe">
                         {[
@@ -348,6 +351,7 @@ function Compare () {
                             }
                         ].map((item,index)=> (
                             <TextBox key={index} question={item.question} school1_answer={item.school1_answer} school2_answer={item.school2_answer}/>
+
                         ))}
                     </div>
                 )}

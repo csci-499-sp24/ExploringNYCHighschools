@@ -3,20 +3,52 @@
 @tailwind utilities; */
 
 /* Styling for School Profile  */
-section{
+
+/* section{
     padding-top: 30px; 
     padding-bottom: 30px;
+} */
+
+.search-school-container{
+    display: flex;
+    margin-bottom: 1rem;
+    gap: 1rem;
+    width: 100%;
+    justify-content: center;
 }
 
-h1{
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    text-align: center;
-    padding-bottom: 30px;
-    color: purple;
+h1 {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  text-align: center;
+  padding-bottom: 30px;
+  color: purple;
 }
 
-.card-title h6{
-    text-align: center;
+.school-wrapper-container{
+ display: flex;
+ justify-content: center;
+ width: 100%;
+ flex-direction: column;
+ align-items: center;
+}
+
+.school-container{
+    display: flex;
+    width: max-content;
+    justify-content: center;
+    max-width: 600px;
+    width: 100%;
+}
+
+.card-title {
+    text-align: left;
+    color:black;
+    margin-bottom: 0.5rem;
+    text-transform: capitalize;
+}
+
+.card-title-span{
+    font-weight: 800;
 }
 .card-body h5 {
    color: purple;
@@ -24,10 +56,12 @@ h1{
    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
-.card-body h6{
+.card-body  {
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 18px;
     text-align: center;
+    padding: 1rem;
+    
 }
 .card-text{
     font-family: Georgia, 'Times New Roman', Times, serif;
@@ -75,19 +109,19 @@ h1{
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 .school-button button {
-    margin-left: 10px;
+  margin-left: 10px;
 }
 .collapse-expand button {
-    margin-left:10px;
+  margin-left: 10px;
 }
 
-.collapse-expand{
-    text-align: center;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+.collapse-expand {
+  text-align: center;
+  font-family: Georgia, "Times New Roman", Times, serif;
 }
-.collapse-expand-button{
-    padding: 10px;
-    border-radius: 20px;
+.collapse-expand-button {
+  padding: 10px;
+  border-radius: 20px;
 }
 
 .compare{
@@ -95,34 +129,43 @@ h1{
     padding: 10px;
     border-radius: 20px;
     margin-left: 10px;
+    width: 300px;
 }
 
 .background-color {
-    /* background-image: linear-gradient(to right, rgba(0, 0, 255, 0), rgb(45, 145, 217));  blue gradient*/
-    background-image: linear-gradient(to bottom, #C3B1E1, #CCCCFF, transparent);   /* purple gradient */
-}
-  
-.scroll-button {
-    position: fixed;
-    bottom:10px;
-    right:10px;
-    padding: 15px;
-    border-radius: 50%;
+  /* background-image: linear-gradient(to right, rgba(0, 0, 255, 0), rgb(45, 145, 217));  blue gradient*/
+  background-image: linear-gradient(
+    to bottom,
+    #c3b1e1,
+    #ccccff,
+    transparent
+  ); /* purple gradient */
 }
 
-.scroll-button:hover{
-    background-color: rgb(211, 211, 211);
+.scroll-button {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  padding: 15px;
+  border-radius: 50%;
 }
+
+.scroll-button:hover {
+  background-color: rgb(211, 211, 211);
+}
+
 .collaspe-title:hover{
+
     background-color: rgb(233, 229, 229);
     border-radius: 10px;
 }
 
+
 .search {
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    text-align: center;
-    padding-top: 30px;
-    font-size: 20px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  text-align: center;
+  padding-top: 30px;
+  font-size: 20px;
 }
 
 .collaspe-title {
@@ -230,12 +273,14 @@ h1{
     align-items: center;
     display: flex;
     justify-content: center;
-}
-.search-bars{
-    margin-left: 90px;
     flex-direction: column;
-    display: flex;
 }
+.search-bars {
+  margin-left: 90px;
+  flex-direction: column;
+  display: flex;
+}
+
 
 .select-box{
     font-family: Georgia, 'Times New Roman', Times, serif;
@@ -254,3 +299,27 @@ h1{
     padding-bottom: 30px;
     color: purple;
 }
+
+.dropdowns {
+  display: flex;
+  gap: 10px; /* Adjust the gap between dropdowns */
+}
+
+.dropdown-container {
+  display: flex;
+  justify-content: center;
+}
+
+.dropdown-box {
+  background-color: #f0f8ff; /* Light blue color */
+  border: 1px solid #ccc; /* Border for the box */
+  border-radius: 5px; /* Adjust border radius for rounded corners */
+  padding: 10px; /* Adjust padding inside the box */
+}
+
+@media screen and (max-width: 768px) {
+  .dropdowns {
+    flex-direction: column; 
+  }
+}
+

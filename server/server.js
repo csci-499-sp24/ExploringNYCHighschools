@@ -98,21 +98,24 @@ app.get("/api/schools", async (req, res) => {
         ap_classes: { [Op.substring]: cls.trim() },
       }));
       // Combine conditions using OR operator
-      filters[Op.and] = apClassConditions;
+      if (!filters[Op.and]) filters[Op.and] = [];
+      filters[Op.and] = [...filters[Op.and], ...apClassConditions];
     }
     if (req.query.psal_boys && typeof req.query.psal_boys === "string") {
       const psalBoysSports = req.query.psal_boys.split(",");
       const psalBoysConditions = psalBoysSports.map((sport) => ({
         psal_boys: { [Op.substring]: sport.trim() },
       }));
-      filters[Op.and] = psalBoysConditions;
+      if (!filters[Op.and]) filters[Op.and] = [];
+      filters[Op.and] = [...filters[Op.and], ...psalBoysConditions];
     }
     if (req.query.psal_girls && typeof req.query.psal_girls === "string") {
       const psalGirlsSports = req.query.psal_girls.split(",");
       const psalGirlsConditions = psalGirlsSports.map((sport) => ({
         psal_girls: { [Op.substring]: sport.trim() },
       }));
-      filters[Op.and] = psalGirlsConditions;
+      if (!filters[Op.and]) filters[Op.and] = [];
+      filters[Op.and] = [...filters[Op.and], ...psalGirlsConditions];
     }
     console.log(filters);
     const schools = await School.findAll({

@@ -156,20 +156,20 @@ function Rankings() {
                 <div className="textbox-ranking">
                     <div className="rank-data" >
                     {selectedRanking!=="" && (
-                    <div style={{fontFamily: "Georgia, 'Times New Roman', Times, serif", fontSize:"18px"}}>Top Ranking</div>)}
-                   {fiftySchools.map((item, index) => (
+                        <div style={{fontFamily: "Georgia, 'Times New Roman', Times, serif", fontSize:"18px"}}>Top Ranking</div>)}
+                        {fiftySchools.map((item, index) => (
                         <TextBoxRanking key={index} name={`${index+1}. ${item.school_name}`} content={item[rankName]} school={item.dbn}/>
-                   ))}
+                    ))}
                    </div>
                    <div className="rank-data">
-                   {selectedRanking!=="" && (
-                    <div style={{fontFamily: "Georgia, 'Times New Roman', Times, serif", fontSize:"18px"}}>Lowest Ranking</div>)}
-                   {lowestFiftySchools.map((item, index) => (
+                    {selectedRanking!=="" && (
+                        <div style={{fontFamily: "Georgia, 'Times New Roman', Times, serif", fontSize:"18px"}}>Lowest Ranking</div>)}
+                        {lowestFiftySchools.map((item, index) => (
                         <TextBoxRanking key={index} name={`${index+1}. ${item.school_name}`} content={item[rankName]} school={item.dbn}/>
-                   ))}
+                    ))}
                    </div>
-                   </div>
-                 )}
+                </div>
+            )}
             </div>
         </div>
     )

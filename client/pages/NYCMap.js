@@ -18,6 +18,13 @@ const NYCMap = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const router = useRouter();
 
+  const selectedSchoolIcon = isLoaded
+    ? {
+        url: 'https://maps.google.com/mapfiles/ms/icons/green-dot.png',
+        scaledSize: new window.google.maps.Size(60, 60),
+      }
+    : null;
+
   useEffect(() => {
     fetchSchools();
   }, []);
@@ -85,7 +92,9 @@ const NYCMap = () => {
                 );
                 if (match) {
                   const [lat, lng] = match.slice(1).map(parseFloat);
-                  return (
+                  const isSelectedSchool =
+                    selectedSchool && selectedSchool.dbn === school.dbn;
+                  return !isSelectedSchool ? (
                     <MarkerF
                       key={`${school.dbn}-${index}`}
                       position={{
@@ -94,7 +103,7 @@ const NYCMap = () => {
                       }}
                       title={school.school_name}
                     />
-                  );
+                  ) : null;
                 }
               }
               return null;
@@ -115,10 +124,8 @@ const NYCMap = () => {
                       lat,
                       lng,
                     }}
-                    icon={{
-                      url: 'https://maps.google.com/mapfiles/ms/icons/green-dot.png',
-                      scaledSize: new window.google.maps.Size(40, 40),
-                    }}
+                    icon={selectedSchoolIcon}
+                    zIndex={1}
                   />
                 );
               }

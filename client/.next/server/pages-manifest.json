@@ -4,6 +4,5 @@
   "/_document": "pages/_document.js",
   "/NYCMap": "pages/NYCMap.js",
   "/schools": "pages/schools.js",
-  "/homepage": "pages/homepage.js",
   "/schools/[dbn]": "pages/schools/[dbn].js"
 }

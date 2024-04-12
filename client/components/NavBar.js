@@ -62,7 +62,7 @@ function NavBar() {
   };
 
   return (
-    <nav style={{ background: "#CBC3E3", width: "100%", height: "60px", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 20px",  top: "0", left: "0", zIndex: "1" }}>
+    <nav style={{ background: "#CBC3E3", width: "100%", height: "60px", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0", position: "fixed", top: "0", left: "0", zIndex: "1" }}>
       <div style={{ display: "flex", alignItems: "center" }}>
         {navbarItems.map((item, index) => (
           <React.Fragment key={index}>

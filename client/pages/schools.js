@@ -82,12 +82,12 @@ function Schools() {
             <h1 className="display-1">Explore High Schools</h1>
             <SearchBar onSearch={handleSearch} />
                 {error && <p>{error}</p>}
-                <div>
+                <div className="school-wrapper-container">
                 {foundQuery ? (
                     results.length > 0 ? (results.map((school, index) => (
                             <div key={index} className="d-flex flex-row bd-highlight mb-3 justify-content-center">
                                 <div className="p-2 border flex-fill bd-highlight">
-                                    <Card text1={`School Name: ${school.school_name}`} text2={`Address: ${school.address}`} text3={`Website: ${school.website}`} text4={`Phone Number: ${school.phone_number}`} text5={`Email: ${school.email}`}></Card>
+                                    <Card data={school}></Card>
                                 <div className="school-button">
                                     <SchoolButton link={`/schools/${school.dbn}`}></SchoolButton>
                                     <SchoolButton link={`/schools/quality-reports/${school.dbn}`} text={"View School Quality Report"}></SchoolButton>
@@ -96,10 +96,10 @@ function Schools() {
                         </div>
                 ))
                 ) : ( <p className="search">No matches found!</p> )
-                ) : (schools.map((school, index) => (
-                    <div key={index} className="d-flex flex-row bd-highlight mb-3 justify-content-center">
+                ) : (schools?.map((school, index) => (
+                    <div key={index} className="school-container d-flex flex-row bd-highlight mb-3 justify-content-center">
                                 <div className="p-2 border flex-fill bd-highlight">
-                                    <Card text1={`School Name: ${school.school_name}`} text2={`Address: ${school.address}`} text3={`Website: ${school.website}`} text4={`Phone Number: ${school.phone_number}`} text5={`Email: ${school.email}`}></Card>
+                                    <Card data={school} ></Card>
                                 
                                 <div className="school-button">
                                     <SchoolButton link={`/schools/${school.dbn}`}></SchoolButton>

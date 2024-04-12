@@ -3,9 +3,18 @@
 @tailwind utilities; */
 
 /* Styling for School Profile  */
-section{
+/* section{
     padding-top: 30px; 
     padding-bottom: 30px;
+} */
+
+
+.search-school-container{
+    display: flex;
+    margin-bottom: 1rem;
+    gap: 1rem;
+    width: 100%;
+    justify-content: center;
 }
 
 h1{
@@ -15,8 +24,32 @@ h1{
     color: purple;
 }
 
-.card-title h6{
-    text-align: center;
+
+.school-wrapper-container{
+ display: flex;
+ justify-content: center;
+ width: 100%;
+ flex-direction: column;
+ align-items: center;
+}
+
+.school-container{
+    display: flex;
+    width: max-content;
+    justify-content: center;
+    max-width: 600px;
+    width: 100%;
+}
+
+.card-title {
+    text-align: left;
+    color:black;
+    margin-bottom: 0.5rem;
+    text-transform: capitalize;
+}
+
+.card-title-span{
+    font-weight: 800;
 }
 .card-body h5 {
    color: purple;
@@ -24,10 +57,12 @@ h1{
    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
-.card-body h6{
+.card-body  {
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 18px;
     text-align: center;
+    padding: 1rem;
+    
 }
 .card-text{
     font-family: Georgia, 'Times New Roman', Times, serif;
@@ -95,6 +130,7 @@ h1{
     padding: 10px;
     border-radius: 20px;
     margin-left: 10px;
+    width: 300px;
 }
 
 .background-color {
@@ -164,6 +200,7 @@ h1{
     align-items: center;
     display: flex;
     justify-content: center;
+    flex-direction: column;
 }
 .search-bars{
     margin-left: 90px;

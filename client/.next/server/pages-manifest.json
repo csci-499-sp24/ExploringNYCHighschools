@@ -3,6 +3,6 @@
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
   "/NYCMap": "pages/NYCMap.js",
-  "/schools": "pages/schools.js",
-  "/schools/[dbn]": "pages/schools/[dbn].js"
+  "/schools/[dbn]": "pages/schools/[dbn].js",
+  "/schools": "pages/schools.js"
 }

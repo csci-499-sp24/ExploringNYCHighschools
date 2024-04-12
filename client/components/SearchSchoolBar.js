@@ -17,6 +17,9 @@ const SearchSchoolBar = ({ onSearch, schools}) => {
     onSearch(school.school_name);
     setSearchResults([]);
   }
+  const clearQuery = () => {
+    setQuery("");
+  }
   useEffect(() => {
     const handleClickOutsideSearchBar = (e) => {
         if(searchBarFocused.current && !searchBarFocused.current.contains(e.target)) {
@@ -44,6 +47,7 @@ const SearchSchoolBar = ({ onSearch, schools}) => {
                 onChange={handleChange}
                 ref={searchBarFocused}
             />
+            <button className="btn btn-primary" onClick={()=>clearQuery()}>X</button>
             <div className="row justify-content-center">
                 <div className="bg-light border rounded" style={{width: "900px"}}>
                     {searchResults.length > 0 && query!=="" && showSearchResults && (

@@ -153,10 +153,12 @@ h1 {
 .scroll-button:hover {
   background-color: rgb(211, 211, 211);
 }
-.collaspe-title:hover {
-  background-color: rgb(233, 229, 229);
-  border-radius: 10px;
-}
+
+/* .collaspe-title:hover{
+    background-color: rgb(233, 229, 229);
+    border-radius: 10px;
+} */
+
 
 .search {
   font-family: Georgia, "Times New Roman", Times, serif;
@@ -166,37 +168,45 @@ h1 {
 }
 
 .collaspe-title {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  cursor: pointer;
-  background-color: white;
-  width: 900px;
-  padding: 5px;
-  font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* cursor: pointer; */
+    background-color: white;
+    width: 900px;
+    padding: 5px;
+    font-size: 16px;
 }
-.collaspe-body {
-  width: 900px;
-  font-size: 15px;
-}
-
-.collaspe-item {
-  font-family: Georgia, "Times New Roman", Times, serif;
-  display: flex;
-  max-width: fit-content;
-  border: 1px solid;
-  align-items: center;
-  justify-content: center;
-  margin: 1rem auto;
-  flex-direction: column;
-  padding: 10px;
-  background-color: white;
-  border-radius: 10px;
+.collaspe-body{
+    width: 900px;
+    font-size: 15px;
+    display: flex;
+    flex-direction: row;
 }
 
-.compare-search {
-  font-family: Georgia, "Times New Roman", Times, serif;
-  margin: 1rem auto;
+.school-data {
+    flex: 1;
+    margin-right: 50px;
+}
+
+.collaspe-item{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    display: flex;
+    max-width: fit-content;
+    border: 1px solid;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem auto;
+    flex-direction: column;
+    padding: 10px;
+    background-color: white;
+    border-radius: 10px;
+   
+}
+
+.compare-search{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin: 1rem auto;
 }
 
 .search-compare {

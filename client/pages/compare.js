@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Collapsible from "@/components/Collapsible";
+import TextBox from "@/components/TextBox";
 import SearchSchoolBar from "@/components/SearchSchoolBar";
 import styles from '@/styles/compare.module.css'
 
@@ -133,79 +133,85 @@ function Compare() {
             }
             {school1ProfileData && school2ProfileData && buttonState && errorMessage === "" &&
                 (
-                    <div>
-                        <br />
-                        <div className="collapse-expand">
-                            <button className="btn btn-primary collapse-expand-button" onClick={handleExpandAll}>Expand All</button>
-                            <button className="btn btn-primary collapse-expand-button" onClick={handleCollapseAll}>Collaspe All</button>
-                        </div>
+                <div>
+                    <br/>
+                <div className="collaspe-item">
+                <div className="collaspe-body">
+                    <div className="school-data">
+                        <span style={{ fontWeight: "bold", fontSize: "17px"}}>{`${school1}`}</span>
+                    </div>
+                    <div className="school-data">
+                        <span style={{ fontWeight: "bold", fontSize: "17px" }}>{`${school2}`}</span>
+                    </div>
+                </div>
+                </div>
+                    <div className="collaspe">
+                        {[
+                            {
+                                question: "What languages are offered to students?",
+                                school1_answer: school1ProfileData.languages,
+                                school2_answer: school2ProfileData.languages,
+                            },
+                            {
+                                question: "What AP courses are offered to students?",
+                                school1_answer: school1ProfileData.ap_classes,
+                                school2_answer: school2ProfileData.ap_classes
+                            },
+                            {
+                                question: "What PSAL sports are offered to male students?",
+                                school1_answer: school1ProfileData.psal_boys,
+                                school2_answer: school2ProfileData.psal_boys
+                            },
+                            {
+                                question: "What PSAL sports are offered to female students?",
+                                school1_answer: school1ProfileData.psal_girls,
+                                school2_answer: school2ProfileData.psal_girls
+                            },
+                            {
+                                question: "How many students go to this school?",
+                                school1_answer: school1ProfileData.total_students,
+                                school2_answer: school2ProfileData.total_students
+                            },
+                            {
+                                question: "What is the graduation rate?",
+                                school1_answer: school1ProfileData.grad_rate,
+                                school2_answer: school2ProfileData.grad_rate
+                            },
+                            {
+                                question: "What is the attendance rate?",
+                                school1_answer: school1ProfileData.attendance_rate,
+                                school2_answer: school2ProfileData.attendance_rate
+                            },
+                            {
+                                question: "What is the college career rate?",
+                                school1_answer: school1ProfileData.college_career_rate,
+                                school2_answer: school2ProfileData.college_career_rate
+                            },
+                            {
+                                question: "What is the student safety rating?",
+                                school1_answer: school1ProfileData.student_safety,
+                                school2_answer: school2ProfileData.student_safety
+                            },
+                            {
+                                question: "What neighborhood is the school in?",
+                                school1_answer: school1ProfileData.neighborhood,
+                                school2_answer: school2ProfileData.neighborhood
+                            },
+                            {
+                                question: "What subways can you take?",
+                                school1_answer: school1ProfileData.subways_to_school,
+                                school2_answer: school2ProfileData.subways_to_school
+                            },
+                            {
+                                question: "What buses can you take?",
+                                school1_answer: school1ProfileData.bus_to_school,
+                                school2_answer: school2ProfileData.bus_to_school
+                            }
+                        ].map((item,index)=> (
+                            <TextBox key={index} question={item.question} school1_answer={item.school1_answer} school2_answer={item.school2_answer}/>
+                        ))}
+                    </div>
 
-                        <div className="collaspe">
-                            {[
-                                {
-                                    question: "What languages are offered to students?",
-                                    school1_answer: school1ProfileData.languages,
-                                    school2_answer: school2ProfileData.languages,
-                                },
-                                {
-                                    question: "What AP courses are offered to students?",
-                                    school1_answer: school1ProfileData.ap_classes,
-                                    school2_answer: school2ProfileData.ap_classes
-                                },
-                                {
-                                    question: "What PSAL sports are offered to male students?",
-                                    school1_answer: school1ProfileData.psal_boys,
-                                    school2_answer: school2ProfileData.psal_boys
-                                },
-                                {
-                                    question: "What PSAL sports are offered to female students?",
-                                    school1_answer: school1ProfileData.psal_girls,
-                                    school2_answer: school2ProfileData.psal_girls
-                                },
-                                {
-                                    question: "How many students go to this school?",
-                                    school1_answer: school1ProfileData.total_students,
-                                    school2_answer: school2ProfileData.total_students
-                                },
-                                {
-                                    question: "What is the graduation rate?",
-                                    school1_answer: school1ProfileData.grad_rate,
-                                    school2_answer: school2ProfileData.grad_rate
-                                },
-                                {
-                                    question: "What is the attendance rate?",
-                                    school1_answer: school1ProfileData.attendance_rate,
-                                    school2_answer: school2ProfileData.attendance_rate
-                                },
-                                {
-                                    question: "What is the college career rate?",
-                                    school1_answer: school1ProfileData.college_career_rate,
-                                    school2_answer: school2ProfileData.college_career_rate
-                                },
-                                {
-                                    question: "What is the student safety rating?",
-                                    school1_answer: school1ProfileData.student_safety,
-                                    school2_answer: school2ProfileData.student_safety
-                                },
-                                {
-                                    question: "What neighborhood is the school in?",
-                                    school1_answer: school1ProfileData.neighborhood,
-                                    school2_answer: school2ProfileData.neighborhood
-                                },
-                                {
-                                    question: "What subways can you take?",
-                                    school1_answer: school1ProfileData.subways_to_school,
-                                    school2_answer: school2ProfileData.subways_to_school
-                                },
-                                {
-                                    question: "What buses can you take?",
-                                    school1_answer: school1ProfileData.bus_to_school,
-                                    school2_answer: school2ProfileData.bus_to_school
-                                }
-                            ].map((item, index) => (
-                                <Collapsible key={index} question={item.question} school1_answer={item.school1_answer} school2_answer={item.school2_answer} school1={school1} school2={school2} expand={expandAll} collapse={collapseAll} />
-                            ))}
-                        </div>
                     </div>
                 )
             }
@@ -343,8 +349,9 @@ function Compare() {
                                 school1_answer: school1Report.family_community_ties,
                                 school2_answer: school2Report.family_community_ties
                             }
-                        ].map((item, index) => (
-                            <Collapsible key={index} question={item.question} school1_answer={item.school1_answer} school2_answer={item.school2_answer} school1={school1} school2={school2} expand={expandAll} collapse={collapseAll} />
+                        ].map((item,index)=> (
+                            <TextBox key={index} question={item.question} school1_answer={item.school1_answer} school2_answer={item.school2_answer}/>
+
                         ))}
                     </div>
                 )}

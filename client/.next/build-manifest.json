@@ -12,10 +12,10 @@
   ],
   "rootMainFiles": [],
   "pages": {
-    "/": [
+    "/NYCMap": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/index.js"
+      "static/chunks/pages/NYCMap.js"
     ],
     "/_app": [
       "static/chunks/webpack.js",
@@ -27,10 +27,15 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/schools": [
+    "/homepage": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/schools.js"
+      "static/chunks/pages/homepage.js"
+    ],
+    "/schools/[dbn]": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/schools/[dbn].js"
     ]
   },
   "ampFirstPages": []

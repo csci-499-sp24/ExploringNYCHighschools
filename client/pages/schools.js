@@ -100,17 +100,13 @@ function Schools() {
           <p>Loading...</p>
         ) : (
           <ul>
+          <div className="school-wrapper-container">
             {schoolsData &&
               schoolsData.map((school, index) => (
                 <div key={index}>
                   <div className="d-flex flex-row bd-highlight mb-3 justify-content-center">
                     <div className="p-2 border flex-fill bd-highlight">
-                      <Card
-                        text1={`School Name: ${school.school_name}`}
-                        text2={`Address: ${school.address}`}
-                        text3={`Website: ${school.website}`}
-                        text4={`Phone Number: ${school.phone_number}`}
-                      />
+                      <Card data={school} ></Card>
                       <div className="school-button">
                         <SchoolButton link={`/schools/${school.dbn}`} />
                         <SchoolButton
@@ -122,6 +118,7 @@ function Schools() {
                   </div>
                 </div>
               ))}
+              </div>
           </ul>
         )}
       </section>

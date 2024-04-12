@@ -27,10 +27,15 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/schools": [
+    "/compare": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/schools.js"
+      "static/chunks/pages/compare.js"
+    ],
+    "/homepage": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/homepage.js"
     ]
   },
   "ampFirstPages": []

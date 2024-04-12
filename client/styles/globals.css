@@ -3,9 +3,18 @@
 @tailwind utilities; */
 
 /* Styling for School Profile  */
-section {
-  padding-top: 30px;
-  padding-bottom: 30px;
+
+/* section{
+    padding-top: 30px; 
+    padding-bottom: 30px;
+} */
+
+.search-school-container{
+    display: flex;
+    margin-bottom: 1rem;
+    gap: 1rem;
+    width: 100%;
+    justify-content: center;
 }
 
 h1 {
@@ -15,64 +24,89 @@ h1 {
   color: purple;
 }
 
-.card-title h6 {
-  text-align: center;
+.school-wrapper-container{
+ display: flex;
+ justify-content: center;
+ width: 100%;
+ flex-direction: column;
+ align-items: center;
+}
+
+.school-container{
+    display: flex;
+    width: max-content;
+    justify-content: center;
+    max-width: 600px;
+    width: 100%;
+}
+
+.card-title {
+    text-align: left;
+    color:black;
+    margin-bottom: 0.5rem;
+    text-transform: capitalize;
+}
+
+.card-title-span{
+    font-weight: 800;
 }
 .card-body h5 {
-  color: purple;
-  text-transform: capitalize;
-  font-family: Georgia, "Times New Roman", Times, serif;
+   color: purple;
+   text-transform: capitalize;
+   font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
-.card-body h6 {
-  font-family: Georgia, "Times New Roman", Times, serif;
-  font-size: 18px;
-  text-align: center;
+.card-body  {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 18px;
+    text-align: center;
+    padding: 1rem;
+    
 }
-.card-text {
-  font-family: Georgia, "Times New Roman", Times, serif;
-  font-size: 16px;
-}
-
-.desc {
-  font-family: Georgia, "Times New Roman", Times, serif;
-  font-size: 18px;
-  text-align: center;
+.card-text{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 16px;
 }
 
-#hero .card {
-  text-align: center;
-  width: 25rem;
-  height: 25rem;
+.desc{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 18px;
+    text-align: center;
 }
 
-#quality-reports .card {
-  text-align: center;
-  width: 25rem;
-  height: 10rem;
-}
+#hero .card{
+   text-align: center;
+   width: 25rem;
+   height: 25rem;
+} 
 
-.message-not-found {
-  font-family: Georgia, "Times New Roman", Times, serif;
-  font-size: 18px;
-  align-items: center;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+#quality-reports .card{
+    text-align: center;
+    width: 25rem;
+    height: 10rem;
+ } 
+
+.message-not-found{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 18px;
+    align-items: center;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
-.message-select-schools {
-  font-family: Georgia, "Times New Roman", Times, serif;
-  font-size: 18px;
-  align-items: center;
-  display: flex;
-  justify-content: center;
+.message-select-schools{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 18px;
+    align-items: center;
+    display: flex;
+    justify-content: center; 
 }
-.school-button {
-  text-align: center;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  font-family: Georgia, "Times New Roman", Times, serif;
+.school-button{
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 .school-button button {
   margin-left: 10px;
@@ -90,11 +124,12 @@ h1 {
   border-radius: 20px;
 }
 
-.compare {
-  font-family: Georgia, "Times New Roman", Times, serif;
-  padding: 10px;
-  border-radius: 20px;
-  margin-left: 10px;
+.compare{
+    font-family: Georgia, 'Times New Roman', Times, serif; 
+    padding: 10px;
+    border-radius: 20px;
+    margin-left: 10px;
+    width: 300px;
 }
 
 .background-color {
@@ -175,9 +210,10 @@ h1 {
 }
 
 .search-compare {
-  align-items: center;
-  display: flex;
-  justify-content: center;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }
 .search-bars {
   margin-left: 90px;
@@ -200,4 +236,10 @@ h1 {
   border: 1px solid #ccc; /* Border for the box */
   border-radius: 5px; /* Adjust border radius for rounded corners */
   padding: 10px; /* Adjust padding inside the box */
+}
+
+@media screen and (max-width: 768px) {
+  .dropdowns {
+    flex-direction: column; 
+  }
 }

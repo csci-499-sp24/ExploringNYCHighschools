@@ -2,7 +2,8 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/compare": "pages/compare.js",
-  "/homepage": "pages/homepage.js",
-  "/": "pages/index.js"
+  "/": "pages/index.js",
+  "/schools": "pages/schools.js",
+  "/schools/[dbn]": "pages/schools/[dbn].js",
+  "/NYCMap": "pages/NYCMap.js"
 }

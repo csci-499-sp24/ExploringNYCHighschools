@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useRouter } from 'next/router';
 import { GoogleMap, LoadScript, MarkerF } from '@react-google-maps/api';
 
@@ -17,13 +17,14 @@ const NYCMap = () => {
   const [selectedSchool, setSelectedSchool] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const router = useRouter();
+  const mapRef = useRef(null);
 
   const selectedSchoolIcon = isLoaded
-    ? {
-        url: 'https://maps.google.com/mapfiles/ms/icons/green-dot.png',
-        scaledSize: new window.google.maps.Size(40, 40),
-      }
-    : null;
+  ? {
+      url: 'https://maps.google.com/mapfiles/ms/micons/blue-dot.png',
+      scaledSize: new window.google.maps.Size(40, 40),
+    }
+  : null;
 
   useEffect(() => {
     fetchSchools();
@@ -40,6 +41,16 @@ const NYCMap = () => {
       if (selectedSchool) {
         setSelectedSchool(selectedSchool);
         console.log('Selected School:', selectedSchool);
+
+        // Zoom in on the selected school
+        if (mapRef.current) {
+          const match = selectedSchool.address.match(/\((-?\d+\.\d+),(-?\d+\.\d+)\)/);
+          if (match) {
+            const [lat, lng] = match.slice(1).map(parseFloat);
+            mapRef.current.panTo({ lat, lng });
+            mapRef.current.setZoom(15); // Adjust the zoom level as needed
+          }
+        }
       }
     }
   }, [isLoaded, router.query, schools]);
@@ -63,7 +74,12 @@ const NYCMap = () => {
         googleMapsApiKey="AIzaSyC7ebZzwn5MyLSBC3bEB2N6CXCNj_YnoK4"
         onLoad={() => setIsLoaded(true)}
       >
-        <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={11}>
+        <GoogleMap
+          mapContainerStyle={containerStyle}
+          center={center}
+          zoom={11}
+          onLoad={(map) => (mapRef.current = map)}
+        >
           {console.log('Rendering schools:', schools)}
           {isLoaded && schools.length === 0 && (
             <div
@@ -87,14 +103,12 @@ const NYCMap = () => {
             schools.length > 0 &&
             schools.map((school, index) => {
               if (school.address && typeof school.address === 'string') {
-                const match = school.address.match(
-                  /\((-?\d+\.\d+),(-?\d+\.\d+)\)/
-                );
+                const match = school.address.match(/\((-?\d+\.\d+),(-?\d+\.\d+)\)/);
                 if (match) {
                   const [lat, lng] = match.slice(1).map(parseFloat);
                   const isSelectedSchool =
                     selectedSchool && selectedSchool.dbn === school.dbn;
-                  return !isSelectedSchool ? (
+                  return (
                     <MarkerF
                       key={`${school.dbn}-${index}`}
                       position={{
@@ -102,35 +116,14 @@ const NYCMap = () => {
                         lng,
                       }}
                       title={school.school_name}
+                      icon={isSelectedSchool ? selectedSchoolIcon : undefined}
+                      zIndex={isSelectedSchool ? 1 : 0}
                     />
-                  ) : null;
+                  );
                 }
               }
               return null;
             })}
-          {isLoaded &&
-            selectedSchool &&
-            selectedSchool.address &&
-            typeof selectedSchool.address === 'string' &&
-            (() => {
-              const match = selectedSchool.address.match(
-                /\((-?\d+\.\d+),(-?\d+\.\d+)\)/
-              );
-              if (match) {
-                const [lat, lng] = match.slice(1).map(parseFloat);
-                return (
-                  <MarkerF
-                    position={{
-                      lat,
-                      lng,
-                    }}
-                    icon={selectedSchoolIcon}
-                    zIndex={1}
-                  />
-                );
-              }
-              return null;
-            })()}
         </GoogleMap>
       </LoadScript>
     </div>

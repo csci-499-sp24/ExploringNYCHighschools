@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { auth } from "../firebase/firebaseConfig";
 import { useRouter } from 'next/router';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import SideBar from '../components/SideBar';
 
 function NavBar() {
   const navbarItems = [
@@ -62,17 +63,8 @@ function NavBar() {
   };
 
   return (
-    <nav style={{ background: "#CBC3E3", width: "100%", height: "60px", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 20px", position: "fixed", top: "0", left: "0", zIndex: "1" }}>
-      <div style={{ display: "flex", alignItems: "center" }}>
-        {navbarItems.map((item, index) => (
-          <React.Fragment key={index}>
-            <a href={item.url} style={{ color: "white", padding: "10px", textDecoration: "none", marginRight: "10px" }}>
-              {item.text}
-            </a>
-            {index !== navbarItems.length - 1 && <div style={{ height: "20px", width: "3px", backgroundColor: "lightgray", marginLeft: "10px", marginRight: "10px" }} />}
-          </React.Fragment>
-        ))}
-      </div>
+    <nav style={{ background: "#CBC3E3", width: "100%", height: "60px", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 20px", position: "fixed", top: "0", left: "0", zIndex: "1"}}> 
+      <SideBar/>
       <div style={{ display: "flex", alignItems: "center", position: "relative" }}>
         {user ? (
           <div

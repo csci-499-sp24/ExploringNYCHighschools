@@ -327,7 +327,7 @@ h1 {
 /*navbar searchbar*/
 .searchbar {
   display: flex;
-  align-items: center; /* Vertically align items */
+  align-items: center; 
 }
 
 .search-bar-button {

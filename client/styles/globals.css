@@ -300,6 +300,7 @@ h1 {
     color: purple;
 }
 
+/*schools page dropdowns*/
 .dropdowns {
   display: flex;
   gap: 10px; /* Adjust the gap between dropdowns */
@@ -320,6 +321,29 @@ h1 {
 @media screen and (max-width: 768px) {
   .dropdowns {
     flex-direction: column; 
+  }
+}
+
+/*navbar searchbar*/
+.searchbar {
+  display: flex;
+  align-items: center; 
+}
+
+.search-bar-button {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  border-radius: 999px; 
+  border: 1px solid #007bff; 
+  background-color: #007bff; 
+  color: #ffffff; 
+  padding: 0.5rem 1rem; 
+  cursor: pointer; 
+}
+
+@media (min-width: 768px) {
+  .searchbar .rbt-input-main {
+    width: 38rem; /* Adjust the width for larger screens */
   }
 }
 

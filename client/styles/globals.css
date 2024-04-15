@@ -394,3 +394,6 @@ label #cancel{
 .sidebar ul a i{
   margin-right: 16px;
 }
+.sidebar ul:hover{
+  background-color: #4070f4;
+}

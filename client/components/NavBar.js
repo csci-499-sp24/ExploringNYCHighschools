@@ -4,6 +4,8 @@ import { auth } from "../firebase/firebaseConfig";
 import { useRouter } from 'next/router';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import SideBar from '../components/SideBar';
+import SearchBar from "./SearchBar";
+
 function NavBar() {
   const navbarItems = [
     { text: "Home", url: "/homepage" },
@@ -65,6 +67,7 @@ function NavBar() {
     <nav style={{ background: "#CBC3E3", width: "100%", height: "60px", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0", position: "fixed", top: "0", left: "0", zIndex: "1" }}>
       <SideBar/>
       <div style={{ display: "flex", alignItems: "center", position: "relative" }}>
+        <SearchBar />
         {user ? (
           <div
             ref={dropdownRef}

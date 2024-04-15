@@ -1,24 +1,20 @@
 import Link from 'next/link';
 import React from 'react';
+import { FaHome } from "react-icons/fa";
+import { FaSchool } from 'react-icons/fa';
+import { FaBalanceScale } from 'react-icons/fa';
+import { FaMap } from "react-icons/fa";
+import { FaChartLine } from "react-icons/fa";
+import { TiContacts } from "react-icons/ti";
 
 function SideBar(){
     const sidebarItems = [
-        {
-          name: "Home",
-          href: "/homepage",
-        },
-        {
-          name: "Search For Schools",
-          href: "/schools",
-        },
-        {
-          name: "Comparing Schools",
-          href: "/compare",
-        },
-        {
-          name: "Get Directions",
-          href: "/NYCMap",
-        },
+        { name: "Home", href: "/homepage", Icon: <FaHome />},
+        { name: "Search For Schools", href: "/schools", Icon: <FaSchool /> },
+        { name: "Comparing Schools", href: "/compare", Icon: <FaBalanceScale /> },
+        { name: "Get Directions", href: "/NYCMap", Icon: <FaMap />},
+        { name: "School Rankings", href: "/ranking", Icon: <FaChartLine />},
+        { name: "Contact Us", href: "/contact", Icon: <TiContacts />},
       ];
     
     return(
@@ -29,17 +25,20 @@ function SideBar(){
             <i className="fas fa-times" id="cancel"></i>
         </label>
         <div className="sidebar">
-            {sidebarItems.map((item, index) => (
-                <React.Fragment key={index}>
-                    <ul>
+            {sidebarItems.map(item =>{
+                return(
+                    <ul key={item.name}>
                     <li>
                         <Link href= {item.href}>
+                            <i>
+                                {item.Icon}
+                            </i>
                             {item.name}
                         </Link>
                     </li>
                     </ul>
-                </React.Fragment>
-            ))}
+                )
+            })}
         </div>
         </div>
     )

@@ -300,6 +300,7 @@ h1 {
     color: purple;
 }
 
+/*schools page dropdowns*/
 .dropdowns {
   display: flex;
   gap: 10px; /* Adjust the gap between dropdowns */
@@ -320,6 +321,23 @@ h1 {
 @media screen and (max-width: 768px) {
   .dropdowns {
     flex-direction: column; 
+  }
+}
+
+/*navbar searchbar*/
+.searchbar {
+  display: flex;
+  align-items: center; /* Vertically align items */
+}
+
+.search-bar-button {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .searchbar .rbt-input-main {
+    width: 38rem; /* Adjust the width for larger screens */
   }
 }
 

@@ -1,57 +1,68 @@
 import React, { useState, useEffect } from "react";
+import { Typeahead } from "react-bootstrap-typeahead";
+import { useRouter } from "next/router";
 
-const SearchBar = ({ onSearch }) => {
+const SearchBar = () => {
+  const [schools, setSchools] = useState([]);
+  const [filteredSchools, setFilteredSchools] = useState([]);
   const [query, setQuery] = useState("");
-  const [searchType, setSearchType] = useState("school");
+  const [selectedSchool, setSelectedSchool] = useState(null);
+  const router = useRouter();
 
   useEffect(() => {
-    const delayTimer = setTimeout(() => {
-      // Trigger the search after a delay of 500 milliseconds
-      onSearch(query, searchType);
-    }, 500);
+    fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/schools`)
+      .then((response) => response.json())
+      .then((data) => {
+        setSchools(data.schools);
+        setFilteredSchools(data.schools);
+      })
+      .catch((error) => {
+        console.error("Error fetching schools:", error);
+      });
+  }, []);
 
-    return () => clearTimeout(delayTimer); // Clear the timer on component unmount or query/searchType change
-  }, [query, searchType, onSearch]);
-
-  const handleChange = (e) => {
-    const searchTerm = e.target.value;
-    setQuery(searchTerm);
+  const handleSearch = (query) => {
+    setQuery(query);
+    const filteredResults = schools.filter((school) =>
+      school.school_name.toLowerCase().includes(query.toLowerCase())
+    );
+    setFilteredSchools(filteredResults);
+    setSelectedSchool(null);
   };
 
-  const handleSearchTypeChange = (e) => {
-    const newSearchType = e.target.value;
-    setSearchType(newSearchType);
+  const handleSelectedSchool = (selected) => {
+    if (selected.length > 0) {
+      setSelectedSchool(selected[0]);
+    } else {
+      setSelectedSchool(null);
+    }
+  };
+
+  const goToSchoolPage = () => {
+    if (selectedSchool) {
+      const { dbn } = selectedSchool;
+      router.push(`/schools/${dbn}`);
+      setQuery("");
+    }
   };
 
   return (
-    <div className="my-12 text-center ">
-      <div className="flex items-center  search-school-container">
-        <input
-          type="text"
-          className="w-full py-2 px-4 outline-none rounded-l-md border border-blue-500 mr-2"
-          placeholder={`Search by ${
-            searchType === "school"
-              ? "school name"
-              : searchType === "neighborhood"
-              ? "neighborhood"
-              : searchType === "languages"
-              ? "languages"
-              : "AP classes"
-          }...`}
-          value={query}
-          onChange={handleChange}
-        />
-        <select
-          className="py-2 px-4 outline-none border border-blue-500 rounded-r-md"
-          value={searchType}
-          onChange={handleSearchTypeChange}
-        >
-          <option value="school">School Name</option>
-          <option value="neighborhood">Neighborhood</option>
-          <option value="languages">Languages</option>
-          <option value="ap_classes">AP Classes</option>
-        </select>
-      </div>
+    <div className="searchbar">
+      <Typeahead
+        id="school-search"
+        labelKey="school_name"
+        options={filteredSchools}
+        onSearch={(query) => handleSearch(query)}
+        placeholder="Search by school name..."
+        onChange={(selected) => handleSelectedSchool(selected)}
+      />
+      <button
+        onClick={goToSchoolPage}
+        disabled={!selectedSchool}
+        className="search-bar-button"
+      >
+        Go
+      </button>
     </div>
   );
 };

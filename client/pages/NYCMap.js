@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { useRouter } from 'next/router';
 import { GoogleMap, InfoWindowF, LoadScript, MarkerF } from '@react-google-maps/api';
 import SchoolButton from '@/components/SchoolButton';
+import Card from '@/components/Card';
 
 const containerStyle = {
   width: '100%',
@@ -20,7 +21,6 @@ const NYCMap = () => {
   const router = useRouter();
   const mapRef = useRef(null);
   const [selectedMarker, setSelectedMarker] = useState(null);
-  const [selectedMarkerWebsite, setSelectedMarkerWebsite] = useState(null);
 
   const selectedSchoolIcon = isLoaded
   ? {
@@ -71,14 +71,13 @@ const NYCMap = () => {
     }
   };
 const handleSelectedMarker = (school) => {
-  setSelectedMarker(school)
-  if(!school.website.startsWith("http")) {
-    const url = "https://"+school.website;
-    setSelectedMarkerWebsite(url);
-  }
-  else {
-    setSelectedMarkerWebsite(school.website)
-  }
+  // if(!school.website.startsWith("http")) {
+  //   const markerWithUrl = { ...school, website: "https://"+school.website};
+  //   setSelectedMarker(markerWithUrl);
+  // }
+  // else {
+    setSelectedMarker(school);
+  // }
 }
   return (
     <div style={{ height: '100vh', width: '100%' }}>
@@ -138,7 +137,7 @@ const handleSelectedMarker = (school) => {
               return null;
             })}
             {selectedMarker && (
-              <InfoWindowF
+              <InfoWindowF 
               position={{
                 lat: parseFloat(selectedMarker.lat),
                 lng: parseFloat(selectedMarker.lng),
@@ -146,21 +145,7 @@ const handleSelectedMarker = (school) => {
                 onCloseClick={()=>setSelectedMarker(null)}
               >
                 <div>
-                  <h3>{selectedMarker.school_name}</h3>
-                  <h4>Address: {selectedMarker.address}</h4>
-                  <h4>Phone Number: {selectedMarker.phone_number}</h4>
-                  <h4>
-                    Website:{" "}
-                    <a
-                      href={selectedMarkerWebsite}
-                      style={{ color: "black", borderBottom:"1px solid transparent", textDecoration:"none", fontWeight:"bold"}}
-                      onMouseOver={(e) => { e.target.style.borderBottom = "1px solid black"; }}
-                      onMouseLeave={(e) => { e.target.style.borderBottom = "1px solid transparent"; }}
-                      target="_blank"  
-                    >
-                      {selectedMarkerWebsite}
-                    </a>
-                  </h4>
+                  <Card data={selectedMarker}></Card>
                   <div className="school-button">
                         <SchoolButton link={`/schools/${selectedMarker.dbn}`} />
                         <SchoolButton

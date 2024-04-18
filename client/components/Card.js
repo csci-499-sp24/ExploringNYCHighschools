@@ -12,6 +12,11 @@ const Card = ({data }) => {
     if (typeof(text4)==='object') {
         text4="Unavailable"
     }
+    if(data?.website) {
+        if(!data?.website.startsWith("http")) {
+          data = { ...data, website: "https://"+data.website};
+        }
+    }
     return (
         <div className="card-fill">
             <div className="card-body">
@@ -26,7 +31,16 @@ const Card = ({data }) => {
 
                
                 <h6 className="card-title">
-                    <span className="card-title-span">Website: </span> {data?.website}
+                <span className="card-title-span">Website: </span>
+                    <a
+                    href={data?.website}
+                    style={{ color: "black", borderBottom: "1px solid transparent", textDecoration: "none" }}
+                    onMouseOver={(e) => { e.target.style.borderBottom = "1px solid black"; }}
+                    onMouseLeave={(e) => { e.target.style.borderBottom = "1px solid transparent"; }}
+                    target="_blank"
+                    >
+                    {data?.website}
+                    </a>
                 </h6>
 
                

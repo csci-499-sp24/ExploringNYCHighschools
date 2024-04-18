@@ -1,3 +1,4 @@
+import { ImNewTab } from "react-icons/im";
 
 const Card = ({data }) => {
     if (typeof(text1)==='object') {
@@ -39,8 +40,9 @@ const Card = ({data }) => {
                     onMouseLeave={(e) => { e.target.style.borderBottom = "1px solid transparent"; }}
                     target="_blank"
                     >
-                    {data?.website}
+                    {data?.website} 
                     </a>
+                    <ImNewTab />
                 </h6>
 
                

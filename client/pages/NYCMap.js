@@ -71,13 +71,7 @@ const NYCMap = () => {
     }
   };
 const handleSelectedMarker = (school) => {
-  // if(!school.website.startsWith("http")) {
-  //   const markerWithUrl = { ...school, website: "https://"+school.website};
-  //   setSelectedMarker(markerWithUrl);
-  // }
-  // else {
     setSelectedMarker(school);
-  // }
 }
   return (
     <div style={{ height: '100vh', width: '100%' }}>

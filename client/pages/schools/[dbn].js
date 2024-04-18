@@ -49,9 +49,15 @@ function SchoolProfile() {
                     </div>
                 </div>
                 <div className="row justify-content-center">
+                <div className="school-button">
                     <div className="col-auto">
                         <SchoolButton text={"Get Directions"} onClick={() => handleGetDirections(school.address)}></SchoolButton>
+                        <SchoolButton
+                          link={`/schools/quality-reports/${school.dbn}`}
+                          text={"Go to School Quality Report"}
+                        ></SchoolButton>
                     </div>
+                </div>
                 </div>
                 <div className="row">
                     <div className="d-flex flex-row bd-highlight mb-3 justify-content-center">

@@ -45,6 +45,11 @@ function SchoolQualityReport() {
                             </p>
                     </div>
                 </div>
+                <div className="school-button">
+                    <div className="col-auto">
+                        <SchoolButton link={`/schools/${school.dbn}`} />
+                    </div>
+                </div>
                     <div className="row">
                         <div className="d-flex flex-row bd-highlight mb-3 justify-content-center">
                             <div className="p-2 bd-highlight">

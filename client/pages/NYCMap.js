@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useRouter } from 'next/router';
-import { GoogleMap, InfoWindow, LoadScript, MarkerF } from '@react-google-maps/api';
+import { GoogleMap, InfoWindowF, LoadScript, MarkerF } from '@react-google-maps/api';
 
 const containerStyle = {
   width: '100%',
@@ -127,7 +127,7 @@ const NYCMap = () => {
               return null;
             })}
             {selectedMarker && (
-              <InfoWindow
+              <InfoWindowF
               position={{
                 lat: parseFloat(selectedMarker.lat),
                 lng: parseFloat(selectedMarker.lng),
@@ -142,7 +142,7 @@ const NYCMap = () => {
                   <h4>Email: {selectedMarker.email}</h4>
                   {/* <h4>{selectedMarker.address}</h4> */}
                 </div>
-                </InfoWindow>
+                </InfoWindowF>
             )}
         </GoogleMap>
       </LoadScript>

@@ -73,6 +73,15 @@ const NYCMap = () => {
 const handleSelectedMarker = (school) => {
     setSelectedMarker(school);
 }
+const getPosition = (school) => {
+  
+  const match = school.address.match(/\((-?\d+\.\d+),(-?\d+\.\d+)\)/);
+  if (match) {
+    const [lat, lng] = match.slice(1).map(parseFloat);
+    const adjust_pos = lat+0.02;
+    return {lat: adjust_pos, lng};
+  }
+}
   return (
     <div style={{ height: '100vh', width: '100%' }}>
       <LoadScript
@@ -132,11 +141,8 @@ const handleSelectedMarker = (school) => {
             })}
             {selectedMarker && (
               <InfoWindowF 
-              position={{
-                lat: parseFloat(selectedMarker.lat),
-                lng: parseFloat(selectedMarker.lng),
-              }}
-                onCloseClick={()=>setSelectedMarker(null)}
+              position={getPosition(selectedMarker)}
+              onCloseClick={()=>setSelectedMarker(null)}
               >
                 <div>
                   <Card data={selectedMarker}></Card>

@@ -3,6 +3,9 @@ const Sequelize = require('sequelize') // Import Sequelize
 const db = require('../db'); // Import Sequelize database instance
 
 const School = db.define("school", {
+    imgUrl: {
+        type: Sequelize.STRING
+    },
     // Data from HS directory
     neighborhood: {
         type: Sequelize.STRING

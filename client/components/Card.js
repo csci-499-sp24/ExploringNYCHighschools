@@ -21,38 +21,44 @@ const Card = ({data }) => {
     return (
         <div className="card-fill">
             <div className="card-body">
-              
-                <h6 className="card-title">
-                    <span className="card-title-span"> School Name: </span> {data?.school_name}
-                </h6>
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                    <div>
+                        <h6 className="card-title">
+                            <span className="card-title-span"> School Name: </span> {data?.school_name}
+                        </h6>
 
-                <h6 className="card-title">
-                    <span className="card-title-span">Address: </span> {data?.address}
-                </h6>
+                        <h6 className="card-title">
+                            <span className="card-title-span">Address: </span> {data?.address}
+                        </h6>
 
-               
-                <h6 className="card-title">
-                <span className="card-title-span">Website: </span>
-                    <a
-                    href={data?.website}
-                    style={{ color: "black", borderBottom: "1px solid transparent", textDecoration: "none" }}
-                    onMouseOver={(e) => { e.target.style.borderBottom = "1px solid black"; }}
-                    onMouseLeave={(e) => { e.target.style.borderBottom = "1px solid transparent"; }}
-                    target="_blank"
-                    >
-                    {data?.website} 
-                    </a>
-                    <ImNewTab />
-                </h6>
+                    
+                        <h6 className="card-title">
+                        <span className="card-title-span">Website: </span>
+                            <a
+                            href={data?.website}
+                            style={{ color: "black", borderBottom: "1px solid transparent", textDecoration: "none" }}
+                            onMouseOver={(e) => { e.target.style.borderBottom = "1px solid black"; }}
+                            onMouseLeave={(e) => { e.target.style.borderBottom = "1px solid transparent"; }}
+                            target="_blank"
+                            >
+                            {data?.website} 
+                            </a>
+                            <ImNewTab />
+                        </h6>
 
-               
-                <h6 className="card-title">
-                    <span className="card-title-span">Phone Number: </span> {data?.phone_number}
-                </h6>
+                    
+                        <h6 className="card-title">
+                            <span className="card-title-span">Phone Number: </span> {data?.phone_number}
+                        </h6>
 
-                <h6 className="card-title">
-                    <span className="card-title-span"> Email: </span> {data?.email}
-                </h6>
+                        <h6 className="card-title">
+                            <span className="card-title-span"> Email: </span> {data?.email}
+                        </h6>
+                        <h6 className="card-title">
+                        </h6>
+                    </div>
+                    {data?.imgUrl && <img src={data.imgUrl} style={{ width: '200px', height: '150px', marginLeft: '20px' }} />}
+                </div>
             </div>
         </div>
     )

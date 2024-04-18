@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useRouter } from 'next/router';
-import { GoogleMap, LoadScript, MarkerF } from '@react-google-maps/api';
+import { GoogleMap, InfoWindow, LoadScript, MarkerF } from '@react-google-maps/api';
 
 const containerStyle = {
   width: '100%',
@@ -18,6 +18,7 @@ const NYCMap = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const router = useRouter();
   const mapRef = useRef(null);
+  const [selectedMarker, setSelectedMarker] = useState(null);
 
   const selectedSchoolIcon = isLoaded
   ? {
@@ -118,12 +119,31 @@ const NYCMap = () => {
                       title={school.school_name}
                       icon={isSelectedSchool ? selectedSchoolIcon : undefined}
                       zIndex={isSelectedSchool ? 1 : 0}
+                      onClick={()=>setSelectedMarker(school)}
                     />
                   );
                 }
               }
               return null;
             })}
+            {selectedMarker && (
+              <InfoWindow
+              position={{
+                lat: parseFloat(selectedMarker.lat),
+                lng: parseFloat(selectedMarker.lng),
+              }}
+                onCloseClick={()=>setSelectedMarker(null)}
+              >
+                <div>
+                  <h3>{selectedMarker.school_name}</h3>
+                  <h4>Address: {selectedMarker.address}</h4>
+                  <h4>Phone Number: {selectedMarker.phone_number}</h4>
+                  <h4>Website: {selectedMarker.website}</h4>
+                  <h4>Email: {selectedMarker.email}</h4>
+                  {/* <h4>{selectedMarker.address}</h4> */}
+                </div>
+                </InfoWindow>
+            )}
         </GoogleMap>
       </LoadScript>
     </div>

@@ -361,7 +361,8 @@ h1 {
   left:-300px;
   background: #CBC3E3;
   transition: all .5s ease;
-  z-index: 100;
+  z-index: 2;
+  overflow-y: auto;
 }
 .sidebar ul a{
   font-size: 20px;
@@ -383,6 +384,7 @@ label #btn,label #cancel{
   background: #800080;
   border-radius: 3px;
   cursor: pointer;
+  width: auto
 }
 label #btn{
   left: 10px;
@@ -405,12 +407,13 @@ label #cancel{
   left: 0;
 }
 #check:checked ~ label #btn{
-  left: 250px;
+  left: 300px;
   opacity: 0;
   pointer-events: none;
 }
 #check:checked ~ label #cancel{
-  left: 195px;
+  /* left: 195px; */
+  left: 260px;
 }
 #check:checked ~ section{
   margin-left: 300px;
@@ -418,3 +421,12 @@ label #cancel{
 .sidebar ul a i{
   margin-right: 16px;
 }
+@media screen and (max-width: 768px) {
+  .sidebar {
+    width: 150px; 
+  }
+  #check:checked ~ label #cancel {
+    left: 110px; 
+  }
+}
+

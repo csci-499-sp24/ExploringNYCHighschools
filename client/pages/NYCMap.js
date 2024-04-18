@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useRouter } from 'next/router';
 import { GoogleMap, InfoWindowF, LoadScript, MarkerF } from '@react-google-maps/api';
+import SchoolButton from '@/components/SchoolButton';
 
 const containerStyle = {
   width: '100%',
@@ -19,6 +20,7 @@ const NYCMap = () => {
   const router = useRouter();
   const mapRef = useRef(null);
   const [selectedMarker, setSelectedMarker] = useState(null);
+  const [selectedMarkerWebsite, setSelectedMarkerWebsite] = useState(null);
 
   const selectedSchoolIcon = isLoaded
   ? {
@@ -68,7 +70,16 @@ const NYCMap = () => {
       console.error('Error fetching schools:', error);
     }
   };
-
+const handleSelectedMarker = (school) => {
+  setSelectedMarker(school)
+  if(!school.website.startsWith("http")) {
+    const url = "https://"+school.website;
+    setSelectedMarkerWebsite(url);
+  }
+  else {
+    setSelectedMarkerWebsite(school.website)
+  }
+}
   return (
     <div style={{ height: '100vh', width: '100%' }}>
       <LoadScript
@@ -119,7 +130,7 @@ const NYCMap = () => {
                       title={school.school_name}
                       icon={isSelectedSchool ? selectedSchoolIcon : undefined}
                       zIndex={isSelectedSchool ? 1 : 0}
-                      onClick={()=>setSelectedMarker(school)}
+                      onClick={()=>handleSelectedMarker(school)}
                     />
                   );
                 }
@@ -138,9 +149,25 @@ const NYCMap = () => {
                   <h3>{selectedMarker.school_name}</h3>
                   <h4>Address: {selectedMarker.address}</h4>
                   <h4>Phone Number: {selectedMarker.phone_number}</h4>
-                  <h4>Website: {selectedMarker.website}</h4>
-                  <h4>Email: {selectedMarker.email}</h4>
-                  {/* <h4>{selectedMarker.address}</h4> */}
+                  <h4>
+                    Website:{" "}
+                    <a
+                      href={selectedMarkerWebsite}
+                      style={{ color: "black", borderBottom:"1px solid transparent", textDecoration:"none", fontWeight:"bold"}}
+                      onMouseOver={(e) => { e.target.style.borderBottom = "1px solid black"; }}
+                      onMouseLeave={(e) => { e.target.style.borderBottom = "1px solid transparent"; }}
+                      target="_blank"  
+                    >
+                      {selectedMarkerWebsite}
+                    </a>
+                  </h4>
+                  <div className="school-button">
+                        <SchoolButton link={`/schools/${selectedMarker.dbn}`} />
+                        <SchoolButton
+                          link={`/schools/quality-reports/${selectedMarker.dbn}`}
+                          text={"Go to School Quality Report"}
+                        ></SchoolButton>
+                  </div>
                 </div>
                 </InfoWindowF>
             )}

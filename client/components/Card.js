@@ -57,7 +57,7 @@ const Card = ({data }) => {
                         <h6 className="card-title">
                         </h6>
                     </div>
-                    {data?.imgUrl && <img src={data.imgUrl} style={{ width: '200px', height: '150px', marginLeft: '20px' }} />}
+                    {data?.imgUrl && <img src={data.imgUrl} style={{ width: '240px', height: '190px',marginLeft: '20px' }} />}
                 </div>
             </div>
         </div>

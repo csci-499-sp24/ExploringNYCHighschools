@@ -1,3 +1,4 @@
 node_modules
 .next/
 server/firebase/serviceAccountKey.json
+client/.env.local

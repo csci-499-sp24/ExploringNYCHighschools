@@ -16,7 +16,6 @@ const { Op } = require("sequelize");
 const syncDB = async () => {
     try {
       await db.sync({force: true}) // drop table if already exists
-      // await db.sync();
         console.log("Database connected");
         await fetchData();        // puts data into database(commented out bc all data is already saved in database)
         console.log("Added data from hs directory");
@@ -25,7 +24,7 @@ const syncDB = async () => {
         console.error('Error in syncing database', err);
     }
 }
-syncDB();
+// syncDB();
 
 app.use(cors());
 app.use(userRoutes);

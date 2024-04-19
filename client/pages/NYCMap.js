@@ -74,11 +74,12 @@ const handleSelectedMarker = (school) => {
     setSelectedMarker(school);
 }
 const getPosition = (school) => {
-  
   const match = school.address.match(/\((-?\d+\.\d+),(-?\d+\.\d+)\)/);
   if (match) {
     const [lat, lng] = match.slice(1).map(parseFloat);
-    const adjust_pos = lat+0.02;
+    const zoom_level = mapRef.current.getZoom();
+    const offset = zoom_level >= 0.002 ? 0.001 : 0.005;
+    const adjust_pos = lat+offset;
     return {lat: adjust_pos, lng};
   }
 }

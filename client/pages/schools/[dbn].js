@@ -44,7 +44,7 @@ function SchoolProfile() {
                 <div className="school-wrapper-container">
                     <div className="d-flex flex-row bd-highlight mb-3 justify-content-center">
                         <div className="p-2 border flex-fill bd-highlight" >
-                            <Card data={school}></Card>
+                            <Card data={school} showImg={true}></Card>
                         </div>
                     </div>
                 </div>

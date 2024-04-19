@@ -140,17 +140,36 @@ const getPosition = (school) => {
               }
               return null;
             })}
-            {selectedMarker && (
+            {/* InfoWindow popups when the user clicks on a marker */}
+            {selectedMarker &&  (
               <InfoWindowF 
               position={getPosition(selectedMarker)}
               onCloseClick={()=>setSelectedMarker(null)}
               >
                 <div>
-                  <Card data={selectedMarker}></Card>
+                  <Card data={selectedMarker} showImg={true} ></Card>
                   <div className="school-button">
                         <SchoolButton link={`/schools/${selectedMarker.dbn}`} />
                         <SchoolButton
                           link={`/schools/quality-reports/${selectedMarker.dbn}`}
+                          text={"Go to School Quality Report"}
+                        ></SchoolButton>
+                  </div>
+                </div>
+                </InfoWindowF>
+            )}
+            {/* When the user clicks "Get Directions" from school profile, the InfoWindow automatically is opened when directed to the map */}
+            {selectedSchool && (
+              <InfoWindowF 
+              position={getPosition(selectedSchool)}
+              onCloseClick={()=>setSelectedSchool(null)}
+              >
+                <div>
+                  <Card data={selectedSchool} showImg={true} ></Card>
+                  <div className="school-button">
+                        <SchoolButton link={`/schools/${selectedSchool.dbn}`} />
+                        <SchoolButton
+                          link={`/schools/quality-reports/${selectedSchool.dbn}`}
                           text={"Go to School Quality Report"}
                         ></SchoolButton>
                   </div>

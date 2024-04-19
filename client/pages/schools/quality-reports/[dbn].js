@@ -1,6 +1,5 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import Card from "../../../components/Card";
 import CardSquare from "../../../components/CardSquare";
 import SchoolButton from "../../../components/SchoolButton";
 

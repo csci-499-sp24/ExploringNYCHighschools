@@ -1,6 +1,25 @@
 const School = require("./models/school");
 const QualityReports = require("./models/quality_reports")
 
+const fetchImg = async (school_name) => {
+    try {
+        const response = await fetch(`http://en.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&piprop=original&titles=${school_name}`);
+        const data = await response.json();
+        const pages = data.query.pages;
+        const pageIndex = Object.keys(pages)[0];
+        if(pages[pageIndex].original) {
+            return pages[pageIndex].original.source;
+        }
+        else {
+            // console.error("No image found for this school");
+            return null;
+        }
+    }
+    catch (error) {
+        console.error("Error in retrieving school image: ", error);
+    }
+ }
+ 
 const fetchData = async () => {
     let hs_data_api = 'https://data.cityofnewyork.us/resource/8b6c-7uty.json';
     let quality_report_api = 'https://data.cityofnewyork.us/resource/7c8x-xds8.json';
@@ -17,9 +36,13 @@ const fetchData = async () => {
     for (let x = 0; x<quality_data_json.length;x++)
         if (dbn.includes(quality_data_json[x].dbn))
             cleaned_quality_data.push(quality_data_json[x]);
-
+    let img_url = "";
+    let school_name_mod = "";
     for (let x = 0;x<school_data_json.length;x++) {
+        school_name_mod = school_data_json[x].school_name.split(' ').join('_');
+        img_url = await fetchImg(school_name_mod);
         await School.create({ 
+            imgUrl: img_url,
             // HS diretory data
             dbn: school_data_json[x].dbn,
             school_name: school_data_json[x].school_name,

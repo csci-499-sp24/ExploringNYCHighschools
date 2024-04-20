@@ -1,6 +1,5 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import Card from "../../../components/Card";
 import CardSquare from "../../../components/CardSquare";
 import SchoolButton from "../../../components/SchoolButton";
 
@@ -43,6 +42,11 @@ function SchoolQualityReport() {
                                 feedback, feedback from parents who have taken the NYC School survey, and data from
                                 student achievements such as exams.
                             </p>
+                    </div>
+                </div>
+                <div className="school-button">
+                    <div className="col-auto">
+                        <SchoolButton link={`/schools/${school.dbn}`} />
                     </div>
                 </div>
                     <div className="row">

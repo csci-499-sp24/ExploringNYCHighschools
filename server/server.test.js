@@ -1,6 +1,6 @@
 const express = require("express");
 // const app = express();
-const app = require("./server.js")
+const {app,closeServer} = require("./server.js");
 app.use(express.json());
 const cors = require('cors');
 app.use(cors());
@@ -9,11 +9,12 @@ const db = require("./db.js");
 
 afterAll(async () => {
     // Close database connection for cleanup
+    closeServer();
     await db.close();
-})
+});
 describe('GET /api/home', () => {
     it('should respond with status 200 and message "Hello World!"', async () => {
-      const response = await request(app).get('/api/home');
+      const response = (await request(app).get('/api/home'));
       expect(response.status).toBe(200); // Check if status code is 200
       expect(response.body).toEqual({ message: 'Hello World!' }); // Check if response body matches expected
     });
@@ -21,7 +22,7 @@ describe('GET /api/home', () => {
  
  describe('GET /api/quality-reports', () => {
     it('should respond with status 200', async () => {
-        const response = await request(app).get('/api/quality-reports');
+        const response = (await request(app).get('/api/quality-reports'));
         expect(response.status).toBe(200); // Check if status code is 200
     });
  });

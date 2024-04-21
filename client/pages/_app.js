@@ -10,8 +10,9 @@ export default function App({ Component, pageProps }) {
     <UserAuthContext>
       <main className={styles.container}>
         <section className={styles.main}>
-        <Layout/>
+        <div style={{marginTop: "60px"}}/>
         <Component {...pageProps} />
+        <Layout/>
         </section>
        <section className={styles.footeer}>
        <Footer/>

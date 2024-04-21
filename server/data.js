@@ -39,6 +39,10 @@ const fetchData = async () => {
     let img_url = "";
     let school_name_mod = "";
     for (let x = 0;x<school_data_json.length;x++) {
+        if (school_data_json[x].school_name.endsWith(", The")) {
+            school_data_json[x].school_name = school_data_json[x].school_name.slice(0, -5);
+            school_data_json[x].school_name = "The " + school_data_json[x].school_name;
+        }
         school_name_mod = school_data_json[x].school_name.split(' ').join('_');
         img_url = await fetchImg(school_name_mod);
         await School.create({ 

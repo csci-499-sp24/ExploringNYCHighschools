@@ -168,6 +168,11 @@ function Compare() {
                                 school2_answer: school2ProfileData.psal_girls
                             },
                             {
+                                question: "What is the freshman schedule?",
+                                school1_answer: school1ProfileData.freshman_schedule,
+                                school2_answer: school2ProfileData.freshman_schedule
+                            },
+                            {
                                 question: "How many students go to this school?",
                                 school1_answer: school1ProfileData.total_students,
                                 school2_answer: school2ProfileData.total_students

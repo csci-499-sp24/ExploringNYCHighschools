@@ -6,12 +6,9 @@ import NavBar from "@/components/NavBar";
 const Layout = ({props}) => {
     return(
         <div>
-            {/* <Background> */}
-            <div style={{marginTop: "60px"}}/>
             <NavBar/>
             <ScrollUpButton/>
             {props}
-            {/* </Background> */}
         </div>
     )
 }

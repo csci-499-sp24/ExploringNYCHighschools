@@ -91,7 +91,7 @@ function SchoolProfile() {
                             <CardSquare text1={"Total Students"} text2={school.total_students} ></CardSquare>
                         </div>
                         <div className="p-2 bd-highlight">
-                            <CardSquare text1={"Freshman Schedule"} text2={school.freshmen_schedule} ></CardSquare>
+                            <CardSquare text1={"Freshman Schedule"} text2={school.freshman_schedule} ></CardSquare>
                         </div>
                         <div className="p-2 bd-highlight">
                             <CardSquare text1={"PSAL Boys"} text2={school.psal_boys} ></CardSquare>

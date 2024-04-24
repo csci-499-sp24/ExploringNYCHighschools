@@ -2,7 +2,9 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
+  "/authorizedHomePage": "pages/authorizedHomePage.js",
+  "/schools": "pages/schools.js",
+  "/schools/[dbn]": "pages/schools/[dbn].js",
   "/homepage": "pages/homepage.js",
-  "/signin": "pages/signin.js",
-  "/authorizedHomePage": "pages/authorizedHomePage.js"
+  "/NYCMap": "pages/NYCMap.js"
 }

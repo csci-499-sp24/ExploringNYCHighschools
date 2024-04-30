@@ -22,22 +22,21 @@ const Registration = () => {
   const RegistrationHandler = async (e) => {
     e.preventDefault();
     setError(null);
-
     const { fullName, email, password, confirmPassword } = user;
-
     if (password !== confirmPassword) {
       setError("Password does not match");
       return;
     }
-
     try {
       await signup(email, password, fullName);
-      router.replace("/authorizedHomePage");
+      localStorage.setItem("tempUserEmail", email);
+      localStorage.setItem("tempUserName", fullName);
+      router.push("/additionalInfo");
     } catch (error) {
       setError(error.message);
     }
   };
-  return(
+  return (
     <div
       style={{
         display: "flex",
@@ -47,9 +46,9 @@ const Registration = () => {
         // height: "70vh",
       }}
     >
-      <br/>
+      <br />
       <form
-        onSubmit={RegistrationHandler} 
+        onSubmit={RegistrationHandler}
         style={{
           display: "flex",
           flexDirection: "column",
@@ -80,9 +79,9 @@ const Registration = () => {
         <input
           type="email"
           placeholder="Enter your email"
-          name="email" 
-          value={user.email} 
-          onChange={userhandler} 
+          name="email"
+          value={user.email}
+          onChange={userhandler}
           style={{
             margin: "10px 0",
             padding: "10px",
@@ -93,9 +92,9 @@ const Registration = () => {
         <input
           type="password"
           placeholder="Enter your password"
-          name="password" 
-          value={user.password} 
-          onChange={userhandler} 
+          name="password"
+          value={user.password}
+          onChange={userhandler}
           style={{
             margin: "10px 0",
             padding: "10px",
@@ -106,9 +105,9 @@ const Registration = () => {
         <input
           type="password"
           placeholder="Confirm your password"
-          name="confirmPassword" 
+          name="confirmPassword"
           value={user.confirmPassword}
-          onChange={userhandler} 
+          onChange={userhandler}
           style={{
             margin: "10px 0",
             padding: "10px",
@@ -131,7 +130,7 @@ const Registration = () => {
           Sign Up
         </button>
       </form>
-      <br/>
+      <br />
     </div>
   );
 };

@@ -346,6 +346,26 @@ h1 {
     width: 38rem; /* Adjust the width for larger screens */
   }
 }
+/*questionnaire page*/
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.question-indicators {
+  display: flex;
+}
+
+.question-indicators span {
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.question-indicators span.active {
+  text-decoration: underline;
+}
 
 /*sidebar*/
 *{

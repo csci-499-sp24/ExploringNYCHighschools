@@ -89,6 +89,13 @@ const School = db.define("school", {
         type: Sequelize.STRING,
         default: "Information unavailable."
     },
+    borough: {
+        type: Sequelize.STRING,
+    },
+    interest1: {
+        type: Sequelize.STRING,
+        default: "Information unavailable.",
+    },    
 });
 School.removeAttribute('id'); // get rid of automate field of id when models are created
 // Export school model 

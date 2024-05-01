@@ -133,10 +133,10 @@ const Questionnaire = () => {
         />
       ) : (
         <div>
-          <h2>Thank you for completing the questionnaire!</h2>
+          <h2>Done!</h2>
           <button onClick={restartQuestionnaire}>Restart</button>
           <div>
-            <h3>Schools Matching Your Criteria:</h3>
+            <h3>Recommended schools:</h3>
             <ul>
               {schools &&
                 schools.map((school, index) => (

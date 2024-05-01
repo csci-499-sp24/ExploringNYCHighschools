@@ -24,7 +24,7 @@ const syncDB = async () => {
         console.error('Error in syncing database', err);
     }
 }
-// syncDB();
+syncDB();
 
 app.use(cors());
 app.use(userRoutes);

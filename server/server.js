@@ -128,6 +128,51 @@ app.get("/api/schools", async (req, res) => {
   }
 });
 
+app.get("/api/question", async (req, res) => {
+  try {
+    let filters = {};
+
+    if (req.query.borough) {
+      // Perform a wildcard search for borough filter
+      filters.borough = { [Op.iLike]: `%${req.query.borough}%` };
+    }
+
+    if (req.query.languages || req.query.interests) {
+      // Perform a search for either languages or interests filter
+      filters[Op.or] = [];
+
+      if (req.query.languages) {
+        filters[Op.or].push({
+          languages: {
+            [Op.like]: `%${req.query.languages}%`,
+          },
+        });
+      }
+
+      if (req.query.interests) {
+        // Split interests into an array
+        const selectedInterests = req.query.interests.split(";");
+        selectedInterests.forEach((interest) => {
+          filters[Op.or].push({
+            interest1: {
+              [Op.like]: `%${interest}%`,
+            },
+          });
+        });
+      }
+    }
+
+    const schools = await School.findAll({
+      where: filters,
+    });
+
+    res.json({ schools });
+  } catch (err) {
+    console.error("Error in fetching schools data", err);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
 app.use('/api/users', userRoutes); 
 
 const port = process.env.PORT || 8080;

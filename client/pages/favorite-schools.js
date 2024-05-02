@@ -62,7 +62,7 @@ function FavoriteSchools() {
         <div className="school-wrapper-container">
         {favSchoolData.length>0 ? ( 
             favSchoolData.map((item,index) => (
-                <div className="d-flex flex-row bd-highlight mb-3 justify-content-center">
+                <div className="d-flex flex-row bd-highlight mb-3 justify-content-center" key={index}>
                     <div className="p-2 border flex-fill bd-highlight">
                         <Card data={item} showImg={true} />
                         <div className="container-delete" style={{position:"relative"}}>

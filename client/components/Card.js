@@ -5,7 +5,7 @@ import React, { useState, useEffect } from "react";
 import { auth, firestore } from '../firebase/firebaseConfig';
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
 
-const Card = ({data, showImg=false}) => {
+const Card = ({data, showImg=false, showHeart=false}) => {
     const [favorite, setFavorite] = useState(false);
     const [signedIn, setSignedIn] = useState(false);
 
@@ -132,8 +132,8 @@ const Card = ({data, showImg=false}) => {
                         <h6 className="card-title">
                         </h6>
                     </div>
-                    {data?.imgUrl && showImg && <img src={data.imgUrl} style={{ width: "240px", height: "190px",marginLeft: "20px", objectFit: "contain"}} />}
-                    {signedIn &&
+                    {data?.imgUrl && showImg && <img src={data.imgUrl} style={{ width: "240px", height: "190px",marginLeft: "20px", objectFit: "contain", marginRight:"20px"}} />}
+                    {signedIn && showHeart &&
                         <button className="favorite-button" onClick={handleFavoriteToggle}>
                             {favorite ?  <FaHeart style={{color:"red"}} /> :  <FaRegHeart />}
                         </button>

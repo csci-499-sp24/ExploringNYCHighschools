@@ -41,7 +41,7 @@ function FavoriteSchools() {
         fetchFavSchools();
     }, [favSchools]);
 
-    const handleFavoriteToggle = async (data) => {
+    const handleRemoveToggle = async (data) => {
         const currentUser = auth.currentUser;
         if (currentUser) {
             const userId = currentUser.uid;
@@ -74,7 +74,7 @@ function FavoriteSchools() {
                         ></SchoolButton>
                       </div>
                         <div className="container-delete" style={{position:"relative"}}>
-                        <button className="delete-button" onClick={()=>handleFavoriteToggle(item)}>
+                        <button className="delete-button" onClick={()=>handleRemoveToggle(item)}>
                             <MdDelete />
                         </button>
                         </div>

@@ -430,3 +430,12 @@ label #cancel{
   }
 }
 
+.favorite-button {
+  position: absolute;
+  bottom: 15px; 
+  right: 15px; 
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+}

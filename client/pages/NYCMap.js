@@ -147,7 +147,7 @@ const getPosition = (school) => {
               onCloseClick={()=>setSelectedMarker(null)}
               >
                 <div>
-                  <Card data={selectedMarker} showImg={true} ></Card>
+                  <Card data={selectedMarker} showImg={true}  ></Card>
                   <div className="school-button">
                         <SchoolButton link={`/schools/${selectedMarker.dbn}`} />
                         <SchoolButton
@@ -165,7 +165,7 @@ const getPosition = (school) => {
               onCloseClick={()=>setSelectedSchool(null)}
               >
                 <div>
-                  <Card data={selectedSchool} showImg={true} ></Card>
+                  <Card data={selectedSchool} showImg={true}></Card>
                   <div className="school-button">
                         <SchoolButton link={`/schools/${selectedSchool.dbn}`} />
                         <SchoolButton

@@ -90,6 +90,15 @@ function NavBar() {
                     Account
                   </button>
                 </Link>
+                <Link href="/favorite-schools" passHref>
+                  <button
+                    style={menuItemStyle}
+                    onMouseEnter={(e) => (e.target.style.backgroundColor = menuItemHoverStyle.backgroundColor)}
+                    onMouseLeave={(e) => (e.target.style.backgroundColor = menuItemStyle.backgroundColor)}
+                  >
+                    My Favorite Schools
+                  </button>
+                </Link>
                 <button
                   onClick={handleLogout}
                   style={menuItemStyle}

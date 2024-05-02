@@ -3,6 +3,7 @@ import { auth, firestore } from '../firebase/firebaseConfig';
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import Card from '@/components/Card';
 import { MdDelete } from "react-icons/md";
+import SchoolButton from "@/components/SchoolButton";
 
 function FavoriteSchools() {
     const [favSchools, setFavSchools] = useState([]);
@@ -65,6 +66,13 @@ function FavoriteSchools() {
                 <div className="d-flex flex-row bd-highlight mb-3 justify-content-center" key={index}>
                     <div className="p-2 border flex-fill bd-highlight">
                         <Card data={item} showImg={true} />
+                        <div className="school-button">
+                        <SchoolButton link={`/schools/${item.dbn}`} />
+                        <SchoolButton
+                          link={`/schools/quality-reports/${item.dbn}`}
+                          text={"View School Quality Report"}
+                        ></SchoolButton>
+                      </div>
                         <div className="container-delete" style={{position:"relative"}}>
                         <button className="delete-button" onClick={()=>handleFavoriteToggle(item)}>
                             <MdDelete />

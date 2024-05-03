@@ -346,7 +346,50 @@ h1 {
     width: 38rem; /* Adjust the width for larger screens */
   }
 }
+/*recommend page*/
 
+.school-item {
+  border: 3px solid #ccc;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #c2e2ec;
+}
+.question-button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  margin: 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.question-button:hover {
+  background-color: #66095a;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.question-indicators {
+  display: flex;
+  align-items: center;
+}
+
+.question-indicators span {
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.question-indicators span.active {
+  border: 1px solid rgb(63, 0, 63);
+  padding: 0.2rem 0.2rem;
+  border-radius: 0.5rem;
+}
 /*sidebar*/
 *{
   margin: 0;

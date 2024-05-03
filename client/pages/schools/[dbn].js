@@ -3,18 +3,13 @@ import { useEffect, useState } from "react";
 import Card from "../../components/Card";
 import CardSquare from "../../components/CardSquare";
 import SchoolButton from "../../components/SchoolButton";
-import { FaRegHeart } from "react-icons/fa";
-import { FaHeart } from "react-icons/fa";
-import { auth, firestore } from '../../firebase/firebaseConfig';
-import { doc, getDoc, updateDoc } from 'firebase/firestore';
+import Favorite from "@/components/Favorite";
 
 function SchoolProfile() {
     const router = useRouter();
     const { dbn } = router.query;
     const [school, setSchool] = useState([]);
     const [message, setMessage] = useState("Loading");
-    const [favorite, setFavorite] = useState(false);
-    const [signedIn, setSignedIn] = useState(false);
 
     useEffect(() => {
         if (dbn) {
@@ -37,81 +32,14 @@ function SchoolProfile() {
             query: { address },
         });
     };
-    
-    useEffect(() => {
-      checkForUserSignedIn();
-      checkFavoriteDatabase();
-    },[school.dbn]);
-    const checkForUserSignedIn = async () => {
-      const currentUser = auth.currentUser;
-      if(currentUser) {
-          setSignedIn(true);
-      }
-    }
-    const checkFavoriteDatabase = async () => {
-        const currentUser = auth.currentUser;
-        if (currentUser) {
-            const userId = currentUser.uid;
-            const userRef = doc(firestore, "users", userId);
-            const userDoc = await getDoc(userRef);
-            if (userDoc.exists()) {
-                const {favoriteSchools} = userDoc.data();
-                if(favoriteSchools) {
-                    const found = favoriteSchools.includes(school.dbn);
-                    setFavorite(found);
-                }
-                else{
-                    setFavorite(false);
-                }
-            }
-        }
-    }
-
-    const handleFavoriteToggle = async () => {
-      if (favorite) {
-          const currentUser = auth.currentUser;
-      if (currentUser) {
-          const userId = currentUser.uid;
-          const userRef = doc(firestore, "users", userId);
-          const userDoc = await getDoc(userRef);
-          if (userDoc.exists()) {
-              const {favoriteSchools} = userDoc.data();
-              if(favoriteSchools) {
-                  const updateFavoriteSchools = favoriteSchools.filter(schoolDbn=>schoolDbn!==school.dbn);
-                  await updateDoc(userRef, {favoriteSchools: updateFavoriteSchools});
-               }
-          }
-      }
-          setFavorite(false);
-      } else {
-          const currentUser = auth.currentUser;
-          if (currentUser) {
-              const userId = currentUser.uid;
-              const userRef = doc(firestore, "users", userId);
-              const userDoc = await getDoc(userRef);
-              if (userDoc.exists()) {
-                  const userData = userDoc.data();
-                  if(!userData.favoriteSchools) {
-                      await updateDoc(userRef, {favoriteSchools:[school.dbn]});
-                  }
-                  else {
-                      await updateDoc(userRef, {favoriteSchools: [...userData.favoriteSchools, school.dbn]});
-                  }
-              }
-          }
-          setFavorite(true);
-      }
-  };
 
     return (
         <div className="background-color">
             <section id="hero">
                 <div className="container">
-                {signedIn && 
-                        <button className="favorite-button-school-page" onClick={()=>handleFavoriteToggle()}>
-                            {favorite ?  <FaHeart style={{color:"red"}} /> :  <FaRegHeart />}
-                        </button>
-                }
+                    <div className="favorite-button-school-page">
+                        <Favorite data={school}/>
+                    </div>
                     <div className="row">
                         <h1 className="display-1">{school.school_name}</h1>
                         <p className="desc">{school.description}</p>

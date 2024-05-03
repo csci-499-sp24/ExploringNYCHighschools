@@ -6,6 +6,7 @@ import { FaBalanceScale } from 'react-icons/fa';
 import { FaMap } from "react-icons/fa";
 import { FaChartLine } from "react-icons/fa";
 import { TiContacts } from "react-icons/ti";
+import { FaCat } from "react-icons/fa";
 
 function SideBar(){
     const sidebarItems = [
@@ -14,6 +15,7 @@ function SideBar(){
         { name: "Comparing Schools", href: "/compare", Icon: <FaBalanceScale /> },
         { name: "Get Directions", href: "/NYCMap", Icon: <FaMap />},
         { name: "School Rankings", href: "/ranking", Icon: <FaChartLine />},
+        { name: "Recommend School", href: "/recommendschool", Icon: <FaCat />},
         { name: "Contact Us", href: "/contact", Icon: <TiContacts />},
       ];
     

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import TextBox from "@/components/TextBox";
 import SearchSchoolBar from "@/components/SearchSchoolBar";
-import styles from '@/styles/compare.module.css'
+import Favorite from "@/components/Favorite";
 
 function Compare() {
     // fetch school profile data:
@@ -138,10 +138,14 @@ function Compare() {
                 <div className="collaspe-item">
                 <div className="collaspe-body">
                     <div className="school-data">
-                        <span style={{ fontWeight: "bold", fontSize: "17px"}}>{`${school1}`}</span>
+                        <span style={{ fontWeight: "bold", fontSize: "17px"}}>{`${school1}`}
+                        <Favorite data={school1ProfileData}/>
+                        </span>
                     </div>
                     <div className="school-data">
-                        <span style={{ fontWeight: "bold", fontSize: "17px" }}>{`${school2}`}</span>
+                        <span style={{ fontWeight: "bold", fontSize: "17px" }}>{`${school2}`}
+                        <Favorite data={school2ProfileData}/>
+                        </span>
                     </div>
                 </div>
                 </div>

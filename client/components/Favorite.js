@@ -11,7 +11,7 @@ const Favorite = ({data}) => {
     useEffect(() => {
         checkFavoriteDatabase();
         checkForUserSignedIn();
-    },[data],[data.dbn]);
+    },[data]);
     const checkForUserSignedIn = async () => {
         const currentUser = auth.currentUser;
         if(currentUser) {

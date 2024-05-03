@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Card from "../../components/Card";
 import CardSquare from "../../components/CardSquare";
 import SchoolButton from "../../components/SchoolButton";
+import Favorite from "@/components/Favorite";
 
 function SchoolProfile() {
     const router = useRouter();
@@ -31,11 +32,14 @@ function SchoolProfile() {
             query: { address },
         });
     };
-    
+
     return (
         <div className="background-color">
             <section id="hero">
                 <div className="container">
+                    <div className="favorite-button-school-page">
+                        <Favorite data={school}/>
+                    </div>
                     <div className="row">
                         <h1 className="display-1">{school.school_name}</h1>
                         <p className="desc">{school.description}</p>

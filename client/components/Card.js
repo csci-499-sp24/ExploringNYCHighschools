@@ -1,6 +1,8 @@
 import { ImNewTab } from "react-icons/im";
+import Favorite from "./Favorite";
 
-const Card = ({data, showImg=false}) => {
+const Card = ({data, showImg=false, showHeart=false}) => {
+
     if(!data?.address) {
         data = { ...data, address: "Unavailable"};
     }
@@ -15,6 +17,7 @@ const Card = ({data, showImg=false}) => {
           data = { ...data, website: "https://"+data.website};
         }
     }
+   
     return (
         <div className="card-fill">
             <div className="card-body">
@@ -57,7 +60,12 @@ const Card = ({data, showImg=false}) => {
                         <h6 className="card-title">
                         </h6>
                     </div>
-                    {data?.imgUrl && showImg && <img src={data.imgUrl} style={{ width: "240px", height: "190px",marginLeft: "20px", objectFit: "contain"}} />}
+                    {data?.imgUrl && showImg && <img src={data.imgUrl} style={{ width: "240px", height: "190px",marginLeft: "20px", objectFit: "contain", marginRight:"20px"}} />}
+                    <div className="fav-map">
+                        {showHeart &&
+                            <Favorite data={data}/>
+                        }
+                    </div>
                 </div>
             </div>
         </div>

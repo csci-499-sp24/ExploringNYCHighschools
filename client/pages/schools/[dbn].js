@@ -4,7 +4,8 @@ import Card from "../../components/Card";
 import CardSquare from "../../components/CardSquare";
 import SchoolButton from "../../components/SchoolButton";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "../../firebase/firebaseConfig";
+import { auth, db } from "../../firebase/firebaseConfig";
+import { collection, addDoc, query, where, getDocs } from "firebase/firestore";
 
 function SchoolProfile() {
   const router = useRouter();
@@ -23,6 +24,7 @@ function SchoolProfile() {
           if (data.school) {
             setSchool(data.school);
             setMessage(data.message);
+            fetchReviews(dbn); // Fetch reviews for the school
           } else {
             setMessage("School data not found!");
           }
@@ -37,11 +39,33 @@ function SchoolProfile() {
     });
   };
 
-  const handleReviewSubmit = () => {
+  const fetchReviews = async (schoolDbn) => {
+    try {
+      const reviewsRef = collection(db, "reviews");
+      const q = query(reviewsRef, where("schoolDbn", "==", schoolDbn));
+      const querySnapshot = await getDocs(q);
+      const reviewsData = querySnapshot.docs.map((doc) => doc.data().review);
+      setReviews(reviewsData);
+    } catch (error) {
+      console.error("Error fetching reviews:", error);
+    }
+  };
+
+  const handleReviewSubmit = async () => {
     if (user && newReview.trim() !== "") {
-      const updatedReviews = [...reviews, newReview];
-      setReviews(updatedReviews);
-      setNewReview("");
+      try {
+        const reviewsRef = collection(db, "reviews");
+        await addDoc(reviewsRef, {
+          schoolDbn: dbn,
+          review: newReview,
+          userId: user.uid,
+          timestamp: new Date(),
+        });
+        setNewReview("");
+        fetchReviews(dbn); // Fetch updated reviews after submitting a new review
+      } catch (error) {
+        console.error("Error submitting review:", error);
+      }
     }
   };
 

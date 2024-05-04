@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Favorite from "@/components/Favorite";
 
 const RecommendSchool = () => {
   const [schools, setSchools] = useState([]);
@@ -336,9 +337,10 @@ const RecommendSchool = () => {
             <h3>Schools we recommended:</h3>
             {filteredSchools.map((school, index) => (
               <li key={index} className="school-item">
-                <div>
+                <div style={{display:"flex", alignItems:"center"}}>
                   <strong>School Name:</strong>{" "}
-                  <Link href={`/schools/${school.dbn}`}>{school.school_name}</Link>
+                  <Link href={`/schools/${school.dbn}`} style={{marginRight:"5px"}}>{school.school_name}</Link>
+                  <Favorite data={school}/>
                 </div>
                 <div>
                   <strong>Borough:</strong> {school.borough}

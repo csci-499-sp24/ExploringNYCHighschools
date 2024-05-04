@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Link from "next/link";
 
 const RecommendSchool = () => {
   const [schools, setSchools] = useState([]);
@@ -337,7 +338,7 @@ const RecommendSchool = () => {
               <li key={index} className="school-item">
                 <div>
                   <strong>School Name:</strong>{" "}
-                  <a href={`/schools/${school.dbn}`}>{school.school_name}</a>
+                  <Link href={`/schools/${school.dbn}`}>{school.school_name}</Link>
                 </div>
                 <div>
                   <strong>Borough:</strong> {school.borough}

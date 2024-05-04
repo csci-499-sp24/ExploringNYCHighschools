@@ -477,17 +477,18 @@ label #cancel{
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 24px;
 }
 .fav-map {
   bottom: 15px; 
   right: 15px; 
   position: absolute;
+  font-size: 24px;
 }
 .favorite-button-school-page {
   position: absolute;
-  right: 15px; 
-  font-size: 30px;
+  right: 20px; 
+  font-size: 40px;
+  top: 60px;
 }
 .delete-button {
   position: absolute;

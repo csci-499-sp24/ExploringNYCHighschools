@@ -64,7 +64,7 @@ function NavBar() {
   };
 
   return (
-    <nav style={{ background: "#CBC3E3", width: "100%", height: "60px", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0", position: "fixed", top: "0", left: "0", zIndex: "1" }}>
+    <nav style={{ background: "#CBC3E3", width: "100%", height: "60px", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0", position: "fixed", top: "0", left: "0", zIndex: "1000" }}>
       <SideBar/>
       <div style={{ display: "flex", alignItems: "center", position: "relative" }}>
         <SearchBar />
@@ -88,6 +88,15 @@ function NavBar() {
                     onMouseLeave={(e) => (e.target.style.backgroundColor = menuItemStyle.backgroundColor)}
                   >
                     Account
+                  </button>
+                </Link>
+                <Link href="/favorite-schools" passHref>
+                  <button
+                    style={menuItemStyle}
+                    onMouseEnter={(e) => (e.target.style.backgroundColor = menuItemHoverStyle.backgroundColor)}
+                    onMouseLeave={(e) => (e.target.style.backgroundColor = menuItemStyle.backgroundColor)}
+                  >
+                    My Favorite Schools
                   </button>
                 </Link>
                 <button

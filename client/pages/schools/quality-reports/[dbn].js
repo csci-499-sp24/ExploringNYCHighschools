@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import CardSquare from "../../../components/CardSquare";
 import SchoolButton from "../../../components/SchoolButton";
+import Favorite from "@/components/Favorite";
 
 
 function SchoolQualityReport() {
@@ -10,7 +11,6 @@ function SchoolQualityReport() {
     const [school, setSchool] = useState([]);
     const[message, setMessage] = useState("Loading");
     
-
     useEffect(() => {
         if (dbn) {
             fetch(process.env.NEXT_PUBLIC_SERVER_URL + `/api/schools/quality-reports/${dbn}`)
@@ -31,6 +31,9 @@ function SchoolQualityReport() {
             <div className="background-color">
             <section id="quality-reports">
                 <div className="container">
+                    <div className="favorite-button-school-page">
+                        <Favorite data={school}/>
+                    </div>
                     <div className="row">
                         <h1 className="display-1">{school.school_name}</h1>
                         <p className="desc">What is a School Quality Report?</p>

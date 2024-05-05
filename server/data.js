@@ -68,6 +68,8 @@ const fetchData = async () => {
             attendance_rate: school_data_json[x].attendance_rate,
             college_career_rate: school_data_json[x].college_career_rate,
             student_safety: school_data_json[x].pct_stu_safe,
+            borough: school_data_json[x].borough,
+            interest1: school_data_json[x].interest1,
             neighborhood: school_data_json[x].neighborhood});
     }
     for(let j =0;j<cleaned_quality_data.length;j++) {

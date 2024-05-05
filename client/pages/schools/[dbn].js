@@ -4,7 +4,7 @@ import Card from "../../components/Card";
 import CardSquare from "../../components/CardSquare";
 import SchoolButton from "../../components/SchoolButton";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth, db } from "../../firebase/firebaseConfig";
+import { auth, firestore } from "../../firebase/firebaseConfig";
 import { collection, addDoc, query, where, getDocs } from "firebase/firestore";
 
 function SchoolProfile() {
@@ -41,33 +41,37 @@ function SchoolProfile() {
 
   const fetchReviews = async (schoolDbn) => {
     try {
-      const reviewsRef = collection(db, "reviews");
+      const reviewsRef = collection(firestore, "reviews");
       const q = query(reviewsRef, where("schoolDbn", "==", schoolDbn));
       const querySnapshot = await getDocs(q);
       const reviewsData = querySnapshot.docs.map((doc) => doc.data().review);
+      console.log("Fetched reviews:", reviewsData);
       setReviews(reviewsData);
     } catch (error) {
       console.error("Error fetching reviews:", error);
     }
   };
-
+  
   const handleReviewSubmit = async () => {
     if (user && newReview.trim() !== "") {
       try {
-        const reviewsRef = collection(db, "reviews");
+        const reviewsRef = collection(firestore, "reviews");
         await addDoc(reviewsRef, {
           schoolDbn: dbn,
           review: newReview,
           userId: user.uid,
           timestamp: new Date(),
         });
+        console.log("Review submitted successfully");
         setNewReview("");
-        fetchReviews(dbn); // Fetch updated reviews after submitting a new review
+        fetchReviews(dbn);
       } catch (error) {
         console.error("Error submitting review:", error);
       }
     }
   };
+  
+  // ..
 
   return (
     <div className="background-color">
@@ -78,31 +82,31 @@ function SchoolProfile() {
             <p className="desc">{school.description}</p>
           </div>
         </div>
-        <div className="school-wrapper-container">
-          <div className="d-flex flex-row bd-highlight mb-3 justify-content-center">
-            <div className="p-2 border flex-fill bd-highlight">
-              <Card data={school} showImg={true}></Card>
-              <div className="reviews-container">
-                <div className="reviews">
-                  <h4>Reviews:</h4>
-                  {reviews.map((review, idx) => (
-                    <p key={idx}>{review}</p>
-                  ))}
-                </div>
-                {user && (
-                  <div className="review-input">
-                    <textarea
-                      value={newReview}
-                      onChange={(e) => setNewReview(e.target.value)}
-                      placeholder="Write a review..."
-                    />
-                    <button onClick={handleReviewSubmit}>Submit Review</button>
-                  </div>
-                )}
+          <div className="school-wrapper-container">
+        <div className="d-flex flex-row bd-highlight mb-3 justify-content-center">
+          <div className="p-2 border flex-fill bd-highlight">
+            <Card data={school} showImg={true}></Card>
+            <div className="reviews-container">
+              <div className="reviews">
+                <h4>Reviews:</h4>
+                {reviews.map((review, idx) => (
+                  <p key={idx}>{review}</p>
+                ))}
               </div>
+              {user && (
+                <div className="review-input">
+                  <textarea
+                    value={newReview}
+                    onChange={(e) => setNewReview(e.target.value)}
+                    placeholder="Write a review..."
+                  />
+                  <button onClick={handleReviewSubmit}>Submit Review</button>
+                </div>
+              )}
             </div>
           </div>
         </div>
+      </div>
         <div className="row justify-content-center">
           <div className="school-button">
             <div className="col-auto">

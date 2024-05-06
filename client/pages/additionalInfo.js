@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useRouter } from "next/router";
 import { auth, firestore } from "../firebase/firebaseConfig";
 import { doc, setDoc } from "firebase/firestore";
+import { useAuth } from "../firebase/authContext";
 
 const AdditionalInfo = () => {
   const [additionalInfo, setAdditionalInfo] = useState({
@@ -9,9 +10,10 @@ const AdditionalInfo = () => {
     city: "",
     zipcode: "",
     state: "",
-    // Add other fields as needed
+    phone: "", // Add other fields as needed
   });
   const router = useRouter();
+  const { signup } = useAuth();
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -40,6 +42,7 @@ const AdditionalInfo = () => {
         });
         console.log("User data stored successfully");
         localStorage.removeItem("tempUserName");
+        await signup(email, currentUser.password, fullName, additionalInfo.phone);
         router.push("/authorizedHomePage");
       } catch (error) {
         console.error("Error storing user data:", error);
@@ -49,6 +52,7 @@ const AdditionalInfo = () => {
       // Handle the case when the user is not authenticated
     }
   };
+
   return (
     <div
       style={{
@@ -95,7 +99,14 @@ const AdditionalInfo = () => {
               style={{ width: "calc(25% - 5px)" }}
             />
           </div>
-          {/* Add other input fields for additional information */}
+          <input
+            type="text"
+            placeholder="Enter your phone number"
+            name="phone"
+            value={additionalInfo.phone}
+            onChange={handleChange}
+            style={{ marginBottom: "10px", width: "100%" }}
+          />
           <button type="submit" style={{ width: "100%" }}>
             Submit
           </button>
@@ -104,5 +115,4 @@ const AdditionalInfo = () => {
     </div>
   );
 };
-
 export default AdditionalInfo;

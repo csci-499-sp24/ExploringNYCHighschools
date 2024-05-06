@@ -103,7 +103,6 @@ function AccountInformation() {
   if (!userDetails) {
     return <div style={styles.message}>User details not available.</div>;
   }
-
   return (
     <div className="background-color" style={styles.backgroundContainer}>
       <div style={styles.container}>
@@ -112,13 +111,13 @@ function AccountInformation() {
           <div style={styles.textBox}>
             <div style={styles.infoItem}>
               <span style={styles.label}>Full Name:</span>
-              <span style={styles.value}>{userDetails.fullName ? userDetails.fullName : 'N/A'}</span>
+              <span style={styles.value}>{userDetails.fullName || 'N/A'}</span>
             </div>
           </div>
           <div style={styles.textBox}>
             <div style={styles.infoItem}>
               <span style={styles.label}>Email: </span>
-              <span style={styles.value}>{userDetails.email ? userDetails.email : 'N/A'}</span>
+              <span style={styles.value}>{userDetails.email || 'N/A'}</span>
             </div>
           </div>
           <div style={styles.addressBox}>
@@ -142,7 +141,16 @@ function AccountInformation() {
               <button style={styles.editButton}>Edit</button>
             </Link>
           </div>
-          {/* Add other user details here */}
+          {/* Phone details section */}
+          <div style={styles.addressBox}>
+            <div style={styles.addressItem}>
+              <span style={styles.label}>Phone: </span>
+              <span style={styles.value}>{userDetails.phone || 'N/A'}</span>
+              <Link href="/editPhone">
+                <button style={{ ...styles.editButton, top: '-3px', right: '10px' }}>Edit</button>
+              </Link>
+            </div>
+          </div>
         </div>
         <footer style={styles.footer}>
           {/* Add footer content here */}

@@ -9,7 +9,7 @@ const Footer = () => {
             <div className={styles.aboutFaqContact}>
                 <Link href="/homepage" passHref>
                     <button className={styles.button}>
-                        About Us
+                        Home
                     </button>
                 </Link>
                 <Link href="/homepage" passHref>
@@ -22,9 +22,9 @@ const Footer = () => {
                         Contact Us
                     </button>
                 </Link>
-                <Link href="/homepage" passHref>
+                <Link href="/NYCMap" passHref>
                     <button className={styles.button}>
-                        Site Feedback
+                        School Locations
                     </button>
                 </Link>
             </div>
@@ -44,14 +44,14 @@ const Footer = () => {
                     </Link>
                 </div>
                 <div className={styles.spacerForIcons}>
-                    <Link href="/homepage" passHref>
+                    <Link href="https://github.com/csci-499-sp24/ExploringNYCHighschools" target="_blank">
                         <button className={styles.button}>
                             <BsGithub/>
                         </button>
                     </Link>
                 </div>
                 <div className={styles.spacerForIcons}>
-                    <Link href="/homepage" passHref>
+                    <Link href="/homepage" target="_blank">
                         <button className={styles.button}>
                             <BsFacebook/>
                         </button>

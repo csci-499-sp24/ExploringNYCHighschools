@@ -16,7 +16,7 @@ const Homepage = () => {
           }}
         >
           <h1 style={{ margin: "0" }}>
-            <span>Explore NYC High Schools</span>
+            <span>Exploring NYC High Schools</span>
           </h1>
         </div>
         <div

@@ -13,7 +13,7 @@ const LoggedinHomepage = () => {
         <div className="background-color" style={{ minHeight: "100vh", color: "#333" }}>
           <div style={{ display: "flex", justifyContent: "center", alignItems: "center", marginTop: "60px", padding: "20px" }}>
             <h1 style={{ margin: "0" }}>
-              <span>Explore NYC High Schools</span>
+              <span>Exploring NYC High Schools</span>
             </h1>
           </div>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "40px" }}>

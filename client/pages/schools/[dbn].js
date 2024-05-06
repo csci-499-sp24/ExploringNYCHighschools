@@ -3,28 +3,35 @@ import { useEffect, useState } from "react";
 import Card from "../../components/Card";
 import CardSquare from "../../components/CardSquare";
 import SchoolButton from "../../components/SchoolButton";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth, firestore } from "../../firebase/firebaseConfig";
+import { collection, addDoc, query, where, getDocs } from "firebase/firestore";
 import Favorite from "@/components/Favorite";
 
 function SchoolProfile() {
-    const router = useRouter();
-    const { dbn } = router.query;
-    const [school, setSchool] = useState([]);
-    const [message, setMessage] = useState("Loading");
+  const router = useRouter();
+  const { dbn } = router.query;
+  const [user] = useAuthState(auth);
+  const [school, setSchool] = useState([]);
+  const [message, setMessage] = useState("Loading");
+  const [reviews, setReviews] = useState([]);
+  const [newReview, setNewReview] = useState("");
 
-    useEffect(() => {
-        if (dbn) {
-            fetch(process.env.NEXT_PUBLIC_SERVER_URL + `/api/schools/${dbn}`)
-                .then((response) => response.json())
-                .then((data) => {
-                    if (data.school) {
-                        setSchool(data.school);
-                        setMessage(data.message);
-                    } else {
-                        setMessage("School data not found!");
-                    }
-                });
-        }
-    }, [dbn]);
+  useEffect(() => {
+    if (dbn) {
+      fetch(process.env.NEXT_PUBLIC_SERVER_URL + `/api/schools/${dbn}`)
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.school) {
+            setSchool(data.school);
+            setMessage(data.message);
+            fetchReviews(dbn); // Fetch reviews for the school
+          } else {
+            setMessage("School data not found!");
+          }
+        });
+    }
+  }, [dbn]);
 
     const handleGetDirections = (address) => {
         router.push({
@@ -32,14 +39,43 @@ function SchoolProfile() {
             query: { address },
         });
     };
+    
+    const fetchReviews = async (schoolDbn) => {
+      try {
+        const reviewsRef = collection(firestore, "reviews");
+        const q = query(reviewsRef, where("schoolDbn", "==", schoolDbn));
+        const querySnapshot = await getDocs(q);
+        const reviewsData = querySnapshot.docs.map((doc) => doc.data().review);
+        console.log("Fetched reviews:", reviewsData);
+        setReviews(reviewsData);
+      } catch (error) {
+        console.error("Error fetching reviews:", error);
+      }
+    };
+    
+    const handleReviewSubmit = async () => {
+      if (user && newReview.trim() !== "") {
+        try {
+          const reviewsRef = collection(firestore, "reviews");
+          await addDoc(reviewsRef, {
+            schoolDbn: dbn,
+            review: newReview,
+            userId: user.uid,
+            timestamp: new Date(),
+          });
+          console.log("Review submitted successfully");
+          setNewReview("");
+          fetchReviews(dbn);
+        } catch (error) {
+          console.error("Error submitting review:", error);
+        }
+      }
+    };  
 
     return (
         <div className="background-color">
             <section id="hero">
                 <div className="container">
-                    <div className="favorite-button-school-page">
-                        <Favorite data={school}/>
-                    </div>
                     <div className="row">
                         <h1 className="display-1">{school.school_name}</h1>
                         <p className="desc">{school.description}</p>
@@ -49,6 +85,24 @@ function SchoolProfile() {
                     <div className="d-flex flex-row bd-highlight mb-3 justify-content-center">
                         <div className="p-2 border flex-fill bd-highlight" >
                             <Card data={school} showImg={true}></Card>
+                            <div className="reviews-container">
+                            <div className="reviews">
+                              <h4>Reviews:</h4>
+                              {reviews.map((review, idx) => (
+                                <p key={idx}>{review}</p>
+                              ))}
+                            </div>
+                            {user && (
+                              <div className="review-input">
+                                <textarea
+                                  value={newReview}
+                                  onChange={(e) => setNewReview(e.target.value)}
+                                  placeholder="Write a review..."
+                                />
+                                <button onClick={handleReviewSubmit}>Submit Review</button>
+                              </div>
+                            )}
+                          </div>
                         </div>
                     </div>
                 </div>

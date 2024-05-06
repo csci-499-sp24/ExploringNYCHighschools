@@ -76,6 +76,9 @@ function SchoolProfile() {
         <div className="background-color">
             <section id="hero">
                 <div className="container">
+                <div className="favorite-button-school-page">
+                        <Favorite data={school}/>
+                    </div>
                     <div className="row">
                         <h1 className="display-1">{school.school_name}</h1>
                         <p className="desc">{school.description}</p>

@@ -10,492 +10,492 @@
 } */
 
 .search-school-container{
-    display: flex;
-    margin-bottom: 1rem;
-    gap: 1rem;
-    width: 100%;
-    justify-content: center;
+  display: flex;
+  margin-bottom: 1rem;
+  gap: 1rem;
+  width: 100%;
+  justify-content: center;
 }
 
 h1 {
-  font-family: Georgia, "Times New Roman", Times, serif;
+font-family: Georgia, "Times New Roman", Times, serif;
+text-align: center;
+padding-bottom: 30px;
+color: purple;
+}
+
+.school-wrapper-container{
+display: flex;
+justify-content: center;
+width: 100%;
+flex-direction: column;
+align-items: center;
+}
+
+.school-container{
+  display: flex;
+  width: max-content;
+  justify-content: center;
+  max-width: 600px;
+  width: 100%;
+}
+
+.card-title {
+  text-align: left;
+  color:black;
+  margin-bottom: 0.5rem;
+  /* text-transform: capitalize; */
+}
+
+.card-title-span{
+  font-weight: 800;
+}
+.card-body h5 {
+ color: purple;
+ /* text-transform: capitalize; */
+ font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.card-body  {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 18px;
+  text-align: center;
+  padding: 1rem;
+  
+}
+.card-text{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 16px;
+}
+
+.desc{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 18px;
+  text-align: center;
+}
+
+#hero .card{
+ text-align: center;
+ width: 25rem;
+ height: 28rem;
+} 
+
+#quality-reports .card{
+  text-align: center;
+  width: 25rem;
+  height: 10rem;
+} 
+
+.message-not-found{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 18px;
+  align-items: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.message-select-schools{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 18px;
+  align-items: center;
+  display: flex;
+  justify-content: center; 
+}
+.school-button{
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.school-button button {
+margin-left: 10px;
+}
+.collapse-expand button {
+margin-left: 10px;
+}
+
+.collapse-expand {
+text-align: center;
+font-family: Georgia, "Times New Roman", Times, serif;
+}
+.collapse-expand-button {
+padding: 10px;
+border-radius: 20px;
+}
+
+.compare{
+  font-family: Georgia, 'Times New Roman', Times, serif; 
+  padding: 10px;
+  border-radius: 20px;
+  margin-left: 10px;
+  width: 300px;
+}
+
+.background-color {
+/* background-image: linear-gradient(to right, rgba(0, 0, 255, 0), rgb(45, 145, 217));  blue gradient*/
+background-image: linear-gradient(
+  to bottom,
+  #c3b1e1,
+  #ccccff,
+  transparent
+); /* purple gradient */
+}
+
+.scroll-button {
+position: fixed;
+bottom: 10px;
+right: 10px;
+padding: 15px;
+border-radius: 50%;
+}
+
+.scroll-button:hover {
+background-color: rgb(211, 211, 211);
+}
+
+.collaspe-title:hover{
+
+  background-color: rgb(233, 229, 229);
+  border-radius: 10px;
+}
+
+
+.search {
+font-family: Georgia, "Times New Roman", Times, serif;
+text-align: center;
+padding-top: 30px;
+font-size: 20px;
+}
+
+.collaspe-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  background-color: white;
+  width: 900px;
+  padding: 5px;
+  font-size: 16px;
+}
+.collaspe-body{
+  width: 900px;
+  font-size: 15px;
+  display: flex;
+  flex-direction: row;
+}
+.textbox-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* cursor: pointer; */
+  background-color: white;
+  width: 900px;
+  padding: 5px;
+  font-size: 16px;
+}
+.textbox-body{
+  width: 900px;
+  font-size: 15px;
+  display: flex;
+  flex-direction: row;
+}
+.textbox-item{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  display: flex;
+  max-width: fit-content;
+  border: 1px solid;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem auto;
+  flex-direction: column;
+  padding: 10px;
+  background-color: white;
+  border-radius: 10px;
+ 
+}
+.textbox-ranking-item{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  display: flex;
+  border: 1px solid; 
+  margin: 1rem auto;
+  flex-direction: column;
+  padding: 10px;
+  background-color: white;
+  border-radius: 10px;
+  height: 7rem;
+ 
+}
+.textbox-ranking-title {
+  display: flex;
+  background-color: white;
+  width: 600px;
+  padding: 5px;
+  font-size: 16px;
+}
+.textbox-ranking{
+  display: flex;
+  justify-content: center;
+}
+
+.school-data {
+  flex: 1;
+  margin-right: 50px;
+}
+.rank-data {
+  flex: 1;
+  display: flex; 
+  align-items: center;
+  flex-direction: column;
+}
+
+.collaspe-item{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  display: flex;
+  max-width: fit-content;
+  border: 1px solid;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem auto;
+  flex-direction: column;
+  padding: 10px;
+  background-color: white;
+  border-radius: 10px;
+ 
+}
+
+.compare-search{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  margin: 1rem auto;
+}
+
+.search-compare {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.search-bars {
+margin-left: 90px;
+flex-direction: column;
+display: flex;
+}
+
+
+.select-box{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  display: flex;
+  max-width: fit-content;
+  align-items: center;
+  justify-content: space-between;
+  margin: 1rem auto;
+  flex-direction: row;
+  padding: 5px;
+  border-radius: 10px;
+}
+.subtitle {
+  font-family: Georgia, 'Times New Roman', Times, serif;
   text-align: center;
   padding-bottom: 30px;
   color: purple;
 }
 
-.school-wrapper-container{
- display: flex;
- justify-content: center;
- width: 100%;
- flex-direction: column;
- align-items: center;
-}
-
-.school-container{
-    display: flex;
-    width: max-content;
-    justify-content: center;
-    max-width: 600px;
-    width: 100%;
-}
-
-.card-title {
-    text-align: left;
-    color:black;
-    margin-bottom: 0.5rem;
-    /* text-transform: capitalize; */
-}
-
-.card-title-span{
-    font-weight: 800;
-}
-.card-body h5 {
-   color: purple;
-   /* text-transform: capitalize; */
-   font-family: Georgia, 'Times New Roman', Times, serif;
-}
-
-.card-body  {
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 18px;
-    text-align: center;
-    padding: 1rem;
-    
-}
-.card-text{
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 16px;
-}
-
-.desc{
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 18px;
-    text-align: center;
-}
-
-#hero .card{
-   text-align: center;
-   width: 25rem;
-   height: 25rem;
-} 
-
-#quality-reports .card{
-    text-align: center;
-    width: 25rem;
-    height: 10rem;
- } 
-
-.message-not-found{
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 18px;
-    align-items: center;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-.message-select-schools{
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 18px;
-    align-items: center;
-    display: flex;
-    justify-content: center; 
-}
-.school-button{
-    text-align: center;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-}
-.school-button button {
-  margin-left: 10px;
-}
-.collapse-expand button {
-  margin-left: 10px;
-}
-
-.collapse-expand {
-  text-align: center;
-  font-family: Georgia, "Times New Roman", Times, serif;
-}
-.collapse-expand-button {
-  padding: 10px;
-  border-radius: 20px;
-}
-
-.compare{
-    font-family: Georgia, 'Times New Roman', Times, serif; 
-    padding: 10px;
-    border-radius: 20px;
-    margin-left: 10px;
-    width: 300px;
-}
-
-.background-color {
-  /* background-image: linear-gradient(to right, rgba(0, 0, 255, 0), rgb(45, 145, 217));  blue gradient*/
-  background-image: linear-gradient(
-    to bottom,
-    #c3b1e1,
-    #ccccff,
-    transparent
-  ); /* purple gradient */
-}
-
-.scroll-button {
-  position: fixed;
-  bottom: 10px;
-  right: 10px;
-  padding: 15px;
-  border-radius: 50%;
-}
-
-.scroll-button:hover {
-  background-color: rgb(211, 211, 211);
-}
-
-.collaspe-title:hover{
-
-    background-color: rgb(233, 229, 229);
-    border-radius: 10px;
-}
-
-
-.search {
-  font-family: Georgia, "Times New Roman", Times, serif;
-  text-align: center;
-  padding-top: 30px;
-  font-size: 20px;
-}
-
-.collaspe-title {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    cursor: pointer;
-    background-color: white;
-    width: 900px;
-    padding: 5px;
-    font-size: 16px;
-}
-.collaspe-body{
-    width: 900px;
-    font-size: 15px;
-    display: flex;
-    flex-direction: row;
-}
-.textbox-title {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    /* cursor: pointer; */
-    background-color: white;
-    width: 900px;
-    padding: 5px;
-    font-size: 16px;
-}
-.textbox-body{
-    width: 900px;
-    font-size: 15px;
-    display: flex;
-    flex-direction: row;
-}
-.textbox-item{
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    display: flex;
-    max-width: fit-content;
-    border: 1px solid;
-    align-items: center;
-    justify-content: center;
-    margin: 1rem auto;
-    flex-direction: column;
-    padding: 10px;
-    background-color: white;
-    border-radius: 10px;
-   
-}
-.textbox-ranking-item{
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    display: flex;
-    border: 1px solid; 
-    margin: 1rem auto;
-    flex-direction: column;
-    padding: 10px;
-    background-color: white;
-    border-radius: 10px;
-    height: 7rem;
-   
-}
-.textbox-ranking-title {
-    display: flex;
-    background-color: white;
-    width: 600px;
-    padding: 5px;
-    font-size: 16px;
-}
-.textbox-ranking{
-    display: flex;
-    justify-content: center;
-}
-
-.school-data {
-    flex: 1;
-    margin-right: 50px;
-}
-.rank-data {
-    flex: 1;
-    display: flex; 
-    align-items: center;
-    flex-direction: column;
-}
-
-.collaspe-item{
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    display: flex;
-    max-width: fit-content;
-    border: 1px solid;
-    align-items: center;
-    justify-content: center;
-    margin: 1rem auto;
-    flex-direction: column;
-    padding: 10px;
-    background-color: white;
-    border-radius: 10px;
-   
-}
-
-.compare-search{
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    margin: 1rem auto;
-}
-
-.search-compare {
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-}
-.search-bars {
-  margin-left: 90px;
-  flex-direction: column;
-  display: flex;
-}
-
-
-.select-box{
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    display: flex;
-    max-width: fit-content;
-    align-items: center;
-    justify-content: space-between;
-    margin: 1rem auto;
-    flex-direction: row;
-    padding: 5px;
-    border-radius: 10px;
-}
-.subtitle {
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    text-align: center;
-    padding-bottom: 30px;
-    color: purple;
-}
-
 /*schools page dropdowns*/
 .dropdowns {
-  display: flex;
-  gap: 10px; /* Adjust the gap between dropdowns */
+display: flex;
+gap: 10px; /* Adjust the gap between dropdowns */
 }
 
 .dropdown-container {
-  display: flex;
-  justify-content: center;
+display: flex;
+justify-content: center;
 }
 
 .dropdown-box {
-  background-color: #f0f8ff; /* Light blue color */
-  border: 1px solid #ccc; /* Border for the box */
-  border-radius: 5px; /* Adjust border radius for rounded corners */
-  padding: 10px; /* Adjust padding inside the box */
+background-color: #f0f8ff; /* Light blue color */
+border: 1px solid #ccc; /* Border for the box */
+border-radius: 5px; /* Adjust border radius for rounded corners */
+padding: 10px; /* Adjust padding inside the box */
 }
 
 @media screen and (max-width: 768px) {
-  .dropdowns {
-    flex-direction: column; 
-  }
+.dropdowns {
+  flex-direction: column; 
+}
 }
 
 /*navbar searchbar*/
 .searchbar {
-  display: flex;
-  align-items: center; 
+display: flex;
+align-items: center; 
 }
 
 .search-bar-button {
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
-  border-radius: 999px; 
-  border: 1px solid #007bff; 
-  background-color: #007bff; 
-  color: #ffffff; 
-  padding: 0.5rem 1rem; 
-  cursor: pointer; 
+margin-left: 0.5rem;
+margin-right: 0.5rem;
+border-radius: 999px; 
+border: 1px solid #007bff; 
+background-color: #007bff; 
+color: #ffffff; 
+padding: 0.5rem 1rem; 
+cursor: pointer; 
 }
 
 @media (min-width: 768px) {
-  .searchbar .rbt-input-main {
-    width: 38rem; /* Adjust the width for larger screens */
-  }
+.searchbar .rbt-input-main {
+  width: 38rem; /* Adjust the width for larger screens */
+}
 }
 /*recommend page*/
 
 .school-item {
-  border: 3px solid #ccc;
-  border-radius: 10px;
-  padding: 10px;
-  margin-bottom: 10px;
-  background-color: #c2e2ec;
+border: 3px solid #ccc;
+border-radius: 10px;
+padding: 10px;
+margin-bottom: 10px;
+background-color: #c2e2ec;
 }
 .question-button {
-  background-color: #007bff;
-  color: white;
-  padding: 10px 20px;
-  margin: 5px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+background-color: #007bff;
+color: white;
+padding: 10px 20px;
+margin: 5px;
+border: none;
+border-radius: 5px;
+cursor: pointer;
 }
 
 .question-button:hover {
-  background-color: #66095a;
+background-color: #66095a;
 }
 .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
 }
 
 .question-indicators {
-  display: flex;
-  align-items: center;
+display: flex;
+align-items: center;
 }
 
 .question-indicators span {
-  margin-right: 10px;
-  cursor: pointer;
+margin-right: 10px;
+cursor: pointer;
 }
 
 .question-indicators span.active {
-  border: 1px solid rgb(63, 0, 63);
-  padding: 0.2rem 0.2rem;
-  border-radius: 0.5rem;
+border: 1px solid rgb(63, 0, 63);
+padding: 0.2rem 0.2rem;
+border-radius: 0.5rem;
 }
 /*sidebar*/
 *{
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  text-decoration: none;
+margin: 0;
+padding: 0;
+list-style: none;
+text-decoration: none;
 }
 .sidebar {
-  position: fixed;
-  width: 300px;
-  height: 100vh;
-  left:-300px;
-  background: #CBC3E3;
-  transition: all .5s ease;
-  z-index: 2;
-  overflow-y: auto;
+position: fixed;
+width: 300px;
+height: 100vh;
+left:-300px;
+background: #CBC3E3;
+transition: all .5s ease;
+z-index: 2;
+overflow-y: auto;
 }
 .sidebar ul a{
-  font-size: 20px;
-  line-height: 65px;
-  display:block;
-  height: 100%;
-  width: 100%;
-  color: rgb(0, 0, 0);
-  box-sizing: border-box;
-  border-top: 1px solid rgba(255,255,255,.1);
-  border-bottom: 1px solid black;
-  transition: .4s;
+font-size: 20px;
+line-height: 65px;
+display:block;
+height: 100%;
+width: 100%;
+color: rgb(0, 0, 0);
+box-sizing: border-box;
+border-top: 1px solid rgba(255,255,255,.1);
+border-bottom: 1px solid black;
+transition: .4s;
 }
 #check{
-  display: none;
+display: none;
 }
 label #btn,label #cancel{
-  position: absolute;
-  background: #800080;
-  border-radius: 3px;
-  cursor: pointer;
-  width: auto
+position: absolute;
+background: #800080;
+border-radius: 3px;
+cursor: pointer;
+width: auto
 }
 label #btn{
-  left: 10px;
-  top: 6px;
-  font-size: 35px;
-  color: white;
-  padding: 6px 12px;
-  transition: all .5s;
+left: 10px;
+top: 6px;
+font-size: 35px;
+color: white;
+padding: 6px 12px;
+transition: all .5s;
 }
 label #cancel{
-  z-index: 1111;
-  left: -195px;
-  top: 6px;
-  font-size: 30px;
-  color: #f3f3f3;
-  padding: 4px 9px;
-  transition: all .5s ease;
+z-index: 1111;
+left: -195px;
+top: 6px;
+font-size: 30px;
+color: #f3f3f3;
+padding: 4px 9px;
+transition: all .5s ease;
 }
 #check:checked ~ .sidebar{
-  left: 0;
+left: 0;
 }
 #check:checked ~ label #btn{
-  left: 300px;
-  opacity: 0;
-  pointer-events: none;
+left: 300px;
+opacity: 0;
+pointer-events: none;
 }
 #check:checked ~ label #cancel{
-  /* left: 195px; */
-  left: 260px;
+/* left: 195px; */
+left: 260px;
 }
 #check:checked ~ section{
-  margin-left: 300px;
+margin-left: 300px;
 }  
 .sidebar ul a i{
-  margin-right: 16px;
+margin-right: 16px;
 }
 @media screen and (max-width: 768px) {
-  .sidebar {
-    width: 150px; 
-  }
-  #check:checked ~ label #cancel {
-    left: 110px; 
-  }
+.sidebar {
+  width: 150px; 
+}
+#check:checked ~ label #cancel {
+  left: 110px; 
+}
 }
 
 .favorite-button {
-  background: none;
-  border: none;
-  cursor: pointer;
+background: none;
+border: none;
+cursor: pointer;
 }
 .fav-map {
-  bottom: 15px; 
-  right: 15px; 
-  position: absolute;
-  font-size: 24px;
+bottom: 15px; 
+right: 15px; 
+position: absolute;
+font-size: 24px;
 }
 .favorite-button-school-page {
-  position: absolute;
-  right: 20px; 
-  font-size: 40px;
-  top: 60px;
+position: absolute;
+right: 20px; 
+font-size: 40px;
+top: 60px;
 }
 .delete-button {
-  position: absolute;
-  right: 0;
-  bottom: 10px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 24px;
+position: absolute;
+right: 0;
+bottom: 10px;
+background: none;
+border: none;
+cursor: pointer;
+font-size: 24px;
 }

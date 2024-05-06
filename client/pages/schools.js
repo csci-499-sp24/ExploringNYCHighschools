@@ -7,6 +7,7 @@ import SchoolButton from "../components/SchoolButton";
 import ScrollUpButton from "../components/ScrollUpButton";
 import PSALBoysDropdown from "@/components/PSALBoysDropdown";
 import PSALGirlsDropdown from "@/components/PSALGirlsDropdown";
+import Favorite from "@/components/Favorite";
 
 function Schools() {
   const [schoolsData, setSchoolsData] = useState([]);
@@ -113,6 +114,11 @@ function Schools() {
                           link={`/schools/quality-reports/${school.dbn}`}
                           text={"View School Quality Report"}
                         ></SchoolButton>
+                         <div style={{position:"relative"}}>
+                          <div style={{display:"flex", alignItems:"center", position:"absolute", right:"5px", bottom:"5px"}}>
+                            <Favorite data={school}/>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>

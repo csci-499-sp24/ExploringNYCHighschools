@@ -86,7 +86,7 @@ const getPosition = (school) => {
   return (
     <div style={{ height: '100vh', width: '100%' }}>
       <LoadScript
-        googleMapsApiKey="AIzaSyC7ebZzwn5MyLSBC3bEB2N6CXCNj_YnoK4"
+        googleMapsApiKey="AIzaSyDj6xBIduOFaJ_SnUOi4KKuw-FBuTgNLOU"
         onLoad={() => setIsLoaded(true)}
       >
         <GoogleMap

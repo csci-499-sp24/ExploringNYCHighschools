@@ -135,22 +135,28 @@ const Directions = () => {
   };
 
   return (
-    <div style={{ height: '100vh', width: '100%' }}>
-      <div>
+    <div style={{ display: 'flex', flexDirection: 'row', height: '100vh', width: '100%' }}>
+    <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
+      <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', padding: '10px' }}>
         <input
           type="text"
           value={inputAddress}
           onChange={(e) => setInputAddress(e.target.value)}
           placeholder="Enter your address"
+          style={{width:"300px", borderRadius:"5px", fontFamily:"Georgia, 'Times New Roman', Times, serif"}}
         />
-        <button onClick={() => handleTravelModeChange("DRIVING")} style={{ marginRight: '10px' }}>Car</button>
-        <button onClick={() => handleTravelModeChange("TRANSIT")} style={{ marginRight: '10px' }}>Subway</button>
-        <button onClick={() => handleTravelModeChange("WALKING")}>Walking</button>
+        </div>
+        <div style={{ display: 'flex', flexDirection: 'row',justifyContent: 'center', paddingBottom:"10px" }}>
+        <button className="btn btn-primary transportion-choice-button" onClick={() => handleTravelModeChange("DRIVING")} style={{ marginRight: '10px' }}>Car</button>
+        <button className="btn btn-primary transportion-choice-button"onClick={() => handleTravelModeChange("TRANSIT")} style={{ marginRight: '10px' }}>Subway</button>
+        <button className="btn btn-primary transportion-choice-button"onClick={() => handleTravelModeChange("WALKING")}>Walking</button>
       </div>
-      <div>
-        <p>Estimated Time: {duration}</p>
+      <div style={{ flex: 1, overflowY: 'auto' }}>
+        <p style={{textAlign: 'center', fontFamily:"Georgia, 'Times New Roman', Times, serif"}}>Estimated Time: {duration}</p>
+      <div ref={directionsPanel} style={{overflow: 'auto' }}></div>
       </div>
-      <div ref={directionsPanel} style={{ height: '200px', overflow: 'auto' }}></div>
+      </div>
+      <div style={{ flex: 2, position: 'relative' }}>
       <LoadScript
         googleMapsApiKey="AIzaSyDj6xBIduOFaJ_SnUOi4KKuw-FBuTgNLOU"
         onLoad={() => setIsLoaded(true)}
@@ -182,6 +188,7 @@ const Directions = () => {
           )}
         </GoogleMap>
       </LoadScript>
+    </div>
     </div>
   );
 };

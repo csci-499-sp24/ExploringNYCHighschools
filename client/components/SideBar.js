@@ -13,7 +13,7 @@ function SideBar(){
         { name: "Home", href: "/homepage", Icon: <FaHome />},
         { name: "Search For Schools", href: "/schools", Icon: <FaSchool /> },
         { name: "Comparing Schools", href: "/compare", Icon: <FaBalanceScale /> },
-        { name: "Get Directions", href: "/NYCMap", Icon: <FaMap />},
+        { name: "School Locations", href: "/NYCMap", Icon: <FaMap />},
         { name: "School Rankings", href: "/ranking", Icon: <FaChartLine />},
         { name: "Recommend School", href: "/recommendschool", Icon: <MdRecommend />},
         { name: "Contact Us", href: "/contact", Icon: <TiContacts />},

@@ -33,12 +33,12 @@ function SchoolProfile() {
     }
   }, [dbn]);
 
-    const handleGetDirections = (address) => {
-        router.push({
-            pathname: '/NYCMap',
-            query: { address },
-        });
-    };
+  const handleGetDirections = (address) => {
+    router.push({
+      pathname: '/Directions',
+      query: { schoolAddress: address },
+    });
+  };
     
     const fetchReviews = async (schoolDbn) => {
       try {

@@ -12,6 +12,7 @@ function AccountInformation() {
     backgroundContainer: {
       minHeight: '100vh',
       color: '#333',
+
     },
     container: {
       maxWidth: '600px',
@@ -21,21 +22,26 @@ function AccountInformation() {
       minHeight: 'calc(100vh - 60px)',
       display: 'flex',
       flexDirection: 'column',
+      fontFamily: "Georgia, 'Times New Roman', Times, serif"
     },
     heading: {
       fontSize: '40px',
       marginBottom: '20px',
+      fontFamily: "Georgia, 'Times New Roman', Times, serif"
     },
     infoContainer: {
       marginTop: '20px',
+      fontFamily: "Georgia, 'Times New Roman', Times, serif"
     },
     infoItem: {
       marginBottom: '10px',
+      fontFamily: "Georgia, 'Times New Roman', Times, serif"
     },
     label: {
       fontWeight: 'bold',
       marginRight: '10px',
       color: 'black',
+      fontFamily: "Georgia, 'Times New Roman', Times, serif"
     },
     value: {
       color: 'black',
@@ -44,17 +50,20 @@ function AccountInformation() {
       textAlign: 'center',
       marginTop: '20px',
       fontSize: '18px',
+      fontFamily: "Georgia, 'Times New Roman', Times, serif"
     },
     message: {
       textAlign: 'center',
       marginTop: '20px',
       fontSize: '18px',
+      fontFamily: "Georgia, 'Times New Roman', Times, serif"
     },
     textBox: {
       border: '1px solid #000',
       borderRadius: '20px',
       padding: '8px',
       marginBottom: '15px',
+      backgroundColor:"white"
     },
     addressBox: {
       position: 'relative', 
@@ -62,6 +71,7 @@ function AccountInformation() {
       borderRadius: '20px',
       padding: '8px',
       marginBottom: '15px',
+      backgroundColor:"white"
     },
     addressItem: {
       marginBottom: '5px',
@@ -85,6 +95,7 @@ function AccountInformation() {
       cursor: 'pointer',
       transition: 'color 0.3s ease', 
       textDecoration: 'underline', 
+      fontFamily: "Georgia, 'Times New Roman', Times, serif"
     },
   };
 

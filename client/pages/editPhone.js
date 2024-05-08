@@ -22,7 +22,7 @@ const EditPhone = () => {
       try {
         await updateDoc(userRef, { phone });
         console.log("Phone number updated successfully");
-        router.push("/accountInformation");
+        router.push("/account-information");
       } catch (error) {
         console.error("Error updating phone number:", error);
       }
@@ -41,9 +41,9 @@ const EditPhone = () => {
             placeholder="Enter your phone number"
             value={phone}
             onChange={handleChange}
-            style={{ marginBottom: "10px", width: "100%" }}
+            style={{ marginBottom: "10px", width: "100%",fontFamily: "Georgia, 'Times New Roman', Times, serif", borderRadius:"5px" }}
           />
-          <button type="submit" style={{ width: "100%" }}>
+          <button className="btn btn-primary" type="submit" style={{fontFamily: "Georgia, 'Times New Roman', Times, serif",padding: "10px",borderRadius: "20px",width: "100%"}}>
             Update
           </button>
         </form>

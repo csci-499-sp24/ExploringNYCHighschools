@@ -63,7 +63,7 @@ const EditAddress = () => {
             name="address"
             value={addressInfo.address}
             onChange={handleInputChange}
-            style={{ marginBottom: '10px', width: '100%' }}
+            style={{ marginBottom: '10px', width: '100%', borderRadius:"5px",fontFamily: "Georgia, 'Times New Roman', Times, serif" }}
           />
           <div style={{ display: 'flex', marginBottom: '10px' }}>
             <input
@@ -72,7 +72,7 @@ const EditAddress = () => {
               name="city"
               value={addressInfo.city}
               onChange={handleInputChange}
-              style={{ marginRight: '10px', width: 'calc(50% - 5px)' }}
+              style={{ marginRight: '10px', width: 'calc(50% - 5px)',borderRadius:"5px",fontFamily: "Georgia, 'Times New Roman', Times, serif" }}
             />
             <input
               type="text"
@@ -80,7 +80,7 @@ const EditAddress = () => {
               name="state"
               value={addressInfo.state}
               onChange={handleInputChange}
-              style={{ marginRight: '10px', width: 'calc(25% - 5px)' }}
+              style={{ marginRight: '10px', width: 'calc(25% - 5px)',borderRadius:"5px",fontFamily: "Georgia, 'Times New Roman', Times, serif" }}
             />
             <input
               type="text"
@@ -88,10 +88,10 @@ const EditAddress = () => {
               name="zipcode"
               value={addressInfo.zipcode}
               onChange={handleInputChange}
-              style={{ width: 'calc(25% - 5px)' }}
+              style={{ width: 'calc(25% - 5px)',borderRadius:"5px",fontFamily: "Georgia, 'Times New Roman', Times, serif"}}
             />
           </div>
-          <button type="submit" style={{ width: '100%' }}>
+          <button className="btn btn-primary" type="submit" style={{fontFamily: "Georgia, 'Times New Roman', Times, serif",padding: "10px",borderRadius: "20px",width: "100%"}} >
             Save
           </button>
         </form>

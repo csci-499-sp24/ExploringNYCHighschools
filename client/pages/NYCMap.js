@@ -161,7 +161,7 @@ const handleGetDirections = (address) => {
                         <SchoolButton link={`/schools/${selectedMarker.dbn}`} />
                         <SchoolButton
                           link={`/schools/quality-reports/${selectedMarker.dbn}`}
-                          text={"Go to School Quality Report"}
+                          text={"School Quality Report"}
                         ></SchoolButton>
                   </div>
                 </div>
@@ -179,7 +179,7 @@ const handleGetDirections = (address) => {
                         <SchoolButton link={`/schools/${selectedSchool.dbn}`} />
                         <SchoolButton
                           link={`/schools/quality-reports/${selectedSchool.dbn}`}
-                          text={"Go to School Quality Report"}
+                          text={"School Quality Report"}
                         ></SchoolButton>
                   </div>
                 </div>

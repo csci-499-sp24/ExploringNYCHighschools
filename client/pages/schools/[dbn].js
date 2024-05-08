@@ -115,7 +115,7 @@ function SchoolProfile() {
                         <SchoolButton text={"Get Directions"} onClick={() => handleGetDirections(school.address)}></SchoolButton>
                         <SchoolButton
                           link={`/schools/quality-reports/${school.dbn}`}
-                          text={"Go to School Quality Report"}
+                          text={"School Quality Report"}
                         ></SchoolButton>
                     </div>
                 </div>

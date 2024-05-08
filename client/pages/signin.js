@@ -34,6 +34,7 @@ const SignIn = () => {
   };
 
   return (
+    <div className="background-color">
     <div
       style={{
         display: 'flex',
@@ -113,6 +114,7 @@ const SignIn = () => {
           Sign Up
         </button>
       </form>
+    </div>
     </div>
   );
 };

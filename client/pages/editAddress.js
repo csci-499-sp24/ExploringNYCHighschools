@@ -53,6 +53,7 @@ const EditAddress = () => {
   };
 
   return (
+    <div className="background-color">
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '40vh' }}>
       <div style={{ width: '300px' }}>
         <h1>Edit Address</h1>
@@ -96,6 +97,7 @@ const EditAddress = () => {
           </button>
         </form>
       </div>
+    </div>
     </div>
   );
 };

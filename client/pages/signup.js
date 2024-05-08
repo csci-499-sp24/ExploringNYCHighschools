@@ -37,6 +37,7 @@ const Registration = () => {
     }
   };
   return (
+    <div className="background-color">
     <div
       style={{
         display: "flex",
@@ -131,6 +132,7 @@ const Registration = () => {
         </button>
       </form>
       <br />
+    </div>
     </div>
   );
 };

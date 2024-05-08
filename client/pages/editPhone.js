@@ -22,7 +22,7 @@ const EditPhone = () => {
       try {
         await updateDoc(userRef, { phone });
         console.log("Phone number updated successfully");
-        router.push("/accountInformation");
+        router.push("/account-information");
       } catch (error) {
         console.error("Error updating phone number:", error);
       }

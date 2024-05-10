@@ -5,6 +5,7 @@ const MapSearchBar = ({ schools, setSelectedSchool }) => {
   const [query, setQuery] = useState('');
   const [filteredSchools, setFilteredSchools] = useState([]);
 
+  // added [schools] for start up(all data is not loaded yet)
   useEffect(() => {
     setFilteredSchools(schools);
   }, [schools]);

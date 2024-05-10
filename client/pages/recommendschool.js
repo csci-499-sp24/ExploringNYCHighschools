@@ -221,6 +221,16 @@ const RecommendSchool = () => {
     }
   };
 
+  const handleSkipLanguage = () => {
+    setSelectedLanguage(""); // Reset the selected language
+    setQuestionIndex(questionIndex + 1); // Move to the next question
+  };
+
+  const handleSkipSports = () => {
+    setSelectedSports([]); // Reset the selected sports
+    setQuestionIndex(questionIndex + 1); // Move to the next question
+  };
+
   return (
     <div className="background-color">
       <div className="container">
@@ -271,14 +281,14 @@ const RecommendSchool = () => {
                 style={{
                   backgroundColor:
                     rate === 1
-                      ? "green"
+                      ? "red"
                       : rate === 2
-                      ? "lightgreen"
+                      ? "orange"
                       : rate === 3
                       ? "#FFD700"
                       : rate === 4
-                      ? "orange"
-                      : "red",
+                      ? "lightgreen"
+                      : "green",
                   color: "white",
                   padding: "0.5rem 1rem",
                   borderRadius: "0.25rem",
@@ -294,6 +304,12 @@ const RecommendSchool = () => {
         )}
         {questionIndex === 3 && (
           <div>
+            <button
+              className="question-skip-button"
+              onClick={handleSkipLanguage}
+            >
+              Skip
+            </button>
             {languages.map((language) => (
               <button
                 className="question-button"
@@ -307,6 +323,9 @@ const RecommendSchool = () => {
         )}
         {questionIndex === 4 && (
           <div>
+            <button className="question-skip-button" onClick={handleSkipSports}>
+              Skip
+            </button>
             {sports.map((sport) => (
               <button
                 className="question-button"

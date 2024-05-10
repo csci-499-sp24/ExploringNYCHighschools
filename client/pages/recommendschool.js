@@ -233,7 +233,7 @@ const RecommendSchool = () => {
 
   return (
     <div className="background-color">
-      <div className="container">
+      <div className="question-container">
         <div className="question-indicators">
           {questions.map((_, index) => (
             <span

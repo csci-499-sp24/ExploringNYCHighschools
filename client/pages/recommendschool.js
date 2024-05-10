@@ -233,6 +233,7 @@ const RecommendSchool = () => {
 
   return (
     <div className="background-color">
+    <h1></h1>
       <div className="question-container">
         <div className="question-indicators">
           {questions.map((_, index) => (
@@ -392,6 +393,7 @@ const RecommendSchool = () => {
           </ul>
         )}
       </div>
+      <h1></h1>
     </div>
   );
 };

@@ -28,7 +28,6 @@ const MapSearchBar = ({ schools, setSelectedSchool }) => {
   return (
     <div className="searchbar-map">
         <Typeahead
-        id="school-search"
         labelKey="school_name"
         options={filteredSchools}
         onSearch={(query) => handleSearch(query)}

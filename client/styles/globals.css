@@ -502,16 +502,17 @@ font-size: 24px;
 }
 
 .searchbar-map {
-  top: 14px;
+  top: 10px;
   left: 200px; 
   position: absolute;
   display: flex;
   align-items: center; 
-  background-color: black;
+  border: 3px solid black;
+  border-radius: 10px;;
 }
 
 @media (min-width: 768px) {
   .searchbar-map .rbt-input-main {
-    width: 30rem; 
+    width: 30rem;
   }
 }

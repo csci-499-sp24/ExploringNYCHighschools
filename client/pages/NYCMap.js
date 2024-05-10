@@ -84,6 +84,12 @@ const getPosition = (school) => {
     return {lat: adjust_pos, lng};
   }
 }
+const handleGetDirections = (address) => {
+  router.push({
+    pathname: '/Directions',
+    query: { schoolAddress: address },
+  });
+};
   return (
     <div style={{ height: '100vh', width: '100%' }}>
       <LoadScript
@@ -151,6 +157,7 @@ const getPosition = (school) => {
                 <div>
                   <Card data={selectedMarker} showImg={true} showHeart={true}  ></Card>
                   <div className="school-button">
+                        <SchoolButton text={"Get Directions"} onClick={() => handleGetDirections(selectedMarker.address)}/>
                         <SchoolButton link={`/schools/${selectedMarker.dbn}`} />
                         <SchoolButton
                           link={`/schools/quality-reports/${selectedMarker.dbn}`}

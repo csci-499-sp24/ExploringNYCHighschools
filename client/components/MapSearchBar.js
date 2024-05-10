@@ -7,7 +7,7 @@ const MapSearchBar = ({ schools, setSelectedSchool }) => {
 
   useEffect(() => {
     setFilteredSchools(schools);
-  }, []);
+  }, [schools]);
 
   const handleSearch = (query) => {
     setQuery(query);

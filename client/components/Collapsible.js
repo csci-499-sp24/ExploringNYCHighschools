@@ -2,39 +2,37 @@ import React, { useState, useEffect } from "react";
 import { SlArrowDown } from "react-icons/sl";
 import { SlArrowUp } from "react-icons/sl";
 
-function Collapsible({question, school1_answer, school2_answer, expand, collapse}) {
+function Collapsible({question, subway, bus}) {
     const [arrowClicked, setArrowClicked] = useState(false);
     function handleArrowClicked () {
         setArrowClicked(!arrowClicked);
     }
-    if (school1_answer===null || school1_answer===undefined) {
-        school1_answer = "Unavailable";
+    if (subway===null || subway===undefined) {
+        subway = "Unavailable";
     }
-    if (school2_answer===null || school2_answer===undefined) {
-        school2_answer = "Unavailable";
+    if (bus===null || bus===undefined) {
+        bus = "Unavailable";
     }
-    useEffect(() => {
-        if(expand) {
-            setArrowClicked(true);
-        }
-        else if(collapse){
-            setArrowClicked(false);
-        }
-    }, [expand,collapse]);
     return (
         <div className="collaspe-item">
             <div className="collaspe-title" onClick={handleArrowClicked}>
-                <div style={{ fontSize: "18px"}}>{question}</div>
+                {/* <div style={{ fontSize: "16px"}}>{question}</div> */}
+                <div className="school-data">
+                        Subway
+                    </div>
+                    <div className="school-data">
+                        Bus
+                    </div>
                 <div>{arrowClicked ? <SlArrowUp fill="black" />: <SlArrowDown fill="black"/>}</div>
             </div>
             {arrowClicked && (
                 <div className="collaspe-body">
                     <div className="school-data">
-                        {` ${school1_answer}`}
+                        {` ${subway}`}
                     </div>
                     <br/>
                     <div className="school-data">
-                        {` ${school2_answer}`}
+                        {` ${bus}`}
                     </div>
                 </div>
             )}

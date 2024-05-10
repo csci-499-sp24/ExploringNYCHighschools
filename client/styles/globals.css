@@ -500,3 +500,18 @@ border: none;
 cursor: pointer;
 font-size: 24px;
 }
+
+.searchbar-map {
+  top: 14px;
+  left: 200px; 
+  position: absolute;
+  display: flex;
+  align-items: center; 
+  background-color: black;
+}
+
+@media (min-width: 768px) {
+  .searchbar-map .rbt-input-main {
+    width: 30rem; 
+  }
+}

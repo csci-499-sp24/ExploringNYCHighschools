@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { GoogleMap, InfoWindowF, LoadScript, MarkerF } from '@react-google-maps/api';
 import SchoolButton from '@/components/SchoolButton';
 import Card from '@/components/Card';
+import MapSearchBar from '@/components/MapSearchBar';
 
 const containerStyle = {
   width: '100%',
@@ -140,6 +141,7 @@ const getPosition = (school) => {
               }
               return null;
             })}
+            <MapSearchBar schools={schools} setSelectedSchool={setSelectedMarker}/>
             {/* InfoWindow popups when the user clicks on a marker */}
             {selectedMarker &&  (
               <InfoWindowF 

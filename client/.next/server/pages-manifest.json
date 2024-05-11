@@ -2,7 +2,7 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/Directions": "pages/Directions.js",
-  "/NYCMap": "pages/NYCMap.js",
-  "/schools/[dbn]": "pages/schools/[dbn].js"
+  "/schools": "pages/schools.js",
+  "/schools/[dbn]": "pages/schools/[dbn].js",
+  "/account-information": "pages/account-information.js"
 }

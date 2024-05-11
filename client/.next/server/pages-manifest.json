@@ -3,6 +3,6 @@
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
   "/schools": "pages/schools.js",
-  "/schools/[dbn]": "pages/schools/[dbn].js",
-  "/account-information": "pages/account-information.js"
+  "/account-information": "pages/account-information.js",
+  "/schools/[dbn]": "pages/schools/[dbn].js"
 }

@@ -22,10 +22,10 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/account-information": [
+    "/schools": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/account-information.js"
+      "static/chunks/pages/schools.js"
     ],
     "/schools/[dbn]": [
       "static/chunks/webpack.js",

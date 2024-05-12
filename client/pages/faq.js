@@ -67,9 +67,9 @@ const FAQPage = () => {
               location, language, sports, and programing offerings. Refine your
               search results to find the ideal school tailored to your specific
               preferences and requirements.
-              <p>
-                <Link href="/schools">Search for schools</Link>
-              </p>
+            </p>
+            <p>
+              <Link href="/schools">Search for schools</Link>
             </p>
           </div>
         </div>
@@ -86,9 +86,9 @@ const FAQPage = () => {
               extracurricular offerings, and student satisfaction ratings. Gain
               insights into each school's strengths and weaknesses, allowing you
               to make informed decisions about your educational journey.
-              <p>
-                <Link href="/compare">Compare schools</Link>
-              </p>
+            </p>
+            <p>
+              <Link href="/compare">Compare schools</Link>
             </p>
           </div>
         </div>
@@ -105,15 +105,15 @@ const FAQPage = () => {
               seamless journey from your current location. Easily navigate to
               your desired educational institutions with step-by-step directions
               tailored to your preferred mode of transportation.
-              <p>
-                <Link href="/NYCMap">Take me to directions page</Link>
-              </p>
+            </p>
+            <p>
+              <Link href="/NYCMap">Take me to directions page</Link>
             </p>
           </div>
         </div>
       </section>
       <section id="section6" className="about-section">
-        <div className="image left">
+        <div className="image right">
           <img src="./hs5.jpg" alt="Image 5" />
         </div>
         <div className="text-container right">
@@ -125,9 +125,9 @@ const FAQPage = () => {
               achievement. Discover top-performing schools in your area,
               empowering you to make informed decisions about your educational
               goals.
-              <p>
-                <Link href="/ranking">See school rankings</Link>
-              </p>
+            </p>
+            <p>
+              <Link href="/ranking">See school rankings</Link>
             </p>
           </div>
         </div>
@@ -144,9 +144,9 @@ const FAQPage = () => {
               interests, academic goals, and location. Find the perfect
               educational fit tailored to your needs, ensuring a fulfilling and
               successful academic journey.
-              <p>
-                <Link href="/recommendschool">Recommend me a school</Link>
-              </p>
+            </p>
+            <p>
+              <Link href="/recommendschool">Recommend me a school</Link>
             </p>
           </div>
         </div>

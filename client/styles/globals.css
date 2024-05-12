@@ -24,6 +24,13 @@ padding-bottom: 30px;
 color: purple;
 }
 
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .school-wrapper-container{
 display: flex;
 justify-content: center;
@@ -365,14 +372,34 @@ border-radius: 5px;
 cursor: pointer;
 }
 
+.question-skip-button {
+  background-color: #ff6600;
+  color: white;
+  padding: 10px 20px;
+  margin: 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
 .question-button:hover {
 background-color: #66095a;
 }
-.container {
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
+
+.question-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
+  background-color: rgb(255, 209, 247);
+  padding: 20px;
+  position: relative;
+  
+  max-width: 1250px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .question-indicators {

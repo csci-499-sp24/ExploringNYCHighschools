@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { GoogleMap, InfoWindowF, LoadScript, MarkerF } from '@react-google-maps/api';
 import SchoolButton from '@/components/SchoolButton';
 import Card from '@/components/Card';
+import MapSearchBar from '@/components/MapSearchBar';
 
 const containerStyle = {
   width: '100%',
@@ -83,6 +84,12 @@ const getPosition = (school) => {
     return {lat: adjust_pos, lng};
   }
 }
+const handleGetDirections = (address) => {
+  router.push({
+    pathname: '/Directions',
+    query: { schoolAddress: address },
+  });
+};
   return (
     <div style={{ height: '100vh', width: '100%' }}>
       <LoadScript
@@ -140,6 +147,7 @@ const getPosition = (school) => {
               }
               return null;
             })}
+            <MapSearchBar schools={schools} setSelectedSchool={setSelectedMarker}/>
             {/* InfoWindow popups when the user clicks on a marker */}
             {selectedMarker &&  (
               <InfoWindowF 
@@ -149,10 +157,11 @@ const getPosition = (school) => {
                 <div>
                   <Card data={selectedMarker} showImg={true} showHeart={true}  ></Card>
                   <div className="school-button">
+                        <SchoolButton text={"Get Directions"} onClick={() => handleGetDirections(selectedMarker.address)}/>
                         <SchoolButton link={`/schools/${selectedMarker.dbn}`} />
                         <SchoolButton
                           link={`/schools/quality-reports/${selectedMarker.dbn}`}
-                          text={"Go to School Quality Report"}
+                          text={"School Quality Report"}
                         ></SchoolButton>
                   </div>
                 </div>
@@ -170,7 +179,7 @@ const getPosition = (school) => {
                         <SchoolButton link={`/schools/${selectedSchool.dbn}`} />
                         <SchoolButton
                           link={`/schools/quality-reports/${selectedSchool.dbn}`}
-                          text={"Go to School Quality Report"}
+                          text={"School Quality Report"}
                         ></SchoolButton>
                   </div>
                 </div>

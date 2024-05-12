@@ -1,12 +1,19 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const FAQPage = () => {
   return (
     <div>
       <section id="section1" className="about-section">
         <div className="image left">
-          <img src="./hsp.jpg" alt="Image 1" />
+          <Image
+            src="/hsp.jpg"
+            alt="Image 1"
+            layout="fill"
+            objectFit="cover"
+            className="image-inner"
+          />
         </div>
         <div className="text-container right">
           <div className="text">
@@ -23,7 +30,13 @@ const FAQPage = () => {
       </section>
       <section id="section2" className="about-section">
         <div className="image right">
-          <img src="./hsl.jpg" alt="Image 2" />
+          <Image
+            src="/hsl.jpg"
+            alt="Image 2"
+            layout="fill"
+            objectFit="cover"
+            className="image-inner"
+          />
         </div>
         <div className="text-container left">
           <div className="text">
@@ -57,7 +70,13 @@ const FAQPage = () => {
       </section>
       <section id="section3" className="about-section">
         <div className="image left">
-          <img src="./hs8.jpg" alt="Image 3" />
+          <Image
+            src="/hs8.jpg"
+            alt="Image 3"
+            layout="fill"
+            objectFit="cover"
+            className="image-inner"
+          />
         </div>
         <div className="text-container right">
           <div className="text">
@@ -76,7 +95,13 @@ const FAQPage = () => {
       </section>
       <section id="section4" className="about-section">
         <div className="image right">
-          <img src="./hs6.jpg" alt="Image 4" />
+          <Image
+            src="/hs6.jpg"
+            alt="Image 4"
+            layout="fill"
+            objectFit="cover"
+            className="image-inner"
+          />
         </div>
         <div className="text-container left">
           <div className="text">
@@ -84,8 +109,9 @@ const FAQPage = () => {
             <p>
               Compare schools based on key metrics such as academic performance,
               extracurricular offerings, and student satisfaction ratings. Gain
-              insights into each school's strengths and weaknesses, allowing you
-              to make informed decisions about your educational journey.
+              insights into each school&apos;s strengths and weaknesses,
+              allowing you to make informed decisions about your educational
+              journey.
             </p>
             <p>
               <Link href="/compare">Compare schools</Link>
@@ -95,7 +121,13 @@ const FAQPage = () => {
       </section>
       <section id="section5" className="about-section">
         <div className="image left">
-          <img src="./hs7.jpg" alt="Image 5" />
+          <Image
+            src="/hs7.jpg"
+            alt="Image 1"
+            layout="fill"
+            objectFit="cover"
+            className="image-inner"
+          />
         </div>
         <div className="text-container right">
           <div className="text">
@@ -114,7 +146,13 @@ const FAQPage = () => {
       </section>
       <section id="section6" className="about-section">
         <div className="image right">
-          <img src="./hs5.jpg" alt="Image 5" />
+          <Image
+            src="/hs5.jpg"
+            alt="Image 1"
+            layout="fill"
+            objectFit="cover"
+            className="image-inner"
+          />
         </div>
         <div className="text-container right">
           <div className="text">
@@ -134,7 +172,13 @@ const FAQPage = () => {
       </section>
       <section id="section7" className="about-section">
         <div className="image left">
-          <img src="./hs9.jpg" alt="Image 5" />
+          <Image
+            src="/hs9.jpg"
+            alt="Image 1"
+            layout="fill"
+            objectFit="cover"
+            className="image-inner"
+          />
         </div>
         <div className="text-container right">
           <div className="text">
@@ -156,3 +200,4 @@ const FAQPage = () => {
 };
 
 export default FAQPage;
+

@@ -110,15 +110,15 @@ function SchoolProfile() {
             <div className="p-2 border flex-fill bd-highlight">
               <Card data={school} showImg={true}></Card>
               <div className="reviews-container">
-                <div className="reviews">
-                  <h4>Reviews:</h4>
-                  {reviews.map((review) => (
-                    <p key={review.id}>
-                      <strong>{review.fullName}: </strong>
-                      {review.review}
-                    </p>
-                  ))}
-                </div>
+              <div className="reviews">
+                <h4>Reviews:</h4>
+                {reviews.map((review) => (
+                  <p key={review.id}>
+                    <strong>{review.fullName}: </strong>
+                    {review.review}
+                  </p>
+                ))}
+              </div>
                 {user && (
                   <div className="review-input">
                     <textarea

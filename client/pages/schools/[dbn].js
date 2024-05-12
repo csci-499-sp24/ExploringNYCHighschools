@@ -5,7 +5,7 @@ import CardSquare from "../../components/CardSquare";
 import SchoolButton from "../../components/SchoolButton";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, firestore } from "../../firebase/firebaseConfig";
-import { collection, addDoc, query, where, getDocs, doc, updateDoc } from "firebase/firestore";
+import { collection, addDoc, query, where, getDocs, doc, updateDoc, deleteDoc } from "firebase/firestore";
 import Favorite from "@/components/Favorite";
 import useUserDetails from "../../components/useUserDetails";
 
@@ -66,7 +66,7 @@ function SchoolProfile() {
           where("userId", "==", user.uid)
         );
         const userReviewSnapshot = await getDocs(userReviewQuery);
-  
+
         if (userReviewSnapshot.empty) {
           await addDoc(reviewsRef, {
             review: newReview,
@@ -84,11 +84,24 @@ function SchoolProfile() {
           });
           console.log("Review updated successfully");
         }
-  
+
         setNewReview("");
         fetchReviews(dbn);
       } catch (error) {
         console.error("Error submitting/updating review:", error);
+      }
+    }
+  };
+
+  const handleDeleteReview = async (reviewId) => {
+    if (user) {
+      try {
+        const reviewRef = doc(firestore, "schools", dbn, "reviews", reviewId);
+        await deleteDoc(reviewRef);
+        console.log("Review deleted successfully");
+        fetchReviews(dbn);
+      } catch (error) {
+        console.error("Error deleting review:", error);
       }
     }
   };
@@ -110,15 +123,18 @@ function SchoolProfile() {
             <div className="p-2 border flex-fill bd-highlight">
               <Card data={school} showImg={true}></Card>
               <div className="reviews-container">
-              <div className="reviews">
-                <h4>Reviews:</h4>
-                {reviews.map((review) => (
-                  <p key={review.id}>
-                    <strong>{review.fullName}: </strong>
-                    {review.review}
-                  </p>
-                ))}
-              </div>
+                <div className="reviews">
+                  <h4>Reviews:</h4>
+                  {reviews.map((review) => (
+                    <p key={review.id}>
+                      <strong>{review.fullName}: </strong>
+                      {review.review}
+                      {user && review.userId === user.uid && (
+                        <button onClick={() => handleDeleteReview(review.id)}>Delete</button>
+                      )}
+                    </p>
+                  ))}
+                </div>
                 {user && (
                   <div className="review-input">
                     <textarea

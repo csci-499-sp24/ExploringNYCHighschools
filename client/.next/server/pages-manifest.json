@@ -2,9 +2,7 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/signup": "pages/signup.js",
-  "/additionalInfo": "pages/additionalInfo.js",
-  "/schools": "pages/schools.js",
   "/schools/[dbn]": "pages/schools/[dbn].js",
+  "/schools": "pages/schools.js",
   "/authorizedHomePage": "pages/authorizedHomePage.js"
 }

@@ -543,3 +543,76 @@ font-size: 24px;
     width: 30rem;
   }
 }
+
+/* about us */
+
+.about-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 50px;
+}
+
+.about-section:nth-child(even) .image {
+  order: 2;
+  text-align: right;
+}
+
+.about-section:nth-child(even) .text-container {
+  order: 1;
+}
+
+.about-section:nth-child(odd) .image {
+  order: 1;
+  text-align: left;
+}
+
+.about-section:nth-child(odd) .text-container {
+  order: 2;
+}
+
+.image {
+  width: 500px; 
+  height: 400px; 
+  overflow: hidden; 
+}
+
+.image img {
+  border-radius: 10px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+}
+
+.text-container {
+  flex: 1;
+}
+
+.text {
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #e3f2fd; 
+}
+
+.about-section:nth-child(even) .text {
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px; 
+}
+
+.about-section:nth-child(odd) .text {
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px; 
+}
+
+.text p {
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.text h1 {
+  margin-top: 0; 
+}
+
+html {
+  scroll-behavior: smooth;
+}

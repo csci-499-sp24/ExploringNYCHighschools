@@ -107,7 +107,7 @@ function Schools() {
                 <div key={index}>
                   <div className="d-flex flex-row bd-highlight mb-3 justify-content-center">
                     <div className="p-2 border flex-fill bd-highlight">
-                      <Card data={school} ></Card>
+                      <Card data={school} showTransportation={true}></Card>
                       <div className="school-button">
                         <SchoolButton link={`/schools/${school.dbn}`} />
                         <SchoolButton

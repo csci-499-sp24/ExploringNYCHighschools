@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const SchoolButton = ({ link, text = "Go to School Profile", onClick }) => {
+const SchoolButton = ({ link, text = "School Profile", onClick }) => {
   return onClick ? (
     <button className="btn btn-primary" onClick={onClick}>
       {text}

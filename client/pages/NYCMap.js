@@ -4,6 +4,7 @@ import { GoogleMap, InfoWindowF, LoadScript, MarkerF } from '@react-google-maps/
 import SchoolButton from '@/components/SchoolButton';
 import Card from '@/components/Card';
 import useUserDetails from '@/components/useUserDetails';
+import MapSearchBar from '@/components/MapSearchBar';
 
 const containerStyle = {
   width: '100%',
@@ -82,8 +83,6 @@ const NYCMap = () => {
     }
   }, [isLoaded, userDetails]);
 
-  
-
   const fetchSchools = async () => {
     try {
       const response = await fetch(
@@ -96,19 +95,28 @@ const NYCMap = () => {
       console.error('Error fetching schools:', error);
     }
   };
-const handleSelectedMarker = (school) => {
+
+  const handleSelectedMarker = (school) => {
     setSelectedMarker(school);
-}
-const getPosition = (school) => {
-  const match = school.address.match(/\((-?\d+\.\d+),(-?\d+\.\d+)\)/);
-  if (match) {
-    const [lat, lng] = match.slice(1).map(parseFloat);
-    const zoom_level = mapRef.current.getZoom();
-    const offset = zoom_level >= 0.002 ? 0.001 : 0.005;
-    const adjust_pos = lat+offset;
-    return {lat: adjust_pos, lng};
-  }
-}
+  };
+
+  const getPosition = (school) => {
+    const match = school.address.match(/\((-?\d+\.\d+),(-?\d+\.\d+)\)/);
+    if (match) {
+      const [lat, lng] = match.slice(1).map(parseFloat);
+      const zoom_level = mapRef.current.getZoom();
+      const offset = zoom_level >= 0.002 ? 0.001 : 0.005;
+      const adjust_pos = lat + offset;
+      return { lat: adjust_pos, lng };
+    }
+  };
+
+  const handleGetDirections = (address) => {
+    router.push({
+      pathname: '/Directions',
+      query: { schoolAddress: address },
+    });
+  };
 
   return (
     <div style={{ height: '100vh', width: '100%' }}>
@@ -160,50 +168,55 @@ const getPosition = (school) => {
                       title={school.school_name}
                       icon={isSelectedSchool ? selectedSchoolIcon : undefined}
                       zIndex={isSelectedSchool ? 1 : 0}
-                      onClick={()=>handleSelectedMarker(school)}
+                      onClick={() => handleSelectedMarker(school)}
                     />
                   );
                 }
               }
               return null;
             })}
-            {/* InfoWindow popups when the user clicks on a marker */}
-            {selectedMarker &&  (
-              <InfoWindowF 
+          <MapSearchBar schools={schools} setSelectedSchool={setSelectedMarker} />
+          {/* InfoWindow popups when the user clicks on a marker */}
+          {selectedMarker && (
+            <InfoWindowF
               position={getPosition(selectedMarker)}
-              onCloseClick={()=>setSelectedMarker(null)}
-              >
-                <div>
-                  <Card data={selectedMarker} showImg={true} showHeart={true}  ></Card>
-                  <div className="school-button">
-                        <SchoolButton link={`/schools/${selectedMarker.dbn}`} />
-                        <SchoolButton
-                          link={`/schools/quality-reports/${selectedMarker.dbn}`}
-                          text={"Go to School Quality Report"}
-                        ></SchoolButton>
-                  </div>
+              onCloseClick={() => setSelectedMarker(null)}
+            >
+              <div>
+                <Card data={selectedMarker} showImg={true} showHeart={true}></Card>
+                <div className="school-button">
+                  <SchoolButton
+                    text={"Get Directions"}
+                    onClick={() => handleGetDirections(selectedMarker.address)}
+                  />
+                  <SchoolButton link={`/schools/${selectedMarker.dbn}`} />
+                  <SchoolButton
+                    link={`/schools/quality-reports/${selectedMarker.dbn}`}
+                    text={"School Quality Report"}
+                  ></SchoolButton>
                 </div>
-                </InfoWindowF>
-            )}
-            {/* When the user clicks "Get Directions" from school profile, the InfoWindow automatically is opened when directed to the map */}
-            {selectedSchool && (
-              <InfoWindowF 
+              </div>
+            </InfoWindowF>
+          )}
+          {/* When the user clicks "Get Directions" from school profile, the InfoWindow automatically is opened when directed to the map */}
+          {selectedSchool && (
+            <InfoWindowF
               position={getPosition(selectedSchool)}
-              onCloseClick={()=>setSelectedSchool(null)}
-              >
-                <div>
-                  <Card data={selectedSchool} showImg={true} showHeart={true} ></Card>
-                  <div className="school-button">
-                        <SchoolButton link={`/schools/${selectedSchool.dbn}`} />
-                        <SchoolButton
-                          link={`/schools/quality-reports/${selectedSchool.dbn}`}
-                          text={"Go to School Quality Report"}
-                        ></SchoolButton>
-                  </div>
+              onCloseClick={() => setSelectedSchool(null)}
+            >
+              <div>
+                <Card data={selectedSchool} showImg={true} showHeart={true}></Card>
+                <div className="school-button">
+                  <SchoolButton link={`/schools/${selectedSchool.dbn}`} />
+                  <SchoolButton
+                    link={`/schools/quality-reports/${selectedSchool.dbn}`}
+                    text={"School Quality Report"}
+                  ></SchoolButton>
                 </div>
-                </InfoWindowF>
-            )}
-            {userAddressPosition && (
+              </div>
+            </InfoWindowF>
+          )}
+          {userAddressPosition && (
             <MarkerF
               position={userAddressPosition}
               title="Your Address"
@@ -219,4 +232,4 @@ const getPosition = (school) => {
   );
 };
 
-export default NYCMap; 
+export default NYCMap;

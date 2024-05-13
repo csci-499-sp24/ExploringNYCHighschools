@@ -12,7 +12,7 @@ const Footer = () => {
                         About Us
                     </button>
                 </Link>
-                <Link href="/homepage" passHref>
+                <Link href="/faq" passHref>
                     <button className={styles.button}>
                         FAQ
                     </button>

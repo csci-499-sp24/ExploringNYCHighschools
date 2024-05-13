@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useRouter } from 'next/router';
 import { GoogleMap, LoadScript, MarkerF, DirectionsRenderer } from '@react-google-maps/api';
+import useUserDetails from '@/components/useUserDetails';
 
 const containerStyle = {
   width: '100%',
@@ -57,6 +58,7 @@ const Directions = () => {
   const directionsRendererRef = useRef(null);
   const directionsPanel = useRef(null);
   const router = useRouter();
+  const { userDetails, error } = useUserDetails();
 
   useEffect(() => {
     fetchSchools();
@@ -85,6 +87,14 @@ const Directions = () => {
       handleGetDirections();
     }
   }, [selectedSchool, inputAddress, travelMode]);
+
+  useEffect(() => {
+    if (userDetails) {
+      const { address, city, zipcode, state } = userDetails;
+      const fullAddress = `${address}, ${city}, ${state} ${zipcode}`;
+      setInputAddress(fullAddress);
+    }
+  }, [userDetails]);
 
   const fetchSchools = async () => {
     try {

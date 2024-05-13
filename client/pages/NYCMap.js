@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { GoogleMap, InfoWindowF, LoadScript, MarkerF } from '@react-google-maps/api';
 import SchoolButton from '@/components/SchoolButton';
 import Card from '@/components/Card';
+import useUserDetails from '@/components/useUserDetails';
 import MapSearchBar from '@/components/MapSearchBar';
 
 const containerStyle = {
@@ -22,6 +23,8 @@ const NYCMap = () => {
   const router = useRouter();
   const mapRef = useRef(null);
   const [selectedMarker, setSelectedMarker] = useState(null);
+  const { userDetails, error } = useUserDetails();
+  const [userAddressPosition, setUserAddressPosition] = useState(null);
 
   const selectedSchoolIcon = isLoaded
   ? {
@@ -29,6 +32,13 @@ const NYCMap = () => {
       scaledSize: new window.google.maps.Size(40, 40),
     }
   : null;
+
+  const houseIcon = isLoaded
+    ? {
+        url: 'house-icon.png',
+        scaledSize: new window.google.maps.Size(40, 40),
+      }
+    : null;
 
   useEffect(() => {
     fetchSchools();
@@ -59,6 +69,20 @@ const NYCMap = () => {
     }
   }, [isLoaded, router.query, schools]);
 
+  useEffect(() => {
+    if (isLoaded && userDetails) {
+      const { address, city, zipcode, state } = userDetails;
+      const fullAddress = `${address}, ${city}, ${state} ${zipcode}`;
+      const geocoder = new window.google.maps.Geocoder();
+      geocoder.geocode({ address: fullAddress }, (results, status) => {
+        if (status === 'OK' && results[0]) {
+          const { lat, lng } = results[0].geometry.location;
+          setUserAddressPosition({ lat: lat(), lng: lng() });
+        }
+      });
+    }
+  }, [isLoaded, userDetails]);
+
   const fetchSchools = async () => {
     try {
       const response = await fetch(
@@ -71,25 +95,29 @@ const NYCMap = () => {
       console.error('Error fetching schools:', error);
     }
   };
-const handleSelectedMarker = (school) => {
+
+  const handleSelectedMarker = (school) => {
     setSelectedMarker(school);
-}
-const getPosition = (school) => {
-  const match = school.address.match(/\((-?\d+\.\d+),(-?\d+\.\d+)\)/);
-  if (match) {
-    const [lat, lng] = match.slice(1).map(parseFloat);
-    const zoom_level = mapRef.current.getZoom();
-    const offset = zoom_level >= 0.002 ? 0.001 : 0.005;
-    const adjust_pos = lat+offset;
-    return {lat: adjust_pos, lng};
-  }
-}
-const handleGetDirections = (address) => {
-  router.push({
-    pathname: '/Directions',
-    query: { schoolAddress: address },
-  });
-};
+  };
+
+  const getPosition = (school) => {
+    const match = school.address.match(/\((-?\d+\.\d+),(-?\d+\.\d+)\)/);
+    if (match) {
+      const [lat, lng] = match.slice(1).map(parseFloat);
+      const zoom_level = mapRef.current.getZoom();
+      const offset = zoom_level >= 0.002 ? 0.001 : 0.005;
+      const adjust_pos = lat + offset;
+      return { lat: adjust_pos, lng };
+    }
+  };
+
+  const handleGetDirections = (address) => {
+    router.push({
+      pathname: '/Directions',
+      query: { schoolAddress: address },
+    });
+  };
+
   return (
     <div style={{ height: '100vh', width: '100%' }}>
       <LoadScript
@@ -140,51 +168,64 @@ const handleGetDirections = (address) => {
                       title={school.school_name}
                       icon={isSelectedSchool ? selectedSchoolIcon : undefined}
                       zIndex={isSelectedSchool ? 1 : 0}
-                      onClick={()=>handleSelectedMarker(school)}
+                      onClick={() => handleSelectedMarker(school)}
                     />
                   );
                 }
               }
               return null;
             })}
-            <MapSearchBar schools={schools} setSelectedSchool={setSelectedMarker}/>
-            {/* InfoWindow popups when the user clicks on a marker */}
-            {selectedMarker &&  (
-              <InfoWindowF 
+          <MapSearchBar schools={schools} setSelectedSchool={setSelectedMarker} />
+          {/* InfoWindow popups when the user clicks on a marker */}
+          {selectedMarker && (
+            <InfoWindowF
               position={getPosition(selectedMarker)}
-              onCloseClick={()=>setSelectedMarker(null)}
-              >
-                <div>
-                  <Card data={selectedMarker} showImg={true} showHeart={true}  ></Card>
-                  <div className="school-button">
-                        <SchoolButton text={"Get Directions"} onClick={() => handleGetDirections(selectedMarker.address)}/>
-                        <SchoolButton link={`/schools/${selectedMarker.dbn}`} />
-                        <SchoolButton
-                          link={`/schools/quality-reports/${selectedMarker.dbn}`}
-                          text={"School Quality Report"}
-                        ></SchoolButton>
-                  </div>
+              onCloseClick={() => setSelectedMarker(null)}
+            >
+              <div>
+                <Card data={selectedMarker} showImg={true} showHeart={true}></Card>
+                <div className="school-button">
+                  <SchoolButton
+                    text={"Get Directions"}
+                    onClick={() => handleGetDirections(selectedMarker.address)}
+                  />
+                  <SchoolButton link={`/schools/${selectedMarker.dbn}`} />
+                  <SchoolButton
+                    link={`/schools/quality-reports/${selectedMarker.dbn}`}
+                    text={"School Quality Report"}
+                  ></SchoolButton>
                 </div>
-                </InfoWindowF>
-            )}
-            {/* When the user clicks "Get Directions" from school profile, the InfoWindow automatically is opened when directed to the map */}
-            {selectedSchool && (
-              <InfoWindowF 
+              </div>
+            </InfoWindowF>
+          )}
+          {/* When the user clicks "Get Directions" from school profile, the InfoWindow automatically is opened when directed to the map */}
+          {selectedSchool && (
+            <InfoWindowF
               position={getPosition(selectedSchool)}
-              onCloseClick={()=>setSelectedSchool(null)}
-              >
-                <div>
-                  <Card data={selectedSchool} showImg={true} showHeart={true} ></Card>
-                  <div className="school-button">
-                        <SchoolButton link={`/schools/${selectedSchool.dbn}`} />
-                        <SchoolButton
-                          link={`/schools/quality-reports/${selectedSchool.dbn}`}
-                          text={"School Quality Report"}
-                        ></SchoolButton>
-                  </div>
+              onCloseClick={() => setSelectedSchool(null)}
+            >
+              <div>
+                <Card data={selectedSchool} showImg={true} showHeart={true}></Card>
+                <div className="school-button">
+                  <SchoolButton link={`/schools/${selectedSchool.dbn}`} />
+                  <SchoolButton
+                    link={`/schools/quality-reports/${selectedSchool.dbn}`}
+                    text={"School Quality Report"}
+                  ></SchoolButton>
                 </div>
-                </InfoWindowF>
-            )}
+              </div>
+            </InfoWindowF>
+          )}
+          {userAddressPosition && (
+            <MarkerF
+              position={userAddressPosition}
+              title="Your Address"
+              icon={{
+                url: 'house-icon.png',
+                scaledSize: new window.google.maps.Size(40, 40),
+              }}
+            />
+          )}
         </GoogleMap>
       </LoadScript>
     </div>

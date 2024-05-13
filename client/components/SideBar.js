@@ -16,7 +16,7 @@ function SideBar(){
         { name: "Get Directions", href: "/NYCMap", Icon: <FaMap />},
         { name: "School Rankings", href: "/ranking", Icon: <FaChartLine />},
         { name: "Recommend School", href: "/recommendschool", Icon: <MdRecommend />},
-        { name: "Contact Us", href: "/contact", Icon: <TiContacts />},
+        { name: "Contact Us", href: "/contactform", Icon: <TiContacts />},
       ];
     
     return(

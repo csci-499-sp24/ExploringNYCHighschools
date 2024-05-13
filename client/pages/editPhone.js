@@ -32,6 +32,11 @@ const EditPhone = () => {
   };
 
   return (
+  <div className="background-color"
+   style={{
+     minHeight: "70vh",
+     color: "#333",
+   }}>
     <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "40vh" }}>
       <div style={{ width: "300px" }}>
         <h1>Edit Phone Number</h1>
@@ -48,6 +53,7 @@ const EditPhone = () => {
           </button>
         </form>
       </div>
+    </div>
     </div>
   );
 };

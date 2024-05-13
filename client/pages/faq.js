@@ -4,6 +4,11 @@ import Image from "next/image";
 
 const FAQPage = () => {
   return (
+  <div className="background-color"
+   style={{
+     minHeight: "100vh",
+     color: "#333",
+   }}>
     <div>
       <section id="section1" className="about-section">
         <div className="image left">
@@ -195,6 +200,7 @@ const FAQPage = () => {
           </div>
         </div>
       </section>
+    </div>
     </div>
   );
 };

@@ -37,6 +37,11 @@ const Registration = () => {
     }
   };
   return (
+  <div className="background-color"
+   style={{
+     minHeight: "70vh",
+     color: "#333",
+   }}>
     <div
       style={{
         display: "flex",
@@ -132,6 +137,7 @@ const Registration = () => {
       </form>
       <br />
     </div>
+  </div>
   );
 };
 

@@ -34,6 +34,11 @@ const SignIn = () => {
   };
 
   return (
+  <div className="background-color"
+   style={{
+     minHeight: "70vh",
+     color: "#333",
+   }}>
     <div
       style={{
         display: 'flex',
@@ -113,6 +118,7 @@ const SignIn = () => {
           Sign Up
         </button>
       </form>
+    </div>
     </div>
   );
 };

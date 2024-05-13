@@ -10,7 +10,7 @@ function AccountInformation() {
 
   const styles = {
     backgroundContainer: {
-      minHeight: '100vh',
+      minHeight: '70vh',
       color: '#333',
     },
     container: {
@@ -18,7 +18,7 @@ function AccountInformation() {
       margin: '0 auto',
       padding: '20px',
       borderRadius: '4px',
-      minHeight: 'calc(100vh - 60px)',
+      minHeight: '70vh',
       display: 'flex',
       flexDirection: 'column',
     },
@@ -152,9 +152,6 @@ function AccountInformation() {
             </div>
           </div>
         </div>
-        <footer style={styles.footer}>
-          {/* Add footer content here */}
-        </footer>
       </div>
     </div>
   );

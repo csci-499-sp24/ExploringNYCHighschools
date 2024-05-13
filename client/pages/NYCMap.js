@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { GoogleMap, InfoWindowF, LoadScript, MarkerF } from '@react-google-maps/api';
 import SchoolButton from '@/components/SchoolButton';
 import Card from '@/components/Card';
+import useUserDetails from '@/components/useUserDetails';
 
 const containerStyle = {
   width: '100%',
@@ -21,6 +22,8 @@ const NYCMap = () => {
   const router = useRouter();
   const mapRef = useRef(null);
   const [selectedMarker, setSelectedMarker] = useState(null);
+  const { userDetails, error } = useUserDetails();
+  const [userAddressPosition, setUserAddressPosition] = useState(null);
 
   const selectedSchoolIcon = isLoaded
   ? {
@@ -28,6 +31,13 @@ const NYCMap = () => {
       scaledSize: new window.google.maps.Size(40, 40),
     }
   : null;
+
+  const houseIcon = isLoaded
+    ? {
+        url: 'house-icon.png',
+        scaledSize: new window.google.maps.Size(40, 40),
+      }
+    : null;
 
   useEffect(() => {
     fetchSchools();
@@ -58,6 +68,22 @@ const NYCMap = () => {
     }
   }, [isLoaded, router.query, schools]);
 
+  useEffect(() => {
+    if (isLoaded && userDetails) {
+      const { address, city, zipcode, state } = userDetails;
+      const fullAddress = `${address}, ${city}, ${state} ${zipcode}`;
+      const geocoder = new window.google.maps.Geocoder();
+      geocoder.geocode({ address: fullAddress }, (results, status) => {
+        if (status === 'OK' && results[0]) {
+          const { lat, lng } = results[0].geometry.location;
+          setUserAddressPosition({ lat: lat(), lng: lng() });
+        }
+      });
+    }
+  }, [isLoaded, userDetails]);
+
+  
+
   const fetchSchools = async () => {
     try {
       const response = await fetch(
@@ -83,6 +109,7 @@ const getPosition = (school) => {
     return {lat: adjust_pos, lng};
   }
 }
+
   return (
     <div style={{ height: '100vh', width: '100%' }}>
       <LoadScript
@@ -176,10 +203,20 @@ const getPosition = (school) => {
                 </div>
                 </InfoWindowF>
             )}
+            {userAddressPosition && (
+            <MarkerF
+              position={userAddressPosition}
+              title="Your Address"
+              icon={{
+                url: 'house-icon.png',
+                scaledSize: new window.google.maps.Size(40, 40),
+              }}
+            />
+          )}
         </GoogleMap>
       </LoadScript>
     </div>
   );
 };
 
-export default NYCMap;
+export default NYCMap; 

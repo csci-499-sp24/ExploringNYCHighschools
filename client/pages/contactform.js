@@ -48,18 +48,19 @@ function ContactUs() {
             <div className="info-item" style={{ border: '1px solid #800080', borderRadius: '5px', padding: '10px' }}>
               <h3 style={{ color: '#800080' }}>Follow us</h3>
               <div className="social-icons">
-                <Link href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+                {/* <Link href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
                   <BsInstagram className="icon" />
                 </Link>
                 <Link href="https://www.twitter.com" target="_blank" rel="noopener noreferrer">
                   <BsTwitter className="icon" />
+                </Link> */}
+                {/* <Link href="https://www.github.com" target="_blank" rel="noopener noreferrer"> */}
+                <Link href="https://github.com/csci-499-sp24/ExploringNYCHighschools" target="_blank">
+                  <BsGithub className="icon" style={{fontSize:"30px"}}/>
                 </Link>
-                <Link href="https://www.github.com" target="_blank" rel="noopener noreferrer">
-                  <BsGithub className="icon" />
-                </Link>
-                <Link href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+                {/* <Link href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
                   <BsFacebook className="icon" />
-                </Link>
+                </Link> */}
               </div>
             </div>
           </div>

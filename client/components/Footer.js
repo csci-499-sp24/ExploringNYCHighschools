@@ -9,7 +9,7 @@ const Footer = () => {
             <div className={styles.aboutFaqContact}>
                 <Link href="/homepage" passHref>
                     <button className={styles.button}>
-                        About Us
+                        Home
                     </button>
                 </Link>
                 <Link href="/faq" passHref>
@@ -22,14 +22,14 @@ const Footer = () => {
                         Contact Us
                     </button>
                 </Link>
-                <Link href="/homepage" passHref>
+                <Link href="/NYCMap" passHref>
                     <button className={styles.button}>
-                        Site Feedback
+                        School Locations
                     </button>
                 </Link>
             </div>
             <div className={styles.iconsDiv}>
-                <div className={styles.spacerForIcons}>
+                {/* <div className={styles.spacerForIcons}>
                     <Link href="/homepage" passHref>
                         <button className={styles.button}>
                             <BsInstagram/>
@@ -42,21 +42,21 @@ const Footer = () => {
                             <BsTwitter/>
                         </button>
                     </Link>
-                </div>
+                </div> */}
                 <div className={styles.spacerForIcons}>
-                    <Link href="/homepage" passHref>
+                    <Link href="https://github.com/csci-499-sp24/ExploringNYCHighschools" target="_blank">
                         <button className={styles.button}>
                             <BsGithub/>
                         </button>
                     </Link>
                 </div>
-                <div className={styles.spacerForIcons}>
+                {/* <div className={styles.spacerForIcons}>
                     <Link href="/homepage" passHref>
                         <button className={styles.button}>
                             <BsFacebook/>
                         </button>
                     </Link>
-                </div>
+                </div> */}
             </div>
             <div>
                 <p id={styles.madeBy}>Made by Ctrl-P</p>

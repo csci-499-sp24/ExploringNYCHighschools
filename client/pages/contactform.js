@@ -1,34 +1,47 @@
-import React from 'react';
-import Background from '@/components/Background';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { BsInstagram, BsTwitter, BsGithub, BsFacebook } from "react-icons/bs";
 import { HiOutlineMail, HiOutlinePhone } from "react-icons/hi";
 
 function ContactUs() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    message: '',
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const { name, email, phone, message } = formData;
+    const mailtoLink = `mailto:nycexploringhighschools@gmail.com?subject=New Inquiry&body=Name: ${encodeURIComponent(name)}%0D%0AEmail: ${encodeURIComponent(email)}%0D%0APhone: ${encodeURIComponent(phone)}%0D%0AMessage: ${encodeURIComponent(message)}`;
+    window.location.href = mailtoLink;
+  };
+
   return (
-   <div className="background-color"
-   style={{
-     minHeight: "70vh",
-     color: "#333",
-   }}>
+    <div className="background-color" style={{ minHeight: "70vh", color: "#333" }}>
       <div className="contact-container">
         <div className="contact-form">
           <h1>GET IN TOUCH WITH US</h1>
-          <div className="form-wrapper">
+          <form className="form-wrapper" onSubmit={handleSubmit}>
             <div className="form-group">
-              <input type="text" id="name" name="name" placeholder="Your Name" required />
+              <input type="text" id="name" name="name" placeholder="Your Name" value={formData.name} onChange={handleChange} required />
             </div>
             <div className="form-group">
-              <input type="email" id="email" name="email" placeholder="Your Email" required />
+              <input type="email" id="email" name="email" placeholder="Your Email" value={formData.email} onChange={handleChange} required />
             </div>
             <div className="form-group">
-              <input type="tel" id="phone" name="phone" placeholder="Your Phone" required />
+              <input type="tel" id="phone" name="phone" placeholder="Your Phone" value={formData.phone} onChange={handleChange} required />
             </div>
             <div className="form-group">
-              <textarea id="message" name="message" placeholder="Your Message" required style={{ borderColor: '#800080' }}></textarea>
+              <textarea id="message" name="message" placeholder="Your Message" value={formData.message} onChange={handleChange} required style={{ borderColor: '#800080' }}></textarea>
             </div>
             <button type="submit">Send Message</button>
-          </div>
+          </form>
         </div>
         <div className="contact-info">
           <div className="info-group">

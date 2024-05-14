@@ -130,19 +130,33 @@ function SchoolProfile() {
                       <strong>{review.fullName}: </strong>
                       {review.review}
                       {user && review.userId === user.uid && (
-                        <button onClick={() => handleDeleteReview(review.id)}>Delete</button>
+                        <button
+                          onClick={() => handleDeleteReview(review.id)}
+                          className="btn btn-danger rounded-pill ml-2"
+                          style={{ marginLeft: '5px' }}
+                        >
+                          Delete
+                        </button>
                       )}
                     </p>
                   ))}
                 </div>
                 {user && (
                   <div className="review-input">
-                    <textarea
-                      value={newReview}
-                      onChange={(e) => setNewReview(e.target.value)}
-                      placeholder="Write a review..."
-                    />
-                    <button onClick={handleReviewSubmit}>Submit Review</button>
+                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                      <textarea
+                        value={newReview}
+                        onChange={(e) => setNewReview(e.target.value)}
+                        placeholder="Write a review..."
+                        style={{ marginRight: '10px' }}
+                      />
+                      <button
+                        onClick={handleReviewSubmit}
+                        className="btn btn-primary rounded-pill"
+                      >
+                        Submit Review
+                      </button>
+                    </div>
                   </div>
                 )}
               </div>

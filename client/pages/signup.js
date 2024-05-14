@@ -16,7 +16,10 @@ const Registration = () => {
   const userhandler = (event) => {
     const { name, value } = event.target;
     console.log(name + ":::::::::::" + value);
-    setUser((prevState) => ({ ...prevState, [name]: value }));
+    setUser((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
   };
 
   const RegistrationHandler = async (e) => {
@@ -36,108 +39,83 @@ const Registration = () => {
       setError(error.message);
     }
   };
+
   return (
-  <div className="background-color"
-   style={{
-     minHeight: "70vh",
-     color: "#333",
-   }}>
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        // height: "70vh",
-      }}
-    >
-      <br />
-      <form
-        onSubmit={RegistrationHandler}
+    <div className="background-color" style={{ minHeight: "70vh", color: "#333" }}>
+      <div
         style={{
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          width: "300px",
-          padding: "20px",
-          border: "1px solid #ccc",
-          borderRadius: "5px",
-          backgroundColor: "#f9f9f9",
+          height: "70vh",
         }}
       >
-        <h1>Create Account</h1>
-        {errors && <p style={{ color: "red" }}>{errors}</p>}
-        <input
-          type="text"
-          placeholder="Enter your full name"
-          name="fullName"
-          value={user.fullName}
-          onChange={userhandler}
+        <form
+          onSubmit={RegistrationHandler}
           style={{
-            margin: "10px 0",
-            padding: "10px",
-            width: "100%",
-            boxSizing: "border-box",
-          }}
-        ></input>
-        <input
-          type="email"
-          placeholder="Enter your email"
-          name="email"
-          value={user.email}
-          onChange={userhandler}
-          style={{
-            margin: "10px 0",
-            padding: "10px",
-            width: "100%",
-            boxSizing: "border-box",
-          }}
-        ></input>
-        <input
-          type="password"
-          placeholder="Enter your password"
-          name="password"
-          value={user.password}
-          onChange={userhandler}
-          style={{
-            margin: "10px 0",
-            padding: "10px",
-            width: "100%",
-            boxSizing: "border-box",
-          }}
-        ></input>
-        <input
-          type="password"
-          placeholder="Confirm your password"
-          name="confirmPassword"
-          value={user.confirmPassword}
-          onChange={userhandler}
-          style={{
-            margin: "10px 0",
-            padding: "10px",
-            width: "100%",
-            boxSizing: "border-box",
-          }}
-        ></input>
-        <button
-          type="submit"
-          style={{
-            margin: "10px 0",
-            padding: "10px 20px",
-            backgroundColor: "#007bff",
-            color: "white",
-            border: "none",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            width: "300px",
+            padding: "20px",
+            border: "1px solid #ccc",
             borderRadius: "5px",
-            cursor: "pointer",
+            backgroundColor: "#f9f9f9",
           }}
         >
-          Sign Up
-        </button>
-      </form>
-      <br />
+          <h1>Create Account</h1>
+          {errors && <p style={{ color: "red" }}>{errors}</p>}
+          <input
+            type="text"
+            placeholder="Enter your full name"
+            name="fullName"
+            value={user.fullName}
+            onChange={userhandler}
+            style={{ margin: "10px 0", padding: "10px", width: "100%", boxSizing: "border-box" }}
+          ></input>
+          <input
+            type="email"
+            placeholder="Enter your email"
+            name="email"
+            value={user.email}
+            onChange={userhandler}
+            style={{ margin: "10px 0", padding: "10px", width: "100%", boxSizing: "border-box" }}
+          ></input>
+          <input
+            type="password"
+            placeholder="Enter your password"
+            name="password"
+            value={user.password}
+            onChange={userhandler}
+            style={{ margin: "10px 0", padding: "10px", width: "100%", boxSizing: "border-box" }}
+          ></input>
+          <input
+            type="password"
+            placeholder="Confirm your password"
+            name="confirmPassword"
+            value={user.confirmPassword}
+            onChange={userhandler}
+            style={{ margin: "10px 0", padding: "10px", width: "100%", boxSizing: "border-box" }}
+          ></input>
+          <button
+            type="submit"
+            style={{
+              margin: "10px 0",
+              padding: "10px 20px",
+              backgroundColor: "#007bff",
+              color: "white",
+              border: "none",
+              borderRadius: "5px",
+              cursor: "pointer",
+            }}
+          >
+            Sign Up
+          </button>
+        </form>
+      </div>
     </div>
-  </div>
   );
 };
 

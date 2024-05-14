@@ -1,43 +1,29 @@
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { sendPasswordResetEmail } from "firebase/auth";
 import React, { useState } from "react";
 import { auth } from "../firebase/firebaseConfig";
 import { useRouter } from "next/router";
 
-const SignIn = () => {
+const ResetPassword = () => {
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(false);
   const router = useRouter();
 
-  const signIn = async (e) => {
+  const handleResetPassword = async (e) => {
     e.preventDefault();
     setError(null);
-    console.log(email, password);
+    setSuccess(false);
     try {
-      const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      console.log(userCredential);
-      router.replace("/authorizedHomePage");
+      await sendPasswordResetEmail(auth, email);
+      setSuccess(true);
     } catch (error) {
-      console.log("Error Code:", error.code);
-      if (error.code === "auth/user-not-found") {
-        setError("No user found with the provided email.");
-      } else if (error.code === "auth/wrong-password") {
-        setError("Incorrect password. Please try again.");
-      } else if (error.code === "auth/invalid-credential") {
-        setError("Invalid credentials. Please check your email and password.");
-      } else {
-        setError("An error occurred. Please try again.");
-        console.log(error);
-      }
+      setError("Failed to send reset password email. Please try again.");
+      console.log(error);
     }
   };
 
-  const redirectToSignUp = () => {
-    router.push("/signup");
-  };
-
-  const redirectToResetPassword = () => {
-    router.push("/resetpassword");
+  const redirectToSignIn = () => {
+    router.push("/signin");
   };
 
   return (
@@ -52,7 +38,7 @@ const SignIn = () => {
         }}
       >
         <form
-          onSubmit={signIn}
+          onSubmit={handleResetPassword}
           style={{
             display: "flex",
             flexDirection: "column",
@@ -65,10 +51,10 @@ const SignIn = () => {
             backgroundColor: "#f9f9f9",
           }}
         >
-          <h1>Sign In</h1>
+          <h1 style={{ textAlign: "center", marginBottom: "20px" }}>Reset Password</h1>
           {error && <p style={{ color: "red", textAlign: "center", marginBottom: "20px" }}>{error}</p>}
+          {success && <p style={{ color: "green", textAlign: "center", marginBottom: "20px" }}>Reset password email sent. Please check your inbox.</p>}
           <div style={{ marginBottom: "20px", width: "100%" }}>
-            <label htmlFor="email" style={{ display: "block", marginBottom: "5px" }}>Email</label>
             <input
               type="email"
               id="email"
@@ -78,23 +64,6 @@ const SignIn = () => {
               style={{ width: "100%", padding: "10px", border: "1px solid #ccc", borderRadius: "4px" }}
               required
             />
-          </div>
-          <div style={{ marginBottom: "20px", width: "100%" }}>
-            <label htmlFor="password" style={{ display: "block", marginBottom: "5px" }}>Password</label>
-            <input
-              type="password"
-              id="password"
-              placeholder="Enter your password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              style={{ width: "100%", padding: "10px", border: "1px solid #ccc", borderRadius: "4px" }}
-              required
-            />
-            <div style={{ textAlign: "right", marginTop: "5px" }}>
-              <button type="button" onClick={redirectToResetPassword} style={{ background: "none", border: "none", color: "#007bff", cursor: "pointer" }}>
-                Forgot password?
-              </button>
-            </div>
           </div>
           <button
             type="submit"
@@ -108,11 +77,11 @@ const SignIn = () => {
               cursor: "pointer",
             }}
           >
-            Sign In
+            Reset Password
           </button>
           <button
             type="button"
-            onClick={redirectToSignUp}
+            onClick={redirectToSignIn}
             style={{
               marginTop: "10px",
               width: "100%",
@@ -124,7 +93,7 @@ const SignIn = () => {
               cursor: "pointer",
             }}
           >
-            Sign Up
+            Back to Sign In
           </button>
         </form>
       </div>
@@ -132,4 +101,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default ResetPassword;

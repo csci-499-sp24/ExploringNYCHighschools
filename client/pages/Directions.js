@@ -215,6 +215,7 @@ const Directions = () => {
       </LoadScript>
     </div>
   );
+  
 };
 
 export default Directions;

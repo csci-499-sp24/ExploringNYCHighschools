@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useRouter } from 'next/router';
 import { GoogleMap, LoadScript, MarkerF, DirectionsRenderer } from '@react-google-maps/api';
+import { FaCar, FaSubway, FaWalking } from 'react-icons/fa';
 import useUserDetails from '@/components/useUserDetails';
 
 const containerStyle = {
@@ -146,21 +147,41 @@ const Directions = () => {
 
   return (
     <div style={{ height: '100vh', width: '100%' }}>
-      <div>
+      <div style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}>
         <input
           type="text"
           value={inputAddress}
           onChange={(e) => setInputAddress(e.target.value)}
           placeholder="Enter your address"
+          style={{ flex: 1, padding: '8px', fontSize: '16px' }}
         />
-        <button onClick={() => handleTravelModeChange("DRIVING")} style={{ marginRight: '10px' }}>Car</button>
-        <button onClick={() => handleTravelModeChange("TRANSIT")} style={{ marginRight: '10px' }}>Subway</button>
-        <button onClick={() => handleTravelModeChange("WALKING")}>Walking</button>
+        <button onClick={() => handleTravelModeChange("DRIVING")} style={{ marginLeft: '10px' }}>
+          <FaCar size={24} />
+        </button>
+        <button onClick={() => handleTravelModeChange("TRANSIT")} style={{ marginLeft: '10px' }}>
+          <FaSubway size={24} />
+        </button>
+        <button onClick={() => handleTravelModeChange("WALKING")} style={{ marginLeft: '10px' }}>
+          <FaWalking size={24} />
+        </button>
       </div>
-      <div>
-        <p>Estimated Time: {duration}</p>
-      </div>
-      <div ref={directionsPanel} style={{ height: '200px', overflow: 'auto' }}></div>
+      {inputAddress && (
+        <>
+          <div style={{ marginBottom: '10px' }}>
+            <p>Estimated Time: {duration}</p>
+          </div>
+          <div
+            ref={directionsPanel}
+            style={{
+              height: '200px',
+              overflow: 'auto',
+              border: '1px solid #ccc',
+              padding: '10px',
+              marginBottom: '10px',
+            }}
+          ></div>
+        </>
+      )}
       <LoadScript
         googleMapsApiKey="AIzaSyDj6xBIduOFaJ_SnUOi4KKuw-FBuTgNLOU"
         onLoad={() => setIsLoaded(true)}

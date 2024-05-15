@@ -54,6 +54,7 @@ const AdditionalInfo = () => {
   };
 
   return (
+    <div className="background-color" style={{ minHeight: "70vh", color: "#333" }}>
     <div
       style={{
         display: "flex",
@@ -112,6 +113,7 @@ const AdditionalInfo = () => {
           </button>
         </form>
       </div>
+    </div>
     </div>
   );
 };

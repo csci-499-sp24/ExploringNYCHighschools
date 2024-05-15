@@ -1,11 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { auth, firestore } from "../firebase/firebaseConfig";
-import { doc, updateDoc } from "firebase/firestore";
+import { doc, getDoc, updateDoc } from "firebase/firestore";
 
 const EditPhone = () => {
   const [phone, setPhone] = useState("");
   const router = useRouter();
+
+  useEffect(() => {
+    const fetchUserPhone = async () => {
+      const currentUser = auth.currentUser;
+      if (currentUser) {
+        const userId = currentUser.uid;
+        const userRef = doc(firestore, "users", userId);
+        try {
+          const userDoc = await getDoc(userRef);
+          if (userDoc.exists()) {
+            const userData = userDoc.data();
+            setPhone(userData.phone || "");
+          }
+        } catch (error) {
+          console.error("Error fetching user phone:", error);
+        }
+      }
+    };
+
+    fetchUserPhone();
+  }, []);
 
   const handleChange = (e) => {
     setPhone(e.target.value);
@@ -14,11 +35,9 @@ const EditPhone = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const currentUser = auth.currentUser;
-
     if (currentUser) {
       const userId = currentUser.uid;
       const userRef = doc(firestore, "users", userId);
-
       try {
         await updateDoc(userRef, { phone });
         console.log("Phone number updated successfully");
@@ -32,28 +51,37 @@ const EditPhone = () => {
   };
 
   return (
-  <div className="background-color"
-   style={{
-     minHeight: "70vh",
-     color: "#333",
-   }}>
-    <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "40vh" }}>
-      <div style={{ width: "300px" }}>
-        <h1>Edit Phone Number</h1>
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            placeholder="Enter your phone number"
-            value={phone}
-            onChange={handleChange}
-            style={{ marginBottom: "10px", width: "100%" }}
-          />
-          <button type="submit" style={{ width: "100%" }}>
-            Update
-          </button>
-        </form>
+    <div
+      className="background-color"
+      style={{
+        minHeight: "70vh",
+        color: "#333",
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "40vh",
+        }}
+      >
+        <div style={{ width: "300px" }}>
+          <h1>Edit Phone Number</h1>
+          <form onSubmit={handleSubmit}>
+            <input
+              type="text"
+              placeholder="Enter your phone number"
+              value={phone}
+              onChange={handleChange}
+              style={{ marginBottom: "10px", width: "100%" }}
+            />
+            <button type="submit" style={{ width: "100%" }}>
+              Update
+            </button>
+          </form>
+        </div>
       </div>
-    </div>
     </div>
   );
 };

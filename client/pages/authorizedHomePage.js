@@ -38,7 +38,7 @@ const LoggedinHomepage = () => {
               </p>
             </div>
             <div style={{ flex: "1", paddingLeft: "20px" }}>
-              <img src="./mother-and-daughter.jpg" alt="mother and daughter together" style={{ maxWidth: "80%", height: "auto" }} />
+              <img src="./doe.jpg" alt="doe" style={{ maxWidth: "80%", height: "auto" }} />
             </div>
           </div>
         </div>
